@@ -17,7 +17,9 @@ const DashboardHome2 = () => {
   useEffect(() => {
     const fetchPaintings = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/featuredp");
+        const response = await axios.get(
+          "https://bridges-backend-ob24.onrender.com/featuredp"
+        );
         setPaintings(response.data);
       } catch (error) {
         console.error("Error fetching paintings:", error);
@@ -36,7 +38,7 @@ const DashboardHome2 = () => {
     try {
       // Use the index to get the correct painting ID
       await axios.put(
-        `http://localhost:8000/featuredp/${paintings[index]._id}`,
+        `https://bridges-backend-ob24.onrender.com/featuredp/${paintings[index]._id}`,
         paintings[index]
       );
       setEditIndex(null);

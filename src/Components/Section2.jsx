@@ -14,7 +14,7 @@ const Section2 = () => {
     const fetchArtists = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/artists/featured"
+          "https://bridges-backend-ob24.onrender.com/artists/featured"
         );
         const featuredArtists = response.data.filter(
           (artist) => artist.featured_on_front

@@ -14,7 +14,9 @@ const AboutUs = () => {
   useEffect(() => {
     const fetchAboutData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/about/");
+        const response = await axios.get(
+          "https://bridges-backend-ob24.onrender.com/about/"
+        );
         console.log("About Data:", response.data);
         setAboutData(response.data[0]); // Assuming the response contains an array with a single object
       } catch (error) {
@@ -24,7 +26,9 @@ const AboutUs = () => {
 
     const fetchContactData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/contact123/");
+        const response = await axios.get(
+          "https://bridges-backend-ob24.onrender.com/contact123/"
+        );
         console.log("Contact Data:", response.data);
         setContactData(response.data); // Assuming the response contains an object
       } catch (error) {

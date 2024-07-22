@@ -12,7 +12,7 @@ const SingleExhibition = () => {
     const fetchExhibition = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/exhibitions/exhibition/${exhibitionName}`
+          `https://bridges-backend-ob24.onrender.com/exhibitions/exhibition/${exhibitionName}`
         );
         setExhibition(response.data);
       } catch (error) {

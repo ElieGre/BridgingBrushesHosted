@@ -32,7 +32,7 @@ const SingleArtist = () => {
     const fetchArtist = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/artists/artists/${artist_name}/${artist_lastname}`
+          `https://bridges-backend-ob24.onrender.com/artists/artists/${artist_name}/${artist_lastname}`
         );
         setArtist(response.data);
       } catch (error) {

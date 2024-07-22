@@ -31,7 +31,7 @@ const DashboardArtists = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/artists")
+      .get("https://bridges-backend-ob24.onrender.com/artists")
       .then((response) => {
         setArtists(response.data);
       })
@@ -42,7 +42,7 @@ const DashboardArtists = () => {
 
   const handleDelete = (artistId) => {
     axios
-      .delete(`http://localhost:8000/artists/${artistId}`)
+      .delete(`https://bridges-backend-ob24.onrender.com/artists/${artistId}`)
       .then(() => {
         setArtists((prevArtists) =>
           prevArtists.filter((artist) => artist._id !== artistId)
@@ -81,7 +81,10 @@ const DashboardArtists = () => {
 
   const handleEditSave = () => {
     axios
-      .put(`http://localhost:8000/artists/${currentArtist._id}`, currentArtist)
+      .put(
+        `https://bridges-backend-ob24.onrender.com/artists/${currentArtist._id}`,
+        currentArtist
+      )
       .then(() => {
         setArtists((prevArtists) =>
           prevArtists.map((artist) =>

@@ -10,7 +10,9 @@ const EventsandPrograms = () => {
 
   const fetchExhibitions = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/exhibitions");
+      const response = await axios.get(
+        "https://bridges-backend-ob24.onrender.com/exhibitions"
+      );
       setExhibitions(response.data);
     } catch (error) {
       console.error("Error fetching exhibitions:", error);

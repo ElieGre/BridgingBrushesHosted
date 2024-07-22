@@ -9,7 +9,9 @@ const Gallery = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/gallery/666375343d2bfd58d0c49d96")
+      .get(
+        "https://bridges-backend-ob24.onrender.com/gallery/666375343d2bfd58d0c49d96"
+      )
       .then((response) => {
         setGallery1(response.data);
       })
@@ -18,7 +20,9 @@ const Gallery = () => {
       });
 
     axios
-      .get("http://localhost:8000/gallery/666375383d2bfd58d0c49d98")
+      .get(
+        "https://bridges-backend-ob24.onrender.com/gallery/666375383d2bfd58d0c49d98"
+      )
       .then((response) => {
         setGallery2(response.data);
       })

@@ -33,7 +33,7 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
     try {
       const formDataObject = new FormData(formRef.current);
       const response = await axios.post(
-        "http://localhost:8000/artists/artist/add",
+        "https://bridges-backend-ob24.onrender.com/artists/artist/add",
         formDataObject
       );
       onSuccess(response.data);

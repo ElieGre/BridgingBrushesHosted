@@ -16,7 +16,7 @@ const Section21 = () => {
   const fetchArtist1 = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/artists/featured"
+        "https://bridges-backend-ob24.onrender.com/artists/featured"
       );
       const featuredArtists = response.data.filter(
         (artist) => artist.featured_on_front
@@ -32,7 +32,7 @@ const Section21 = () => {
   const fetchArtist2 = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/artists/featured"
+        "https://bridges-backend-ob24.onrender.com/artists/featured"
       );
       const featuredArtists = response.data.filter(
         (artist) => artist.featured_on_front
@@ -48,7 +48,7 @@ const Section21 = () => {
   const fetchArtist3 = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/artists/featured"
+        "https://bridges-backend-ob24.onrender.com/artists/featured"
       );
       const featuredArtists = response.data.filter(
         (artist) => artist.featured_on_front
@@ -64,7 +64,7 @@ const Section21 = () => {
   const fetchArtist4 = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/artists/featured"
+        "https://bridges-backend-ob24.onrender.com/artists/featured"
       );
       const featuredArtists = response.data.filter(
         (artist) => artist.featured_on_front

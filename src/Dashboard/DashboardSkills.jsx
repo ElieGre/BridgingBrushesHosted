@@ -19,7 +19,9 @@ function DashboardCV() {
   useEffect(() => {
     async function fetchContacts() {
       try {
-        const response = await axios.get("http://localhost:8000/contact123/");
+        const response = await axios.get(
+          "https://bridges-backend-ob24.onrender.com/contact123/"
+        );
         const {
           contact_facebook_link,
           contact_instagram_link,
@@ -41,7 +43,9 @@ function DashboardCV() {
 
   const handleDeleteContact = async (contactPlatform) => {
     try {
-      await axios.delete(`http://localhost:8000/contact123/${contactPlatform}`);
+      await axios.delete(
+        `https://bridges-backend-ob24.onrender.com/contact123/${contactPlatform}`
+      );
       setContacts((prevContacts) =>
         prevContacts.map((contact) =>
           contact.platform === contactPlatform
@@ -91,7 +95,7 @@ function DashboardCV() {
         ).url,
       };
       const response = await axios.put(
-        "http://localhost:8000/contact123/",
+        "https://bridges-backend-ob24.onrender.com/contact123/",
         updatedContact
       );
       setContacts(updatedContacts);

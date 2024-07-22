@@ -11,7 +11,7 @@ const DashboardGalleries = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/gallery/")
+      .get("https://bridges-backend-ob24.onrender.com/gallery/")
       .then((response) => {
         setGalleries(response.data);
       })
@@ -22,7 +22,7 @@ const DashboardGalleries = () => {
 
   const handleDelete = (galleryId) => {
     axios
-      .delete(`http://localhost:8000/gallery/${galleryId}`)
+      .delete(`https://bridges-backend-ob24.onrender.com/gallery/${galleryId}`)
       .then(() => {
         setGalleries((prevGalleries) =>
           prevGalleries.filter((gallery) => gallery._id !== galleryId)
@@ -50,7 +50,7 @@ const DashboardGalleries = () => {
   const handleEditSave = () => {
     axios
       .put(
-        `http://localhost:8000/gallery/${currentGallery._id}`,
+        `https://bridges-backend-ob24.onrender.com/gallery/${currentGallery._id}`,
         currentGallery
       )
       .then(() => {

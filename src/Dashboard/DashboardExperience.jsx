@@ -15,7 +15,7 @@ const DashboardExperience = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/exhibitions")
+      .get("https://bridges-backend-ob24.onrender.com/exhibitions")
       .then((response) => {
         setExhibitions(response.data);
       })
@@ -26,7 +26,9 @@ const DashboardExperience = () => {
 
   const handleDelete = (exhibitionId) => {
     axios
-      .delete(`http://localhost:8000/exhibitions/${exhibitionId}`)
+      .delete(
+        `https://bridges-backend-ob24.onrender.com/exhibitions/${exhibitionId}`
+      )
       .then(() => {
         setExhibitions((prevExhibitions) =>
           prevExhibitions.filter(
@@ -60,7 +62,7 @@ const DashboardExperience = () => {
   const handleEditSave = () => {
     axios
       .put(
-        `http://localhost:8000/exhibitions/${currentExhibition._id}`,
+        `https://bridges-backend-ob24.onrender.com/exhibitions/${currentExhibition._id}`,
         currentExhibition
       )
       .then(() => {

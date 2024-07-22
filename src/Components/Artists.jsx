@@ -11,7 +11,9 @@ const Artists = () => {
   useEffect(() => {
     const fetchArtists = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/artists");
+        const response = await axios.get(
+          "https://bridges-backend-ob24.onrender.com/artists"
+        );
         setArtists(response.data);
       } catch (error) {
         console.error("Error fetching artists data:", error);

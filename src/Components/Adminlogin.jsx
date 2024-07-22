@@ -12,7 +12,7 @@ const AdminLogin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8000/adminkplre/adminsbridging/login",
+        "https://bridges-backend-ob24.onrender.com/adminkplre/adminsbridging/login",
         {
           adminname,
           adminpassword,

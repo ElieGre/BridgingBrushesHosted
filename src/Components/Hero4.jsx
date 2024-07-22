@@ -23,7 +23,9 @@ const Hero4 = () => {
   useEffect(() => {
     const fetchPaintings = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/featuredp");
+        const response = await axios.get(
+          "https://bridges-backend-ob24.onrender.com/featuredp"
+        );
         if (response.data.length > 0) {
           setFirstPainting(response.data[0] || {});
           setActivePainting(response.data[0] || {});

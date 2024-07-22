@@ -24,7 +24,9 @@ const DashboardHome = () => {
   useEffect(() => {
     const fetchArtists = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/artists/");
+        const response = await axios.get(
+          "https://bridges-backend-ob24.onrender.com/artists/"
+        );
         setArtists(response.data);
       } catch (error) {
         console.error("Error fetching artists:", error);
@@ -38,7 +40,7 @@ const DashboardHome = () => {
     const fetchFeaturedArtists = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/featured-artists/"
+          "https://bridges-backend-ob24.onrender.com/featured-artists/"
         );
         setFeaturedArtists(response.data);
       } catch (error) {
@@ -102,7 +104,7 @@ const DashboardHome = () => {
       // Update the previously featured artist to set featured_on_front to false
       if (previouslyFeatured && previouslyFeatured._id !== selectedArtist._id) {
         await axios.put(
-          `http://localhost:8000/artists/${previouslyFeatured._id}`,
+          `https://bridges-backend-ob24.onrender.com/artists/${previouslyFeatured._id}`,
           {
             featured_on_front: false,
           }
@@ -110,10 +112,13 @@ const DashboardHome = () => {
       }
 
       // Update the selected artist to set featured_on_front to true
-      await axios.put(`http://localhost:8000/artists/${selectedArtist._id}`, {
-        artist_about: formState.additionalInfo,
-        featured_on_front: true,
-      });
+      await axios.put(
+        `https://bridges-backend-ob24.onrender.com/artists/${selectedArtist._id}`,
+        {
+          artist_about: formState.additionalInfo,
+          featured_on_front: true,
+        }
+      );
 
       // Update the local state to reflect the changes
       setFeaturedArtists((prev) =>
@@ -155,9 +160,12 @@ const DashboardHome = () => {
         return;
       }
 
-      await axios.put(`http://localhost:8000/artists/${selectedArtist._id}`, {
-        featured_on_front: false,
-      });
+      await axios.put(
+        `https://bridges-backend-ob24.onrender.com/artists/${selectedArtist._id}`,
+        {
+          featured_on_front: false,
+        }
+      );
 
       setFeaturedArtists((prev) =>
         prev.map((artist) =>
