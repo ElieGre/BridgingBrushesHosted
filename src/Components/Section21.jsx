@@ -1,19 +1,88 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import "../Styles/section2.css";
-import stockimage1 from "../Images/stock_face1.png";
-import stockimage2 from "../Images/stock_face2.png";
-import stockimage3 from "../Images/stock_face3.png";
-import stockimage4 from "../Images/stock_face4.png";
-import stockimage5 from "../Images/stock_face5.png";
-import stockimage6 from "../Images/stock_face6.png";
-import smallimage1 from "../Images/image_placeholder1.png";
 import smallimage4 from "../Images/image_placeholder4.png";
 import greenrect from "../Images/green rectangle.png";
 import "../Styles/section21.css"; // Import the animations
 
 const Section21 = () => {
   const [visible, setVisible] = useState(false);
+  const [artist1, setArtist1] = useState(null);
+  const [artist2, setArtist2] = useState(null);
+  const [artist3, setArtist3] = useState(null);
+  const [artist4, setArtist4] = useState(null);
   const ref = useRef();
+
+  const fetchArtist1 = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/artists/featured"
+      );
+      const featuredArtists = response.data.filter(
+        (artist) => artist.featured_on_front
+      );
+      if (featuredArtists[0]) {
+        setArtist1(featuredArtists[0]);
+      }
+    } catch (error) {
+      console.error("Error fetching artist 1:", error);
+    }
+  };
+
+  const fetchArtist2 = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/artists/featured"
+      );
+      const featuredArtists = response.data.filter(
+        (artist) => artist.featured_on_front
+      );
+      if (featuredArtists[1]) {
+        setArtist2(featuredArtists[1]);
+      }
+    } catch (error) {
+      console.error("Error fetching artist 2:", error);
+    }
+  };
+
+  const fetchArtist3 = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/artists/featured"
+      );
+      const featuredArtists = response.data.filter(
+        (artist) => artist.featured_on_front
+      );
+      if (featuredArtists[2]) {
+        setArtist3(featuredArtists[2]);
+      }
+    } catch (error) {
+      console.error("Error fetching artist 3:", error);
+    }
+  };
+
+  const fetchArtist4 = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/artists/featured"
+      );
+      const featuredArtists = response.data.filter(
+        (artist) => artist.featured_on_front
+      );
+      if (featuredArtists[3]) {
+        setArtist4(featuredArtists[3]);
+      }
+    } catch (error) {
+      console.error("Error fetching artist 4:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchArtist1();
+    fetchArtist2();
+    fetchArtist3();
+    fetchArtist4();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,102 +107,83 @@ const Section21 = () => {
 
   return (
     <div className={`section2-container ${visible ? "visible" : ""}`} ref={ref}>
-      <div className="artist-list">
-        <div className="left-artist-des">
-          <h2>Paolo Hernandez</h2>
-          <p>
-            Experience the transformative power of fashion and media makeup
-            artistry/styling. I am dedicated to enhancing your natural beauty
-            and bringing your creative visions to life. From runway-ready looks
-            to captivating editorial shoots, I specialize in crafting stunning
-            makeup and styling that leave a lasting impression. With a keen eye
-            for detail and a passion for the latest trends, we ensure you always
-            look and feel your best. Trust me to elevate your fashion and media
-            endeavors with our impeccable artistry and styling expertise.
-          </p>
-          <button className="button-special">
-            <p>Read More</p>
-          </button>
+      {artist1 && (
+        <div className="artist-list">
+          <div className="left-artist-des">
+            <h2>{`${artist1.artist_name} ${artist1.artist_lastname}`}</h2>
+            <p>{artist1.artist_about}</p>
+            <button className="button-special">
+              <p>Read More</p>
+            </button>
+          </div>
+          <div className="right-image-des">
+            <img
+              src={artist1.artist_image || smallimage4}
+              alt={artist1.artist_name}
+            />
+          </div>
+          <div className="right-rect">
+            <img src={greenrect} alt="" />
+          </div>
         </div>
-        <div className="right-image-des">
-          <img src={smallimage4} alt="" />
+      )}
+      {artist2 && (
+        <div className="artist-list hideOnMobile1">
+          <div className="right-image-des2">
+            <img
+              src={artist2.artist_image || smallimage4}
+              alt={artist2.artist_name}
+            />
+          </div>
+          <div className="left-artist-des2">
+            <h2>{`${artist2.artist_name} ${artist2.artist_lastname}`}</h2>
+            <p>{artist2.artist_about}</p>
+            <button className="button-special">
+              <p>Read More</p>
+            </button>
+          </div>
         </div>
-        <div className="right-rect">
-          <img src={greenrect} alt="" />
+      )}
+      {artist3 && (
+        <div className="artist-list">
+          <div className="left-artist-des">
+            <h2>{`${artist3.artist_name} ${artist3.artist_lastname}`}</h2>
+            <p>{artist3.artist_about}</p>
+            <button className="button-special">
+              <p>Read More</p>
+            </button>
+          </div>
+          <div className="right-image-des">
+            <img
+              src={artist3.artist_image || smallimage4}
+              alt={artist3.artist_name}
+            />
+          </div>
+          <div className="right-rect">
+            <img src={greenrect} alt="" />
+          </div>
         </div>
-      </div>
-      <div className="artist-list">
-        <div className="right-rect2">
-          <img src={greenrect} alt="" />
+      )}
+      {artist4 && (
+        <div className="artist-list hideOnMobile1">
+          <div className="right-rect4">
+            <img src={greenrect} alt="" />
+          </div>
+          <div className="right-image-des2">
+            <img
+              src={artist4.artist_image || smallimage4}
+              alt={artist4.artist_name}
+            />
+          </div>
+          <div className="left-artist-des2">
+            <h2>{`${artist4.artist_name} ${artist4.artist_lastname}`}</h2>
+            <p>{artist4.artist_about}</p>
+            <button className="button-special">
+              <p>Read More</p>
+            </button>
+          </div>
         </div>
-        <div className="right-image-des2">
-          <img src={smallimage4} alt="" />
-        </div>
-        <div className="left-artist-des2">
-          <h2>Paolo Hernandez</h2>
-          <p>
-            Experience the transformative power of fashion and media makeup
-            artistry/styling. I am dedicated to enhancing your natural beauty
-            and bringing your creative visions to life. From runway-ready looks
-            to captivating editorial shoots, I specialize in crafting stunning
-            makeup and styling that leave a lasting impression. With a keen eye
-            for detail and a passion for the latest trends, we ensure you always
-            look and feel your best. Trust me to elevate your fashion and media
-            endeavors with our impeccable artistry and styling expertise.
-          </p>
-          <button className="button-special">
-            <p>Read More</p>
-          </button>
-        </div>
-      </div>
-      <div className="artist-list">
-        <div className="left-artist-des">
-          <h2>Paolo Hernandez</h2>
-          <p>
-            Experience the transformative power of fashion and media makeup
-            artistry/styling. I am dedicated to enhancing your natural beauty
-            and bringing your creative visions to life. From runway-ready looks
-            to captivating editorial shoots, I specialize in crafting stunning
-            makeup and styling that leave a lasting impression. With a keen eye
-            for detail and a passion for the latest trends, we ensure you always
-            look and feel your best. Trust me to elevate your fashion and media
-            endeavors with our impeccable artistry and styling expertise.
-          </p>
-          <button className="button-special">
-            <p>Read More</p>
-          </button>
-        </div>
-        <div className="right-image-des">
-          <img src={smallimage4} alt="" />
-        </div>
-        <div className="right-rect">
-          <img src={greenrect} alt="" />
-        </div>
-      </div>
-      <div className="artist-list">
-        <div className="right-rect2">
-          <img src={greenrect} alt="" />
-        </div>
-        <div className="right-image-des2">
-          <img src={smallimage4} alt="" />
-        </div>
-        <div className="left-artist-des2">
-          <h2>Paolo Hernandez</h2>
-          <p>
-            Experience the transformative power of fashion and media makeup
-            artistry/styling. I am dedicated to enhancing your natural beauty
-            and bringing your creative visions to life. From runway-ready looks
-            to captivating editorial shoots, I specialize in crafting stunning
-            makeup and styling that leave a lasting impression. With a keen eye
-            for detail and a passion for the latest trends, we ensure you always
-            look and feel your best. Trust me to elevate your fashion and media
-            endeavors with our impeccable artistry and styling expertise.
-          </p>
-          <button className="button-special">
-            <p>Read More</p>
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

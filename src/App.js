@@ -19,8 +19,21 @@ import Hero2 from "./Components/Hero2";
 import Dashboard from "./Dashboard/Dashboard";
 import AboutUs from "./Components/Aboutus";
 import ContactUs from "./Components/Contactus";
+import ContactUs2 from "./Components/contactus2";
 import Hero3 from "./Components/Hero3";
 import Section21 from "./Components/Section21";
+import Hero4 from "./Components/Hero4";
+import DashboardHome2 from "./Dashboard/DashboardHome2";
+import DashboardHome from "./Components/DashboardHome";
+import ArtistDashboard from "./Dashboard/ArtistDashboard";
+import DashboardExperience from "./Dashboard/DashboardExperience";
+import DashboardSkills from "./Dashboard/DashboardSkills";
+import DashboardAbout from "./Dashboard/DashboardAbout";
+import AddArtistForm from "./Components/AddArtistForm";
+import ExhibitionAddForm from "./Components/ExhibitionAddForm";
+import DashboardGalleries from "./Dashboard/DashboardGallery";
+import ProtectedRoute from "./Components/ProtectedRoute";
+import AdminLogin from "./Components/Adminlogin";
 function App() {
   return (
     <div className="App">
@@ -31,14 +44,14 @@ function App() {
             element={
               <>
                 <Header />
-                <Hero3 />
+                <Hero4 />
                 {/* <Hero /> */}
                 {/* <Hero2 /> */}
                 {/* <Section1 /> */}
                 <Section21 />
                 {/* <Section2 /> */}
                 {/* <New /> */}
-                <Gallery />1
+                <Gallery />
                 <EventsandPrograms />
                 {/* <Counter /> */}
                 {/* <Footer /> */}
@@ -53,16 +66,16 @@ function App() {
               <>
                 <Header />
                 <Artists />
+                <RealFooter />
               </>
             }
           />
           <Route
-            path="/single"
+            path="/artists/:artist_name/:artist_lastname"
             element={
               <>
                 <Header />
                 <SingleArtist />
-
                 <RealFooter />
               </>
             }
@@ -73,7 +86,6 @@ function App() {
               <>
                 <Header />
                 <AboutUs />
-
                 <RealFooter />
               </>
             }
@@ -83,18 +95,28 @@ function App() {
             element={
               <>
                 <Header />
-                <ContactUs />
-
+                <ContactUs2 />
                 <RealFooter />
               </>
             }
           />
           <Route
-            path="/exhibition"
+            path="/exhibitions"
             element={
               <>
                 <Header />
                 <Exhibition />
+                <RealFooter />
+              </>
+            }
+          />
+          <Route
+            path="/exhibitions/:exhibitionName"
+            element={
+              <>
+                <Header />
+                <SingleExhebition />
+                <RealFooter />
               </>
             }
           />
@@ -108,15 +130,29 @@ function App() {
             }
           />
           <Route
-            path="/hero3"
+            path="/admin"
             element={
               <>
                 <Header />
-                <Hero3 />
+                <AdminLogin />
+                <RealFooter />
               </>
             }
           />
           <Route
+            path="/dashboard"
+            element={<ProtectedRoute portopio={Dashboard} />}
+          />
+          <Route
+            path="/hero4"
+            element={
+              <>
+                <Header />
+                <Hero4 />
+              </>
+            }
+          />
+          {/* <Route
             path="/singleex"
             element={
               <>
@@ -125,7 +161,7 @@ function App() {
                 <Footer />
               </>
             }
-          />
+          /> */}
           <Route
             path="/exhibition123"
             element={
@@ -144,17 +180,33 @@ function App() {
               </>
             }
           />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route
-            path="/dashboard"
+            path="/dashboard2"
             element={
               <>
-                <Dashboard />
+                {/* <DashboardHome />
+                <DashboardHome2 /> */}
+                <ArtistDashboard />
+                {/* <DashboardExperience />
+                <DashboardSkills />
+                <DashboardAbout /> */}
               </>
             }
           />
+          <Route
+            path="/dashboard3"
+            element={
+              <>
+                <Header />
+                <DashboardGalleries />
+                <RealFooter />
+              </>
+            }
+          />
+          <Route path="/dashboard4" element={<DashboardHome />} />
         </Routes>
       </Router>
-      <div></div>
     </div>
   );
 }

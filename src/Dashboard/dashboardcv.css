@@ -85,3 +85,7 @@
   border: 1px solid #846f63;
   border-radius: 5px;
 }
+.cv textarea {
+  width: 300px;
+  height: 200px;
+}

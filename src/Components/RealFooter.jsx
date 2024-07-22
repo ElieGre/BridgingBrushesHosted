@@ -46,10 +46,16 @@ const RealFooter = () => {
         </div>
         <div className="copyrightbottom">
           <nav>
-            <li>Privacy</li>
-            <li>Cookies</li>
+            <li>
+              <a href="">Privacy</a>
+            </li>
+            <li>
+              <a href="">Cookies</a>
+            </li>
             <li>@2024 Bridgin Bushes</li>
-            <li>Contact</li>
+            <li>
+              <a href="/Contactus">Contact</a>
+            </li>
           </nav>
         </div>
       </div>
@@ -60,20 +66,25 @@ const RealFooter = () => {
         <div className="emojis">
           <nav>
             <li>
-              <div
-                className="white-emoji"
-                onMouseEnter={() => handleMouseEnter("facebook")}
-                onMouseLeave={() => handleMouseLeave("facebook")}
-                style={{
-                  backgroundImage: `url(${
-                    hoveredEmoji.facebook ? facebookGif : facebook
-                  })`,
-                  width: `50px`,
-                  height: `50px`,
-                }}
-              ></div>
+              <a href="https://www.facebook.com/">
+                {" "}
+                {/* Target URL for Facebook */}
+                <div
+                  className="white-emoji"
+                  onMouseEnter={() => handleMouseEnter("facebook")}
+                  onMouseLeave={() => handleMouseLeave("facebook")}
+                  style={{
+                    backgroundImage: `url(${
+                      hoveredEmoji.facebook ? facebookGif : facebook
+                    })`,
+                    width: `50px`,
+                    height: `50px`,
+                  }}
+                ></div>
+              </a>
             </li>
             <li>
+              <a href="https://www.pinterest.com/"></a>
               <div
                 className="white-emoji"
                 onMouseEnter={() => handleMouseEnter("pinterest")}
@@ -88,6 +99,8 @@ const RealFooter = () => {
               ></div>
             </li>
             <li>
+              <a href="https://www.instagram.com/"></a>
+
               <div
                 className="white-emoji"
                 onMouseEnter={() => handleMouseEnter("instagram")}
@@ -102,6 +115,8 @@ const RealFooter = () => {
               ></div>
             </li>
             <li>
+              <a href="https://www.youtube.com/"></a>
+
               <div
                 className="white-emoji"
                 onMouseEnter={() => handleMouseEnter("youtube")}

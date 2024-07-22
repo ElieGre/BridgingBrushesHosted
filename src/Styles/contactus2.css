@@ -1,0 +1,13 @@
+.bbm {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  align-items: center;
+  margin-top: 0px;
+  background-image: url("../Images/dannie.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+}

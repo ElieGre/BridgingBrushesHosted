@@ -9,6 +9,8 @@ import DashboardProjects from "./DashboardProjects";
 import DashboardHome from "../Components/DashboardHome";
 import "./dashboard.css";
 import DashboardHome2 from "./DashboardHome2";
+import ArtistDashboard from "./ArtistDashboard";
+import DashboardGalleries from "./DashboardGallery";
 
 function Dashboard() {
   return (
@@ -22,22 +24,24 @@ function Dashboard() {
         <section id="featuredpaintings">
           <DashboardHome2 />
         </section>
+
         <section id="artists">
-          {/* Add content for Featured Artists here */}
+          <ArtistDashboard />
         </section>
+
         <section id="exhibitions">
           <DashboardExperience />
         </section>
         <section id="contactus">
-          {/* Add content for Contact Us here */}
+          <DashboardSkills />
         </section>
+
         <section id="aboutus">
           <DashboardAbout />
         </section>
-        {/* Uncomment the line below to include DashboardProjects */}
-        {/* <section id="projects">
-          <DashboardProjects />
-        </section> */}
+        <section id="gallery">
+          <DashboardGalleries />
+        </section>
       </div>
     </div>
   );

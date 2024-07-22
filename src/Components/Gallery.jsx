@@ -1,48 +1,31 @@
-import React, { useEffect } from "react";
-import ScrollReveal from "scrollreveal";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../Styles/gallery.css";
-import goldvertical from "../Images/vertical-gold.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import gallery1 from "../Images/GALLERY1.jpg";
-import gallery2 from "../Images/GALLERY2.jpg";
-import gallery3 from "../Images/GALLERY3.jpg";
 
 const Gallery = () => {
-  // useEffect(() => {
-  //   ScrollReveal({
-  //     distance: "20px",
-  //     duration: 800,
-  //     delay: 100,
-  //     reset: true,
-  //   });
+  const [gallery1, setGallery1] = useState(null);
+  const [gallery2, setGallery2] = useState(null);
 
-  //   ScrollReveal().reveal(".main-title, .section-title", {
-  //     delay: 200,
-  //     origin: "left",
-  //   });
-  //   ScrollReveal().reveal(".image", {
-  //     delay: 300,
-  //     origin: "bottom",
-  //   });
-  //   ScrollReveal().reveal(".text-box", {
-  //     delay: 400,
-  //     origin: "right",
-  //   });
-  //   ScrollReveal().reveal(".media-icons i", {
-  //     delay: 200,
-  //     origin: "bottom",
-  //     interval: 100,
-  //   });
-  //   ScrollReveal().reveal(".image-top, .image-bottom", {
-  //     delay: 200,
-  //     origin: "top",
-  //   });
-  //   ScrollReveal().reveal(".info", {
-  //     delay: 200,
-  //     origin: "left",
-  //     interval: 100,
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/gallery/666375343d2bfd58d0c49d96")
+      .then((response) => {
+        setGallery1(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching the first gallery", error);
+      });
+
+    axios
+      .get("http://localhost:8000/gallery/666375383d2bfd58d0c49d98")
+      .then((response) => {
+        setGallery2(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching the second gallery", error);
+      });
+  }, []);
 
   return (
     <div className="gallery-home">
@@ -51,42 +34,51 @@ const Gallery = () => {
           <h1 className="main-title">Featured Galleries</h1>
         </div>
 
-        <div className="gallery-section">
-          <div className="text-box">
-            <h2 className="gallery-title">Peasant Scenes And Landscapes</h2>
-            <p className="date-time">Date: August 18, 2024</p>
-            <p className="location">City: San Francisco, Country: USA</p>
-            <p className="host">Host: San Francisco Art Museum</p>
-            <p className="description">
-              The exhibition is made possible by the Laura & C. Arnold Douglas
-              Foundation.
-            </p>
-            <p className="featured-artists">
-              Featured Artists: John Doe, Jane Smith, Albert Johnson
-            </p>
+        {gallery1 && (
+          <div className="gallery-section">
+            <div className="text-box">
+              <h2 className="gallery-title">{gallery1.gallery_name}</h2>
+              <p className="date-time">Date: {gallery1.gallery_date}</p>
+              <p className="location">
+                City: {gallery1.gallery_city}, Country:{" "}
+                {gallery1.gallery_country}
+              </p>
+              <p className="host">Host: {gallery1.gallery_host}</p>
+              <p className="description">{gallery1.gallery_description}</p>
+              <p className="featured-artists">
+                Featured Artists: {gallery1.gallery_featured_artists1},{" "}
+                {gallery1.gallery_featured_artists2},{" "}
+                {gallery1.gallery_featured_artists3}
+              </p>
+            </div>
+            <div className="image-gallery1">
+              <img src={gallery1.gallery_image} alt={gallery1.gallery_name} />
+            </div>
           </div>
-          <div className="image-gallery1">
-            <img src={gallery3} alt="" />
-          </div>
-        </div>
+        )}
 
-        <div className="gallery-section reverse">
-          <div className="image-gallery2">
-            <img src={gallery1} alt="" />
+        {gallery2 && (
+          <div className="gallery-section reverse">
+            <div className="image-gallery2">
+              <img src={gallery2.gallery_image} alt={gallery2.gallery_name} />
+            </div>
+            <div className="text-box">
+              <h2 className="gallery-title">{gallery2.gallery_name}</h2>
+              <p className="date-time">Date: {gallery2.gallery_date}</p>
+              <p className="location">
+                City: {gallery2.gallery_city}, Country:{" "}
+                {gallery2.gallery_country}
+              </p>
+              <p className="host">Host: {gallery2.gallery_host}</p>
+              <p className="description">{gallery2.gallery_description}</p>
+              <p className="featured-artists">
+                Featured Artists: {gallery2.gallery_featured_artists1},{" "}
+                {gallery2.gallery_featured_artists2},{" "}
+                {gallery2.gallery_featured_artists3}
+              </p>
+            </div>
           </div>
-          <div className="text-box">
-            <h2 className="gallery-title">Urban Landscapes</h2>
-            <p className="date-time">Date: August 20, 2024</p>
-            <p className="location">City: Los Angeles, Country: USA</p>
-            <p className="host">Host: Los Angeles Art Museum</p>
-            <p className="description">
-              This exhibition is supported by the Arts & Culture Foundation.
-            </p>
-            <p className="featured-artists">
-              Featured Artists: Emily Brown, Michael Green, Rachel Adams
-            </p>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

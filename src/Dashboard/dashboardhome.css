@@ -70,3 +70,13 @@
 .edit-btn:hover {
   background-color: #846f63;
 }
+.remove-from-front {
+  color: #b89d4f; /* Change to your preferred color */
+  text-decoration: underline;
+  cursor: pointer;
+  width: 180px;
+}
+
+.remove-from-front:hover {
+  color: #0056b3; /* Change to your preferred color on hover */
+}

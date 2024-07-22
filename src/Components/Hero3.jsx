@@ -22,7 +22,7 @@ import bg65 from "../Images/exhibition4.jpg";
 // import theLittleMermaid from "./IMAGESMOVIES/the-little-mermaid.jpeg";
 import theLittleMermaid from "../Images/exhibition2.jpg";
 import theTank from "./IMAGESMOVIES/the-tank.jpeg";
-import bgLittleMermaid2 from "./IMAGESMOVIES/bg-little-mermaid.jpg";
+import bgLittleMermaid2 from "../Images/exhibition2.jpg";
 
 import bgTheCovenantpng from "./IMAGESMOVIES/the-covenant.jpg";
 import bgTheBlackDemonpng from "./IMAGESMOVIES/the-black-demon-title.png";
@@ -118,7 +118,7 @@ const Hero3 = () => {
             deserunt aspernatur obcaecati nisi sapiente tempore! Est facilis
             similique sequi maxime adipisci! Excepturi, beatae.
           </p>
-          <div class="buttonwww">
+          {/* <div class="buttonwww">
             <a href="#">
               <i>
                 <FontAwesomeIcon icon={faPlay} />
@@ -131,7 +131,7 @@ const Hero3 = () => {
               </i>
               My List{" "}
             </a>
-          </div>
+          </div> */}
         </div>
         <div class="content bg-65">
           {/* <img src={bg65png} alt="Movie Name" class="movie-title" /> */}

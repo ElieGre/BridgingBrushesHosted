@@ -1,11 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../Styles/header.css";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import BrushLogo from "../Images/HighRez@3x.jpg";
 import BrushLogopng from "../Images/HR_White.png";
+import "../Styles/header.css";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const [showSidebar, setShowSidebar] = useState(false); // State for sidebar visibility
+
+  const handleNavigation = (path) => {
+    setShowSidebar(false);
+    navigate(path);
+  };
+
   return (
     <div>
       <div className="header-box">
@@ -22,39 +29,104 @@ const Header = () => {
           />
         </Helmet>
         <div className="header-all">
-          <div className="header-title">
-            <img src={BrushLogopng} className="steel-city" alt="" />
+          <div className="header-title" onClick={() => navigate(`/`)}>
+            <img
+              src={BrushLogopng}
+              className="steel-city"
+              alt="Brush Logo"
+              onClick={() => navigate(`/`)}
+            />
           </div>
           <div className="header-center">
             <div className="header-1">
               <nav>
                 <ul className="header-ul">
-                  <li>
-                    <a href="/">Home</a>
+                  <li className="hideOnMobile">
+                    <Link to="/">Home</Link>
                   </li>
-                  <li>
-                    <a href="">Artists</a>
+                  <li className="hideOnMobile">
+                    <Link to="/artists">Artists</Link>
                   </li>
-                  <li>
-                    <a className="weird-blue" href="/#services">
+                  <li className="hideOnMobile">
+                    <Link className="weird-blue" to="/exhibitions">
                       Exhibitions
-                    </a>
+                    </Link>
                   </li>
-                  <li>
-                    <a className="weird-blue" href="/aboutus">
+                  <li className="hideOnMobile">
+                    <Link className="weird-blue" to="/aboutus">
                       About Us
-                    </a>
+                    </Link>
                   </li>
-                  <li>
-                    <a href="/contactus">Contact</a>
+                  <li className="hideOnMobile">
+                    <Link to="/contactus">Contact</Link>
                   </li>
                 </ul>
               </nav>
+              {showSidebar && (
+                <nav className="bigger-1">
+                  <ul className="sidebar123">
+                    <li onClick={() => setShowSidebar(false)}>
+                      <a href="#">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="26"
+                          viewBox="0 96 960 960"
+                          width="26"
+                        >
+                          <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231-231 231Z" />
+                        </svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/" onClick={() => handleNavigation("/")}>
+                        Home
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/artists"
+                        onClick={() => handleNavigation("/artists")}
+                      >
+                        Artists
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/exhibitions"
+                        onClick={() => handleNavigation("/exhibitions")}
+                      >
+                        Exhibitions
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/contactus"
+                        onClick={() => handleNavigation("/contactus")}
+                      >
+                        Contact
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              )}
             </div>
           </div>
           <div className="header-2">
             <div className="image-circle">
               <img className="phone-image" alt="" />
+            </div>
+            <div
+              className="menu-button"
+              onClick={() => setShowSidebar(!showSidebar)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="48 "
+                viewBox="0 96 960 960"
+                width="48"
+              >
+                <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
+              </svg>
             </div>
           </div>
         </div>

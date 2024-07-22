@@ -24,6 +24,7 @@
   color: #fff;
   justify-content: center;
   overflow: hidden;
+  width: 80%;
 }
 
 .left-sa img {
@@ -142,6 +143,7 @@
   flex-direction: column; /* Stack items vertically */
   list-style: none;
   padding: 0;
+  box-shadow: none;
 }
 
 .emojis-sa li {
@@ -223,7 +225,7 @@
   cursor: pointer;
   transform: skew(-21deg);
   position: relative;
-  top: -0px;
+  top: -250px;
   left: -60px;
 }
 
@@ -266,6 +268,8 @@
   align-items: flex-start;
   padding: 20px;
   margin-bottom: -100px;
+  position: relative;
+  left: 250px;
 }
 
 .left-sa img {
@@ -380,8 +384,8 @@
 }
 
 .painting-image-sa {
-  width: 300px;
-  height: 500px;
+  width: 500px;
+  height: 700px;
   object-fit: cover;
   margin-right: 20px;
 }
@@ -403,4 +407,211 @@
 
 .static-and-non-sa {
   margin-top: -180px !important;
+}
+@media (max-width: 600px) {
+  .sa-all {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 0;
+    margin-left: -200px !important;
+  }
+  .left-sa {
+    width: 90%;
+  }
+
+  .left-sa img {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    margin-right: 0;
+    animation: animate123 1s forwards linear;
+  }
+
+  .right-sa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .on-top-sa h1 {
+    font-size: 1.5em;
+  }
+
+  .on-top-sa h3 {
+    font-size: 1em;
+  }
+
+  .middle-sa h2 {
+    font-size: 1em;
+  }
+  .bottom-sa {
+    width: 90% !important;
+    margin-left: -16px;
+    border-radius: 8px;
+  }
+
+  .bottom-sa p {
+    font-size: 0.9em;
+    margin-top: 10px;
+    max-width: 100%;
+  }
+
+  .emoji-sa {
+    margin-top: 20px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+  }
+
+  .footer3-sa {
+    flex-direction: column;
+  }
+
+  .emojis-sa nav {
+    flex-direction: row;
+    margin-top: -50px;
+  }
+
+  .emojis-sa li {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+
+  .static-images-sa {
+    flex-direction: row;
+    margin: 20px 0 40px 0;
+  }
+
+  .static-image-sa {
+    width: 80px;
+    height: 120px;
+    margin: 0 5px;
+  }
+
+  .gallery-sa {
+    width: 100%;
+    margin-bottom: 80px;
+  }
+
+  .painting-image-sa {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+  }
+
+  .painting-info-sa {
+    max-width: 90%;
+    width: 90% !important;
+    box-shadow: #ffffff;
+  }
+  .painting-info-sa h3 {
+    color: #ffffff !important;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark gray with 50% opacity */
+    backdrop-filter: blur(5px); /* Add blur effect */
+    z-index: 0; /* Place the overlay behind the banner content */
+    width: 400px !important;
+    margin-right: -15px;
+  }
+  .button-sa {
+    display: none;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .sa-all {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+    padding: 20px;
+  }
+
+  .left-sa img {
+    width: 80%;
+    height: auto;
+    margin-top: 15px;
+    margin-right: 0;
+    animation: animate123 1s forwards linear;
+  }
+
+  .right-sa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .on-top-sa h1 {
+    font-size: 2em;
+  }
+
+  .on-top-sa h3 {
+    font-size: 1.2em;
+  }
+
+  .middle-sa h2 {
+    font-size: 1.2em;
+  }
+
+  .bottom-sa p {
+    font-size: 1em;
+    margin-top: 10px;
+    max-width: 90%;
+  }
+
+  .emoji-sa {
+    margin-top: 20px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+  }
+
+  .footer3-sa {
+    flex-direction: column;
+  }
+
+  .emojis-sa nav {
+    flex-direction: row;
+  }
+
+  .emojis-sa li {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+
+  .static-images-sa {
+    flex-direction: row;
+    margin: 20px 0 40px 0;
+  }
+
+  .static-image-sa {
+    width: 80px;
+    height: 120px;
+    margin: 0 5px;
+  }
+
+  .gallery-sa {
+    width: 100%;
+    margin-bottom: 80px;
+  }
+
+  .painting-image-sa {
+    width: 80%;
+    height: auto;
+    margin-right: 0;
+  }
+
+  .painting-info-sa {
+    max-width: 90%;
+  }
+}
+@media (min-width: 1700px) {
+  .sa-all {
+    position: relative;
+    left: 450px;
+    width: 70%;
+  }
 }

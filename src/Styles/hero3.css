@@ -310,3 +310,142 @@
   filter: invert(1);
   max-width: 30px;
 }
+@media only screen and (max-width: 600px) {
+  .hero3 {
+    padding: 0 !important;
+  }
+
+  .banner {
+    padding: 0 20px !important;
+    flex-direction: column-reverse !important;
+    text-align: center !important;
+  }
+
+  .content {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .movie-title {
+    max-width: 100% !important;
+  }
+
+  .banner .content h4 {
+    font-size: 20px !important;
+  }
+
+  .banner .content p {
+    font-size: 0.9em !important;
+  }
+
+  .banner .carousel-box {
+    min-width: 100% !important;
+    margin: 20px 0 !important;
+  }
+
+  .carousel .carousel-item {
+    width: 100% !important;
+  }
+
+  .carousel .carousel-item img {
+    max-width: 100% !important;
+    height: auto !important;
+    transform: translateX(0) translateY(0) !important;
+  }
+
+  .play {
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .sci {
+    bottom: 20px !important;
+    right: 50% !important;
+    transform: translateX(50%) !important;
+    gap: 15px !important;
+  }
+
+  .trailer video {
+    max-width: 100% !important;
+  }
+
+  .close {
+    top: 10px !important;
+    right: 10px !important;
+  }
+  .sci {
+    display: none;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .hero3 {
+    padding: 0 !important;
+  }
+
+  .banner {
+    padding: 0 40px !important;
+
+    text-align: center !important;
+  }
+
+  .content {
+    max-width: 100% !important;
+    margin: 0 auto;
+    margin-left: -50px;
+    margin-top: 80px;
+  }
+
+  .movie-title {
+    max-width: 100% !important;
+  }
+
+  .banner .content h4 {
+    font-size: 24px !important;
+  }
+
+  .banner .content p {
+    font-size: 1em !important;
+  }
+
+  .banner .carousel-box {
+    min-width: 100% !important;
+    margin: 20px 0 !important;
+  }
+
+  .carousel .carousel-item {
+    width: 100% !important;
+  }
+
+  .carousel .carousel-item img {
+    max-width: 100% !important;
+    /* height: auto !important; */
+    transform: translateX(0) translateY(0) !important;
+    margin-top: -50px;
+  }
+
+  .play {
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .sci {
+    bottom: 20px !important;
+    right: 50% !important;
+    transform: translateX(50%) !important;
+    gap: 15px !important;
+  }
+
+  .trailer video {
+    max-width: 100% !important;
+  }
+
+  .close {
+    top: 10px !important;
+    right: 10px !important;
+  }
+  .sci {
+    display: none;
+  }
+}

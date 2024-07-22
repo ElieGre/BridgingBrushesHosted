@@ -1,57 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Slider from "react-slick";
+import { ResizableBox } from "react-resizable";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import axios from "axios";
 import "./dashboardhome2.css"; // Import your CSS file here
 
 const DashboardHome2 = () => {
-  const initialPaintings = [
-    {
-      feature_artist_name: "John",
-      feature_artist_last_name: "Doe",
-      feature_genre: "Abstract",
-      feature_name_of_painting: "Untitled 1",
-      feature_image_of_painting: "https://via.placeholder.com/150",
-      feature_description_of_painting: "Lorem ipsum dolor sit amet",
-      feature_tag1: "Tag1",
-      feature_tag2: "Tag2",
-      feature_tag3: "Tag3",
-    },
-    {
-      feature_artist_name: "Jane",
-      feature_artist_last_name: "Doe",
-      feature_genre: "Realism",
-      feature_name_of_painting: "Untitled 2",
-      feature_image_of_painting: "https://via.placeholder.com/150",
-      feature_description_of_painting: "Lorem ipsum dolor sit amet",
-      feature_tag1: "Tag1",
-      feature_tag2: "Tag2",
-      feature_tag3: "Tag3",
-    },
-    {
-      feature_artist_name: "Alex",
-      feature_artist_last_name: "Smith",
-      feature_genre: "Impressionism",
-      feature_name_of_painting: "Untitled 3",
-      feature_image_of_painting: "https://via.placeholder.com/150",
-      feature_description_of_painting: "Lorem ipsum dolor sit amet",
-      feature_tag1: "Tag1",
-      feature_tag2: "Tag2",
-      feature_tag3: "Tag3",
-    },
-  ];
-
-  const [paintings, setPaintings] = useState(initialPaintings);
+  const [paintings, setPaintings] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0); // Index of the current painting
   const [editIndex, setEditIndex] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
+
+  useEffect(() => {
+    const fetchPaintings = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/featuredp");
+        setPaintings(response.data);
+      } catch (error) {
+        console.error("Error fetching paintings:", error);
+      }
+    };
+
+    fetchPaintings();
+  }, []);
 
   const handleEdit = (index) => {
     setEditIndex(index);
     setPreviewImage(paintings[index].feature_image_of_painting); // Set preview image to the current painting image
   };
 
-  const handleSave = (index) => {
-    setEditIndex(null);
-    toast.success("Painting details saved successfully!");
+  const handleSave = async (index) => {
+    try {
+      // Use the index to get the correct painting ID
+      await axios.put(
+        `http://localhost:8000/featuredp/${paintings[index]._id}`,
+        paintings[index]
+      );
+      setEditIndex(null);
+      toast.success("Painting details saved successfully!");
+    } catch (error) {
+      console.error("Error saving painting:", error);
+      toast.error("Error saving painting. Please try again.");
+    }
   };
 
   const handleChange = (e, index, field) => {
@@ -74,11 +67,21 @@ const DashboardHome2 = () => {
     }
   };
 
+  const wordCount = (text) => {
+    return text.trim().split(/\s+/).length;
+  };
+
   return (
     <div className="dashboard-home" id="featured-paintings">
       <ToastContainer />
       <h2>Featured Paintings</h2>
-      <div className="painting-container">
+      <Slider
+        dots={true}
+        infinite={true}
+        speed={500}
+        slidesToShow={3}
+        slidesToScroll={1}
+      >
         {paintings.map((painting, index) => (
           <div className="edit-featured-painting" key={index}>
             <form>
@@ -167,6 +170,12 @@ const DashboardHome2 = () => {
                   }
                   readOnly={editIndex !== index}
                 />
+                {editIndex === index && (
+                  <p>
+                    {50 - wordCount(painting.feature_description_of_painting)}{" "}
+                    words remaining
+                  </p>
+                )}
               </div>
               <div className="form-group">
                 <label htmlFor={`tag1${index}`}>Tag 1:</label>
@@ -218,7 +227,7 @@ const DashboardHome2 = () => {
             </form>
           </div>
         ))}
-      </div>
+      </Slider>
     </div>
   );
 };

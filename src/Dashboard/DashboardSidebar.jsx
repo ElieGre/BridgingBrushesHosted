@@ -9,6 +9,7 @@ function DashboardSidebar() {
       <a href="#exhibitions">Exhibitions</a>
       <a href="#contactus">Contact Us</a>
       <a href="#aboutus">About Us</a>
+      <a href="#gallery">Featured Gallery</a>
     </div>
   );
 }

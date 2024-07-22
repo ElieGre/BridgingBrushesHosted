@@ -1,65 +1,193 @@
-/* General page styling */
-.single-exhibition-page {
-    font-family: 'Libre Baskerville', sans-serif;
+.single-exhibition-page1 {
+  font-family: "Libre Baskerville", sans-serif;
+  color: white;
+  background-color: #1f1f1f; /* Background color */
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+}
+
+.banner1 {
+  width: 100%; /* Full width */
+  height: 800px; /* Adjust the height as needed */
+  background-size: cover;
+  background-position: center;
+  position: relative; /* Enable absolute positioning for overlay */
+  display: flex; /* Use flexbox for positioning */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  margin-bottom: 50px; /* Increase spacing below the banner */
+}
+
+.banner1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark gray with 50% opacity */
+  backdrop-filter: blur(5px); /* Add blur effect */
+  z-index: 0; /* Place the overlay behind the banner content */
+}
+
+.banner-content1 {
+  display: flex; /* Use flexbox for horizontal positioning */
+  gap: 40px; /* Increase space between the title and the info box */
+  position: relative; /* Allow positioning elements within the banner */
+  z-index: 1; /* Place the banner content on top of the overlay */
+  text-align: left; /* Align text within the banner */
+  color: white; /* Ensure text is visible on dark background */
+  max-width: 90%;
+}
+
+.exhibition-title1 {
+  font-size: 3.5em; /* Make the font size bigger */
+  font-weight: bold;
+  margin: 0; /* Remove default margin */
+  color: #b89d4f; /* Ensure text is visible on dark background */
+  margin-right: 200px;
+  position: relative;
+  top: 150px;
+}
+
+.info-box1 {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+  padding: 30px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  max-width: 500px; /* Increase max width of the box */
+  text-align: left; /* Align text to the left */
+  font-size: larger;
+}
+.info-box1 p {
+  font-size: 22px;
+  color: #b89d4f;
+  text-align: center;
+}
+
+.exhibition-description {
+  font-size: 2.2em; /* Increase the font size */
+  margin-bottom: 20px; /* Increase spacing below the description */
+  font-size: 20px;
+}
+.exhibition-description p {
+  font-size: 20px;
+}
+
+.exhibition-details,
+.contact-details {
+  font-size: 1.5em; /* Increase the font size */
+  margin-bottom: 20px; /* Increase spacing below the details section */
+}
+
+.detail-item,
+.contact-item {
+  margin-bottom: 15px; /* Adjust spacing between items */
+}
+
+.detail-label {
+  font-weight: bold;
+  color: #dd7f1f;
+  display: block; /* Make label a block element to have the content below it */
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .single-exhibition-page1 {
+    font-family: "Libre Baskerville", sans-serif;
     color: white;
-    background-color: #1f1f1f; /* Background color */
+    background-color: #1f1f1f;
     text-align: center;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+    min-height: 100vh;
   }
-  
-  .banner {
-    width: 90%; /* Adjust the width as needed */
-    height: 400px; /* Adjust the height as needed */
+
+  .banner1 {
+    width: 100%;
+    height: 600px; /* Adjust the height for medium screens */
     background-size: cover;
     background-position: center;
-    margin-bottom: 100px; /* Increase spacing below the banner */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px; /* Adjust spacing below the banner */
   }
-  
-  .exhibition-title {
-    font-size: 3em; /* Make the font size bigger */
+
+  .banner1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 0;
+  }
+
+  .banner-content1 {
+    display: flex;
+    flex-direction: column; /* Stack items vertically for medium screens */
+    gap: 20px; /* Adjust space between items */
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    color: white;
+    max-width: 90%;
+    align-items: center; /* Center the content horizontally */
+  }
+
+  .exhibition-title1 {
+    font-size: 2.5em; /* Adjust the font size for medium screens */
     font-weight: bold;
-    margin-bottom: 100px; /* Increase spacing below the title */
+    margin: 0;
+    color: #b89d4f;
+    text-align: center; /* Center the title text */
+    top: 40px;
   }
-  
-  .exhibition-description {
-    font-size: 1.5em; /* Make the font size bigger */
-    margin-bottom: 30px; /* Increase spacing below the description */
-    width: 80%;
-    max-width: 800px;
-    text-align: center; /* Center the text */
+
+  .info-box1 {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px; /* Adjust padding */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 100%; /* Ensure it takes full width */
+    text-align: left;
+    font-size: 1em; /* Adjust font size */
   }
-  
-  .exhibition-details {
-    font-size: 1.5em; /* Make the font size bigger */
-    margin-bottom: 30px; /* Increase spacing below the details section */
-    width: 80%;
-    max-width: 800px;
-    text-align: center; /* Center the text */
+
+  .info-box1 p {
+    font-size: 20px; /* Adjust font size */
+    color: #b89d4f;
+    text-align: center;
   }
-  
-  .detail-item {
-    margin-bottom: 100px; /* Increase spacing between detail items */
+
+  .exhibition-description1 {
+    font-size: 1.2em; /* Adjust the font size */
+    margin-bottom: 20px; /* Increase spacing below the description */
+    text-align: center; /* Center the description text */
   }
-  
+
+  .exhibition-details1,
+  .contact-details1 {
+    font-size: 1em; /* Adjust the font size */
+    margin-bottom: 20px; /* Increase spacing below the details section */
+  }
+
+  .detail-item1,
+  .contact-item1 {
+    margin-bottom: 15px; /* Adjust spacing between items */
+  }
+
   .detail-label {
     font-weight: bold;
-    color: #DD7F1F;
+    color: #dd7f1f;
     display: block; /* Make label a block element to have the content below it */
   }
-  
-  .contact-details {
-    font-size: 1.5em; /* Make the font size bigger */
-    margin-bottom: 20px;
-    width: 80%;
-    max-width: 800px;
-    text-align: center; /* Center the text */
-  }
-  
-  .contact-item {
-    margin-bottom: 100px; /* Increase spacing between contact items */
-  }
-  
+}

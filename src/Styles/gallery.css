@@ -1,79 +1,102 @@
+/* Gallery Component Styling */
+.gallery-home {
+  align-items: center;
+  margin-top: 0px;
+  background-image: url("../Images/dannie2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -40px !important;
+}
+
+.gallery-home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: -1;
+}
+
+/* Ensure that the content inside .gallery-home remains visible */
+.gallery-home > * {
+  position: relative;
+  z-index: 2;
+}
+
 .title-gallery-home {
   color: white;
   font-size: 55px;
-  letter-spacing: 10%;
+  letter-spacing: 1px; /* Adjusted spacing for better readability */
 }
+
 .top-123 {
   display: flex;
-  justify-content: center; /* Centers the main-title horizontally */
-  width: 100%; /* Takes full width of the container */
+  justify-content: center;
+  width: 100%;
 }
-.top-123 {
-}
-.top-123 img {
-  margin-left: 10px;
-}
+
 .top-123 h1 {
-  width: auto;
-  height: auto;
-  margin-left: 190px;
   margin-bottom: 81px;
-  margin-left: 40px;
+  text-align: center;
+  color: #b89d4f;
 }
+
 .gallery-section {
   display: flex;
   align-items: center;
-  margin-bottom: 140px;
+  margin-bottom: 0px;
+  border: 2px solid #b89d4f; /* Border around each gallery section */
+  border-radius: 10px; /* Rounded corners for the border */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  padding: 20px; /* Padding inside the box */
 }
+
 .gallery-section .text-box {
   flex: 1;
   margin-right: 20px;
 }
-.gallery-section .image-gallery1 .image-gallery2 {
+
+.gallery-section .image-gallery1,
+.gallery-section .image-gallery2 {
   flex: 1;
 }
 
 .gallery-section img {
-  width: 500px;
-  height: 400px;
-  max-width: 500px;
+  width: 700px !important;
+  height: 650px;
+
+  border-radius: 10px; /* Rounded corners for the image */
+  transition: transform 0.3s ease;
 }
 
 .reverse {
   flex-direction: row-reverse;
 }
+
 .text-box {
-  flex: 1;
   line-height: 30px;
   letter-spacing: 1.2px;
   font-size: 20px;
-  color: white;
+  color: black; /* Change text color to black for better contrast */
   text-align: left;
 }
+
 .date-time,
 .location,
 .host,
-.exhibition-name,
 .description,
 .featured-artists {
   margin-bottom: 10px;
 }
-.gallery-home {
-  width: auto;
-  max-width: 80%;
-  margin: 0 auto;
-  margin-top: -100px;
-}
-.image-gallery1 img,
-.image-gallery2 img {
-  width: 600px;
-  height: 600px;
-  max-width: 100%;
-  transition: transform 0.3s ease; /* Add transition effect */
-}
 
+/* Add a hover effect for images */
 .image-gallery1 img:hover,
 .image-gallery2 img:hover {
-  cursor: pointer; /* Change cursor on hover */
-  transform: scale(1.1); /* Increase scale on hover */
+  cursor: pointer;
+  transform: scale(1.05); /* Slightly increase scale on hover */
 }

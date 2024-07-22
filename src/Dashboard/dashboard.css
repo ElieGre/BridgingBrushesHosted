@@ -53,12 +53,15 @@ textarea {
 .header {
   display: flex;
   align-items: center;
+  height: 120px;
 }
 
 .logo-maya {
-  height: 50px;
+  height: auto;
+  width: 400px;
+
   margin-left: 100px;
-  padding: 15px 0px;
+  padding: 0px 0px;
 }
 
 .header p {

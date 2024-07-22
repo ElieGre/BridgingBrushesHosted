@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./contactdash.css";
+import axios from "axios";
 
 const initialContacts = [
-  { id: 1, platform: "Facebook", url: "https://facebook.com/artist" },
-  { id: 2, platform: "Instagram", url: "https://instagram.com/artist" },
-  { id: 3, platform: "Pinterest", url: "https://pinterest.com/artist" },
-  { id: 4, platform: "YouTube", url: "https://youtube.com/artist" },
+  { platform: "Facebook", url: "" },
+  { platform: "Instagram", url: "" },
+  { platform: "Pinterest", url: "" },
+  { platform: "YouTube", url: "" },
 ];
 
 function DashboardCV() {
@@ -15,11 +16,44 @@ function DashboardCV() {
   const [isEditing, setIsEditing] = useState(false);
   const [currentContact, setCurrentContact] = useState(null);
 
-  const handleDeleteContact = (contactId) => {
-    setContacts((prevContacts) =>
-      prevContacts.filter((contact) => contact.id !== contactId)
-    );
-    toast.success("Contact deleted successfully");
+  useEffect(() => {
+    async function fetchContacts() {
+      try {
+        const response = await axios.get("http://localhost:8000/contact123/");
+        const {
+          contact_facebook_link,
+          contact_instagram_link,
+          contact_pinterest_link,
+          contact_youtube_link,
+        } = response.data;
+        setContacts([
+          { platform: "Facebook", url: contact_facebook_link },
+          { platform: "Instagram", url: contact_instagram_link },
+          { platform: "Pinterest", url: contact_pinterest_link },
+          { platform: "YouTube", url: contact_youtube_link },
+        ]);
+      } catch (error) {
+        console.error("Error fetching contacts:", error);
+      }
+    }
+    fetchContacts();
+  }, []);
+
+  const handleDeleteContact = async (contactPlatform) => {
+    try {
+      await axios.delete(`http://localhost:8000/contact123/${contactPlatform}`);
+      setContacts((prevContacts) =>
+        prevContacts.map((contact) =>
+          contact.platform === contactPlatform
+            ? { ...contact, url: "" }
+            : contact
+        )
+      );
+      toast.success("Contact deleted successfully");
+    } catch (error) {
+      console.error("Error deleting contact:", error);
+      toast.error("Error deleting contact");
+    }
   };
 
   const handleEditContactClick = (contact) => {
@@ -35,15 +69,40 @@ function DashboardCV() {
     }));
   };
 
-  const handleEditContactSave = () => {
-    setContacts((prevContacts) =>
-      prevContacts.map((contact) =>
-        contact.id === currentContact.id ? currentContact : contact
-      )
-    );
-    setIsEditing(false);
-    setCurrentContact(null);
-    toast.success("Contact updated successfully");
+  const handleEditContactSave = async () => {
+    try {
+      const updatedContacts = contacts.map((contact) =>
+        contact.platform === currentContact.platform
+          ? { ...contact, url: currentContact.url }
+          : contact
+      );
+      const updatedContact = {
+        contact_facebook_link: updatedContacts.find(
+          (c) => c.platform === "Facebook"
+        ).url,
+        contact_instagram_link: updatedContacts.find(
+          (c) => c.platform === "Instagram"
+        ).url,
+        contact_pinterest_link: updatedContacts.find(
+          (c) => c.platform === "Pinterest"
+        ).url,
+        contact_youtube_link: updatedContacts.find(
+          (c) => c.platform === "YouTube"
+        ).url,
+      };
+      const response = await axios.put(
+        "http://localhost:8000/contact123/",
+        updatedContact
+      );
+      setContacts(updatedContacts);
+      console.log("Contact updated successfully:", response.data);
+      toast.success("Contact updated successfully");
+      setIsEditing(false);
+      setCurrentContact(null);
+    } catch (error) {
+      console.error("Error updating contact:", error);
+      toast.error("Error updating contact");
+    }
   };
 
   const handleEditCancel = () => {
@@ -66,26 +125,32 @@ function DashboardCV() {
               </tr>
             </thead>
             <tbody>
-              {contacts.map((contact) => (
-                <tr key={contact.id}>
-                  <td>{contact.platform}</td>
-                  <td>{contact.url}</td>
-                  <td>
-                    <button
-                      className="edit-btn"
-                      onClick={() => handleEditContactClick(contact)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="delete-btn"
-                      onClick={() => handleDeleteContact(contact.id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
+              {contacts.length > 0 ? (
+                contacts.map((contact) => (
+                  <tr key={contact.platform}>
+                    <td>{contact.platform}</td>
+                    <td>{contact.url}</td>
+                    <td>
+                      <button
+                        className="edit-btn"
+                        onClick={() => handleEditContactClick(contact)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="delete-btn"
+                        onClick={() => handleDeleteContact(contact.platform)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="3">Loading...</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
@@ -98,7 +163,7 @@ function DashboardCV() {
                 type="text"
                 name="platform"
                 value={currentContact.platform}
-                onChange={handleEditContactChange}
+                readOnly
               />
             </label>
             <label>

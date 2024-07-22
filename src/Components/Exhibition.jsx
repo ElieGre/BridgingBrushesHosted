@@ -1,31 +1,68 @@
-
-import React from "react";
-import "../Styles/exhibition.css"; // Updated CSS file name
-import exhibitionImage1 from "../Images/exhibition1.jpg";
-import exhibitionImage2 from "../Images/exhibition1.jpg";
+import React, { useEffect, useState, useMemo } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import "../Styles/exhibition.css";
 
 const Exhibition = () => {
+  const [exhibitions, setExhibitions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  useEffect(() => {
+    const fetchExhibitions = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/exhibitions/");
+        setExhibitions(response.data);
+      } catch (error) {
+        console.error("Error fetching exhibitions:", error);
+      }
+    };
+
+    fetchExhibitions();
+  }, []);
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredExhibitions = useMemo(() => {
+    return exhibitions.filter((exhibition) =>
+      exhibition.exhibition_name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
+    );
+  }, [exhibitions, searchTerm]);
+
+  const handleExhibitionClick = (exhibitionName) => {
+    navigate(`/exhibitions/${exhibitionName}`); // Navigate to the single exhibition route using the exhibition name
+  };
+
   return (
     <div className="exhibitions-page">
       <header className="header">
         <h1 className="title">Exhibitions</h1>
       </header>
       <div className="search-bar">
-        <input type="text" placeholder="Search exhibitions..." />
+        <input
+          type="text"
+          placeholder="Search exhibitions..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
       </div>
       <div className="exhibitions-section">
-        <button
-          className="exhibition-button"
-          style={{ backgroundImage: `url(${exhibitionImage1})` }}
-        >
-          Exhibition 1
-        </button>
-        <button
-          className="exhibition-button"
-          style={{ backgroundImage: `url(${exhibitionImage2})` }}
-        >
-          Exhibition 2
-        </button>
+        {filteredExhibitions.map((exhibition) => (
+          <button
+            key={exhibition._id}
+            className="exhibition-button"
+            style={{
+              backgroundImage: `url(${exhibition.exhibition_featured1image})`,
+            }}
+            onClick={() => handleExhibitionClick(exhibition.exhibition_name)}
+          >
+            {exhibition.exhibition_name}
+          </button>
+        ))}
       </div>
     </div>
   );
