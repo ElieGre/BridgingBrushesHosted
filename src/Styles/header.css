@@ -214,6 +214,7 @@ a {
     max-width: 500px !important;
     margin-left: 40px !important;
     background-color: none !important;
+    display: none;
   }
   .hideOnMobile {
     display: block !important;
