@@ -34,6 +34,7 @@ import ExhibitionAddForm from "./Components/ExhibitionAddForm";
 import DashboardGalleries from "./Dashboard/DashboardGallery";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import AdminLogin from "./Components/Adminlogin";
+import TestPdfViewer from "./Components/TestPdfViewer";
 function App() {
   return (
     <div className="App">
@@ -86,6 +87,16 @@ function App() {
               <>
                 <Header />
                 <AboutUs />
+                <RealFooter />
+              </>
+            }
+          />
+          <Route
+            path="/testpdf"
+            element={
+              <>
+                <Header />
+                <TestPdfViewer />
                 <RealFooter />
               </>
             }

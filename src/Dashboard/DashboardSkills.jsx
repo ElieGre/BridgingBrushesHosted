@@ -116,7 +116,7 @@ function DashboardCV() {
 
   return (
     <div className="dashboard-cv">
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <fieldset className="cv-fieldset">
         <div className="contact-us" id="contact-us">
           <h1>Contact Us</h1>

@@ -6,11 +6,16 @@ import "../Styles/header.css";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [showSidebar, setShowSidebar] = useState(false); // State for sidebar visibility
+  const [showSidebar, setShowSidebar] = useState(false);
 
   const handleNavigation = (path) => {
     setShowSidebar(false);
     navigate(path);
+  };
+
+  const toggleSidebar = () => {
+    console.log("Toggling sidebar");
+    setShowSidebar(!showSidebar);
   };
 
   return (
@@ -100,6 +105,14 @@ const Header = () => {
                     </li>
                     <li>
                       <a
+                        href="/aboutus"
+                        onClick={() => handleNavigation("/aboutus")}
+                      >
+                        About Us
+                      </a>
+                    </li>
+                    <li>
+                      <a
                         href="/contactus"
                         onClick={() => handleNavigation("/contactus")}
                       >
@@ -115,13 +128,10 @@ const Header = () => {
             <div className="image-circle">
               <img className="phone-image" alt="" />
             </div>
-            <div
-              className="menu-button"
-              onClick={() => setShowSidebar(!showSidebar)}
-            >
+            <div className="menu-button" onClick={toggleSidebar}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                height="48 "
+                height="48"
                 viewBox="0 96 960 960"
                 width="48"
               >

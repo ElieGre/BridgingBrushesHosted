@@ -75,7 +75,6 @@ const DashboardHome2 = () => {
 
   return (
     <div className="dashboard-home" id="featured-paintings">
-      <ToastContainer />
       <h2>Featured Paintings</h2>
       <Slider
         dots={true}
@@ -230,6 +229,7 @@ const DashboardHome2 = () => {
           </div>
         ))}
       </Slider>
+      {/* <ToastContainer /> */}
     </div>
   );
 };

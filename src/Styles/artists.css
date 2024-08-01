@@ -83,7 +83,14 @@
   padding: 20px;
   box-sizing: border-box;
   margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.box-artist:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
 .background-artist {
   align-items: center;
   margin-top: 0px;
@@ -182,10 +189,19 @@
   .ui-input-icon {
     left: 10px;
   }
+  ui-input-icon {
+    position: absolute;
+    left: 680px !important;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    transition: color 0.3s;
+  }
 
   .ui-input-icon svg {
     width: 18px;
     height: 18px;
+    margin-left: 350px;
   }
 
   .artists-container {
@@ -211,7 +227,7 @@
   }
 
   .right-description {
-    width: 100%;
+    width: 120%;
     text-align: center;
     font-size: 12px;
   }

@@ -26,6 +26,7 @@ const DashboardArtists = () => {
     artist_work2des: "",
     artist_work3: null,
     artist_work3des: "",
+    artist_pdf: null,
   });
   const [aboutWordCount, setAboutWordCount] = useState(0);
 
@@ -79,11 +80,63 @@ const DashboardArtists = () => {
     }
   };
 
+  function dataURLToBlob(dataURI) {
+    if (!dataURI) {
+      console.error("Invalid dataURI: ", dataURI);
+      return null;
+    }
+
+    var byteString;
+    if (dataURI.split(",")[0].indexOf("base64") >= 0) {
+      byteString = atob(dataURI.split(",")[1]);
+    } else {
+      byteString = unescape(dataURI.split(",")[1]);
+    }
+
+    var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], { type: mimeString });
+  }
+
   const handleEditSave = () => {
+    const formData = new FormData();
+
+    Object.keys(currentArtist).forEach((key) => {
+      // Check if the key corresponds to an uploaded file
+      if (
+        key === "artist_image" ||
+        key === "artist_work1" ||
+        key === "artist_work2" ||
+        key === "artist_work3" ||
+        key === "artist_pdf"
+      ) {
+        // Append the file Blob if it exists
+        if (currentArtist[key] instanceof Blob) {
+          formData.append(key, currentArtist[key]);
+        } else {
+          // Handle the case where the file is a data URL
+          const blob = dataURLToBlob(currentArtist[key]);
+          formData.append(key, blob);
+        }
+      } else {
+        formData.append(key, currentArtist[key]);
+      }
+    });
+
     axios
       .put(
         `https://bridges-backend-ob24.onrender.com/artists/${currentArtist._id}`,
-        currentArtist
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       )
       .then(() => {
         setArtists((prevArtists) =>
@@ -107,6 +160,8 @@ const DashboardArtists = () => {
 
   const handleImageUpload = (e, imageName) => {
     const file = e.target.files[0];
+    if (!file) return;
+
     const reader = new FileReader();
     reader.onloadend = () => {
       setCurrentArtist((prevArtist) => ({
@@ -114,7 +169,13 @@ const DashboardArtists = () => {
         [imageName]: reader.result,
       }));
     };
-    reader.readAsDataURL(file);
+
+    // Check if the file is of the correct type
+    if (file instanceof Blob) {
+      reader.readAsDataURL(file);
+    } else {
+      console.error("The uploaded file is not a Blob type.");
+    }
   };
 
   const openImageInNewTab = (url) => {
@@ -174,6 +235,7 @@ const DashboardArtists = () => {
                 <th>Work 2 Description</th>
                 <th>Work 3</th>
                 <th>Work 3 Description</th>
+                <th>PDF Available</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -225,6 +287,8 @@ const DashboardArtists = () => {
                     />
                   </td>
                   <td>{artist.artist_work3des}</td>
+                  <td>{artist.artist_pdf ? "Yes" : "No"}</td>
+
                   <td>
                     <button
                       className="edit-btn"
@@ -415,6 +479,23 @@ modal-body"
                       onChange={handleEditChange}
                     />
                   </label>
+                  <label>
+                    PDF:
+                    <input
+                      type="file"
+                      onChange={(e) => handleImageUpload(e, "artist_pdf")}
+                    />
+                    {currentArtist.artist_pdf && (
+                      <a
+                        href={currentArtist.artist_pdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View PDF
+                      </a>
+                    )}
+                  </label>
+
                   <button className="save-btn" onClick={handleEditSave}>
                     Save
                   </button>

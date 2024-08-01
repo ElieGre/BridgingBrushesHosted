@@ -17,13 +17,19 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
     artist_work2: null,
     artist_work3name: "",
     artist_work3: null,
+    artist_pdf: null, // Add this line
   });
   const [error, setError] = useState("");
   const formRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    const newValue = name.startsWith("artist_work") ? files[0] : value;
+    const newValue =
+      name.startsWith("artist_work") ||
+      name === "artist_image" ||
+      name === "artist_pdf"
+        ? files[0]
+        : value;
     setFormData({ ...formData, [name]: newValue });
   };
 
@@ -52,6 +58,7 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
         artist_work2: null,
         artist_work3name: "",
         artist_work3: null,
+        artist_pdf: null, // Reset this field
       });
       setError("");
     } catch (error) {
@@ -62,6 +69,7 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
 
   return (
     <form ref={formRef} onSubmit={handleSubmit}>
+      {/* Other form fields */}
       <div className="form-group">
         <label>Artist Name</label>
         <input
@@ -215,6 +223,16 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
           name="artist_work3"
           onChange={handleChange}
           accept="image/*"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Artist PDF</label>
+        <input
+          type="file"
+          name="artist_pdf"
+          onChange={handleChange}
+          accept="application/pdf"
           required
         />
       </div>

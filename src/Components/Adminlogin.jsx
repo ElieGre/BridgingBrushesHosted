@@ -19,6 +19,7 @@ const AdminLogin = () => {
         }
       );
       if (response.data.success) {
+        localStorage.setItem("authToken", response.data.token); // Store the token
         navigate("/dashboard");
       } else {
         alert(response.data.message);
@@ -28,6 +29,7 @@ const AdminLogin = () => {
       alert("Unable to login");
     }
   };
+
   return (
     <form className="form321543" onSubmit={handleLogin}>
       <p id="heading321543">Login</p>

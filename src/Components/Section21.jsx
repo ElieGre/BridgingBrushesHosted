@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+
+import { useNavigate } from "react-router-dom";
+
 import "../Styles/section2.css";
 import smallimage4 from "../Images/image_placeholder4.png";
 import greenrect from "../Images/green rectangle.png";
@@ -12,6 +15,7 @@ const Section21 = () => {
   const [artist3, setArtist3] = useState(null);
   const [artist4, setArtist4] = useState(null);
   const ref = useRef();
+  const navigate = useNavigate();
 
   const fetchArtist1 = async () => {
     try {
@@ -105,6 +109,11 @@ const Section21 = () => {
     };
   }, []);
 
+  const handleReadMore = (artist) => {
+    const artistUrl = `/artists/${artist.artist_name.toLowerCase()}/${artist.artist_lastname.toLowerCase()}`;
+    navigate(artistUrl);
+  };
+
   return (
     <div className={`section2-container ${visible ? "visible" : ""}`} ref={ref}>
       {artist1 && (
@@ -112,7 +121,10 @@ const Section21 = () => {
           <div className="left-artist-des">
             <h2>{`${artist1.artist_name} ${artist1.artist_lastname}`}</h2>
             <p>{artist1.artist_about}</p>
-            <button className="button-special">
+            <button
+              className="button-special"
+              onClick={() => handleReadMore(artist1)}
+            >
               <p>Read More</p>
             </button>
           </div>
@@ -138,7 +150,10 @@ const Section21 = () => {
           <div className="left-artist-des2">
             <h2>{`${artist2.artist_name} ${artist2.artist_lastname}`}</h2>
             <p>{artist2.artist_about}</p>
-            <button className="button-special">
+            <button
+              className="button-special"
+              onClick={() => handleReadMore(artist2)}
+            >
               <p>Read More</p>
             </button>
           </div>
@@ -149,7 +164,10 @@ const Section21 = () => {
           <div className="left-artist-des">
             <h2>{`${artist3.artist_name} ${artist3.artist_lastname}`}</h2>
             <p>{artist3.artist_about}</p>
-            <button className="button-special">
+            <button
+              className="button-special"
+              onClick={() => handleReadMore(artist3)}
+            >
               <p>Read More</p>
             </button>
           </div>
@@ -178,7 +196,10 @@ const Section21 = () => {
           <div className="left-artist-des2">
             <h2>{`${artist4.artist_name} ${artist4.artist_lastname}`}</h2>
             <p>{artist4.artist_about}</p>
-            <button className="button-special">
+            <button
+              className="button-special"
+              onClick={() => handleReadMore(artist4)}
+            >
               <p>Read More</p>
             </button>
           </div>

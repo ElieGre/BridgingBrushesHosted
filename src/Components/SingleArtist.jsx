@@ -1,12 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Modal from "react-modal";
 import Slider from "react-slick";
-import ScrollReveal from "scrollreveal";
+import PdfViewer from "./PdfViewer";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import "../Styles/single-artist.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import artistImage from "../Images/stock_face1.png"; // Placeholder image path
+import artistImage from "../Images/stock_face1.png";
 import facebook from "../Images/facebook.png";
 import pinterest from "../Images/pinterest.png";
 import instagram from "../Images/instagram.png";
@@ -15,6 +18,10 @@ import facebookGif from "../Images/icons8-facebook.gif";
 import pinterestGif from "../Images/icons8-pinterest.gif";
 import instagramGif from "../Images/icons8-instagram.gif";
 import youtubeGif from "../Images/icons8-youtube.gif";
+import { data } from "jquery";
+
+// Set up Modal's app element
+Modal.setAppElement("#root");
 
 const SingleArtist = () => {
   const { artist_name, artist_lastname } = useParams();
@@ -26,15 +33,39 @@ const SingleArtist = () => {
     youtube: false,
   });
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
+  const [pdfUrl, setPdfUrl] = useState(null);
   const sliderRef = useRef(null);
 
+  // Fetch artist data
   useEffect(() => {
     const fetchArtist = async () => {
       try {
+        // Fetch artist data
         const response = await axios.get(
           `https://bridges-backend-ob24.onrender.com/artists/artists/${artist_name}/${artist_lastname}`
         );
         setArtist(response.data);
+
+        // Log the artist ID to the console
+        const artistId = response.data._id;
+        console.log("Artist ID:", artistId);
+
+        // Construct PDF URL
+        const pdfUrl = `https://bridges-backend-ob24.onrender.com/artists/artist/pdf/${artistId}`;
+        console.log("PDF URL:", pdfUrl);
+
+        // Fetch PDF URL separately if artist PDF exists
+        if (response.data.artist_pdf) {
+          const pdfResponse = await axios.get(pdfUrl);
+          console.log("PDF Response:", pdfResponse.data);
+
+          // Construct the full PDF URL using the relative path
+          const fullPdfUrl = `https://bridges-backend-ob24.onrender.com${pdfResponse.data.artist_pdf}`;
+          console.log("Full PDF URL:", fullPdfUrl);
+
+          setPdfUrl(fullPdfUrl);
+        }
       } catch (error) {
         console.error("Error fetching artist data:", error);
       }
@@ -42,57 +73,30 @@ const SingleArtist = () => {
 
     fetchArtist();
   }, [artist_name, artist_lastname]);
-
-  // useEffect(() => {
-  //   ScrollReveal({
-  //     distance: "60px",
-  //     duration: 2500,
-  //     delay: 400,
-  //     reset: true,
-  //   });
-
-  //   ScrollReveal().reveal(".left-sa img", {
-  //     delay: 500,
-  //     origin: "left",
-  //   });
-  //   ScrollReveal().reveal(
-  //     ".right-sa .on-top-sa, .right-sa .middle-sa, .right-sa .bottom-sa",
-  //     {
-  //       delay: 600,
-  //       origin: "right",
-  //     }
-  //   );
-  //   ScrollReveal().reveal(".static-images-sa img", {
-  //     delay: 700,
-  //     origin: "bottom",
-  //     interval: 200,
-  //   });
-
-  //   ScrollReveal().reveal(".gallery-sa", {
-  //     delay: 800,
-  //     origin: "top",
-  //   });
-  // }, []);
-
+  // Handlers for emoji hover effects
   const handleMouseEnter = (emoji) => {
-    setHoveredEmoji((prevState) => ({
-      ...prevState,
-      [emoji]: true,
-    }));
+    setHoveredEmoji((prevState) => ({ ...prevState, [emoji]: true }));
   };
 
   const handleMouseLeave = (emoji) => {
-    setHoveredEmoji((prevState) => ({
-      ...prevState,
-      [emoji]: false,
-    }));
+    setHoveredEmoji((prevState) => ({ ...prevState, [emoji]: false }));
   };
 
-  const handleImageClick = (index) => {
-    setActiveSlide(index);
-    sliderRef.current.slickGoTo(index);
+  // Open and close PDF modal
+  const openPdfModal = () => {
+    if (pdfUrl) {
+      console.log("Opening PDF Modal");
+      setIsPdfModalOpen(true);
+    } else {
+      console.error("PDF URL is not available");
+    }
   };
 
+  const closePdfModal = () => {
+    setIsPdfModalOpen(false);
+  };
+
+  // Slick slider settings
   const settings = {
     dots: true,
     infinite: true,
@@ -102,7 +106,16 @@ const SingleArtist = () => {
     beforeChange: (current, next) => setActiveSlide(next),
   };
 
+  // Return loading message if artist data is not yet available
   if (!artist) return <div>Loading...</div>;
+
+  // Emoji image sources based on hover state
+  const emojiImages = {
+    facebook: hoveredEmoji.facebook ? facebookGif : facebook,
+    pinterest: hoveredEmoji.pinterest ? pinterestGif : pinterest,
+    instagram: hoveredEmoji.instagram ? instagramGif : instagram,
+    youtube: hoveredEmoji.youtube ? youtubeGif : youtube,
+  };
 
   return (
     <div className="sa">
@@ -135,133 +148,70 @@ const SingleArtist = () => {
           </div>
           <div className="website-sa"></div>
           <div className="emoji-sa">
-            <div className="footer3-sa">
-              <div className="emojis-sa">
-                <nav>
-                  <li>
-                    <div
-                      className="white-emoji-sa"
-                      onMouseEnter={() => handleMouseEnter("facebook")}
-                      onMouseLeave={() => handleMouseLeave("facebook")}
-                      style={{
-                        backgroundImage: `url(${
-                          hoveredEmoji.facebook ? facebookGif : facebook
-                        })`,
-                        width: `50px`,
-                        height: `50px`,
-                      }}
-                    ></div>
-                  </li>
-                  <li>
-                    <div
-                      className="white-emoji-sa"
-                      onMouseEnter={() => handleMouseEnter("pinterest")}
-                      onMouseLeave={() => handleMouseLeave("pinterest")}
-                      style={{
-                        backgroundImage: `url(${
-                          hoveredEmoji.pinterest ? pinterestGif : pinterest
-                        })`,
-                        width: `50px`,
-                        height: `50px`,
-                      }}
-                    ></div>
-                  </li>
-                  <li>
-                    <div
-                      className="white-emoji-sa"
-                      onMouseEnter={() => handleMouseEnter("instagram")}
-                      onMouseLeave={() => handleMouseLeave("instagram")}
-                      style={{
-                        backgroundImage: `url(${
-                          hoveredEmoji.instagram ? instagramGif : instagram
-                        })`,
-                        width: `50px`,
-                        height: `50px`,
-                      }}
-                    ></div>
-                  </li>
-                  <li>
-                    <div
-                      className="white-emoji-sa"
-                      onMouseEnter={() => handleMouseEnter("youtube")}
-                      onMouseLeave={() => handleMouseLeave("youtube")}
-                      style={{
-                        backgroundImage: `url(${
-                          hoveredEmoji.youtube ? youtubeGif : youtube
-                        })`,
-                        width: `50px`,
-                        height: `50px`,
-                      }}
-                    ></div>
-                  </li>
-                </nav>
-                <button className="button-sa">
-                  <span className="span123-sa">Website</span>
-                </button>
-              </div>
-            </div>
+            <nav className="footer3-sa">
+              <ul className="emojis-sa">
+                {["facebook", "pinterest", "instagram", "youtube"].map(
+                  (emoji) => (
+                    <li key={emoji}>
+                      <div
+                        className="white-emoji-sa"
+                        onMouseEnter={() => handleMouseEnter(emoji)}
+                        onMouseLeave={() => handleMouseLeave(emoji)}
+                        style={{
+                          backgroundImage: `url(${emojiImages[emoji]})`,
+                          width: `50px`,
+                          height: `50px`,
+                        }}
+                      />
+                    </li>
+                  )
+                )}
+              </ul>
+            </nav>
+            <button className="button-sa" onClick={openPdfModal}>
+              View {artist.artist_name} {artist.artist_lastname}'s Pitch
+            </button>
+            <PdfViewer
+              isOpen={isPdfModalOpen}
+              onRequestClose={closePdfModal}
+              pdfUrl={pdfUrl}
+            />
           </div>
         </div>
       </div>
       <div className="static-and-non-sa">
         <div className="static-images-sa">
-          <img
-            src={artist.artist_work1}
-            alt={artist.artist_work1des}
-            className={`static-image-sa ${activeSlide === 0 ? "active" : ""}`}
-            onClick={() => handleImageClick(0)}
-          />
-          <img
-            src={artist.artist_work2}
-            alt={artist.artist_work2des}
-            className={`static-image-sa ${activeSlide === 1 ? "active" : ""}`}
-            onClick={() => handleImageClick(1)}
-          />
-          <img
-            src={artist.artist_work3}
-            alt={artist.artist_work3des}
-            className={`static-image-sa ${activeSlide === 2 ? "active" : ""}`}
-            onClick={() => handleImageClick(2)}
-          />
+          {[0, 1, 2].map((index) => (
+            <img
+              key={index}
+              src={artist[`artist_work${index + 1}`]}
+              alt={artist[`artist_work${index + 1}des`]}
+              className={`static-image-sa ${
+                activeSlide === index ? "active" : ""
+              }`}
+              onClick={() => {
+                setActiveSlide(index);
+                sliderRef.current.slickGoTo(index);
+              }}
+            />
+          ))}
         </div>
         <div className="gallery-sa">
           <Slider ref={sliderRef} {...settings}>
-            <div className="slide-sa">
-              <div className="slide-content-sa">
-                <img
-                  src={artist.artist_work1}
-                  alt={artist.artist_work1des}
-                  className="painting-image-sa"
-                />
-                <div className="painting-info-sa">
-                  <h3>{artist.artist_work1des}</h3>
+            {[1, 2, 3].map((index) => (
+              <div key={index} className="slide-sa">
+                <div className="slide-content-sa">
+                  <img
+                    src={artist[`artist_work${index}`]}
+                    alt={artist[`artist_work${index}des`]}
+                    className="painting-image-sa"
+                  />
+                  <div className="painting-info-sa">
+                    <h3>{artist[`artist_work${index}des`]}</h3>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="slide-sa">
-              <div className="slide-content-sa">
-                <img
-                  src={artist.artist_work2}
-                  alt={artist.artist_work2des}
-                  className="painting-image-sa"
-                />
-                <div className="painting-info-sa">
-                  <h3>{artist.artist_work2des}</h3>
-                </div>
-              </div>
-            </div>
-            <div className="slide-sa">
-              <div className="slide-content-sa">
-                <img
-                  src={artist.artist_work3}
-                  alt={artist.artist_work3des}
-                  className="painting-image-sa"
-                />
-                <div className="painting-info-sa">
-                  <h3>{artist.artist_work3des}</h3>
-                </div>
-              </div>
-            </div>
+            ))}
           </Slider>
         </div>
       </div>
