@@ -81,22 +81,29 @@ const DashboardArtists = () => {
   };
 
   function dataURLToBlob(dataURI) {
-    if (!dataURI) {
+    if (!dataURI || typeof dataURI !== "string") {
       console.error("Invalid dataURI: ", dataURI);
       return null;
     }
 
-    var byteString;
-    if (dataURI.split(",")[0].indexOf("base64") >= 0) {
-      byteString = atob(dataURI.split(",")[1]);
-    } else {
-      byteString = unescape(dataURI.split(",")[1]);
+    // Split the data URI into its components
+    const splitDataURI = dataURI.split(",");
+    if (splitDataURI.length !== 2) {
+      console.error("Invalid dataURI format: ", dataURI);
+      return null;
     }
 
-    var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+    // Determine if the data URI is base64 or not
+    const byteString =
+      splitDataURI[0].indexOf("base64") >= 0
+        ? atob(splitDataURI[1])
+        : unescape(splitDataURI[1]);
 
-    var ia = new Uint8Array(byteString.length);
-    for (var i = 0; i < byteString.length; i++) {
+    const mimeString = splitDataURI[0].split(":")[1].split(";")[0];
+
+    // Convert byteString to Uint8Array
+    const ia = new Uint8Array(byteString.length);
+    for (let i = 0; i < byteString.length; i++) {
       ia[i] = byteString.charCodeAt(i);
     }
 
@@ -211,7 +218,6 @@ const DashboardArtists = () => {
 
   return (
     <div className="dashboard-cv">
-      <ToastContainer />
       <fieldset className="cv-fieldset">
         <div className="cv" id="cv">
           <h1>Artists</h1>
@@ -560,6 +566,7 @@ modal-body"
           }
         }
       `}</style>
+      {/* <ToastContainer /> */}
     </div>
   );
 };

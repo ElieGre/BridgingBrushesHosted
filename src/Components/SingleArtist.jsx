@@ -4,8 +4,6 @@ import axios from "axios";
 import Modal from "react-modal";
 import Slider from "react-slick";
 import PdfViewer from "./PdfViewer";
-import "@react-pdf-viewer/core/lib/styles/index.css";
-import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import "../Styles/single-artist.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -18,7 +16,6 @@ import facebookGif from "../Images/icons8-facebook.gif";
 import pinterestGif from "../Images/icons8-pinterest.gif";
 import instagramGif from "../Images/icons8-instagram.gif";
 import youtubeGif from "../Images/icons8-youtube.gif";
-import { data } from "jquery";
 
 // Set up Modal's app element
 Modal.setAppElement("#root");
@@ -37,34 +34,26 @@ const SingleArtist = () => {
   const [pdfUrl, setPdfUrl] = useState(null);
   const sliderRef = useRef(null);
 
-  // Fetch artist data
   useEffect(() => {
     const fetchArtist = async () => {
       try {
-        // Fetch artist data
         const response = await axios.get(
           `https://bridges-backend-ob24.onrender.com/artists/artists/${artist_name}/${artist_lastname}`
         );
         setArtist(response.data);
 
-        // Log the artist ID to the console
         const artistId = response.data._id;
         console.log("Artist ID:", artistId);
 
-        // Construct PDF URL
-        const pdfUrl = `https://bridges-backend-ob24.onrender.com/artists/artist/pdf/${artistId}`;
-        console.log("PDF URL:", pdfUrl);
-
-        // Fetch PDF URL separately if artist PDF exists
         if (response.data.artist_pdf) {
-          const pdfResponse = await axios.get(pdfUrl);
-          console.log("PDF Response:", pdfResponse.data);
+          const pdfResponse = await axios.get(
+            `https://bridges-backend-ob24.onrender.com/artists/artist/pdf/${artistId}`
+          );
 
-          // Construct the full PDF URL using the relative path
-          const fullPdfUrl = `https://bridges-backend-ob24.onrender.com${pdfResponse.data.artist_pdf}`;
-          console.log("Full PDF URL:", fullPdfUrl);
+          const url = `https://bridges-backend-ob24.onrender.com${pdfResponse.data.artist_pdf}`;
+          console.log("PDF URL:", url);
 
-          setPdfUrl(fullPdfUrl);
+          setPdfUrl(url);
         }
       } catch (error) {
         console.error("Error fetching artist data:", error);
@@ -73,7 +62,7 @@ const SingleArtist = () => {
 
     fetchArtist();
   }, [artist_name, artist_lastname]);
-  // Handlers for emoji hover effects
+
   const handleMouseEnter = (emoji) => {
     setHoveredEmoji((prevState) => ({ ...prevState, [emoji]: true }));
   };
@@ -82,7 +71,6 @@ const SingleArtist = () => {
     setHoveredEmoji((prevState) => ({ ...prevState, [emoji]: false }));
   };
 
-  // Open and close PDF modal
   const openPdfModal = () => {
     if (pdfUrl) {
       console.log("Opening PDF Modal");
@@ -96,7 +84,6 @@ const SingleArtist = () => {
     setIsPdfModalOpen(false);
   };
 
-  // Slick slider settings
   const settings = {
     dots: true,
     infinite: true,
@@ -106,10 +93,8 @@ const SingleArtist = () => {
     beforeChange: (current, next) => setActiveSlide(next),
   };
 
-  // Return loading message if artist data is not yet available
   if (!artist) return <div>Loading...</div>;
 
-  // Emoji image sources based on hover state
   const emojiImages = {
     facebook: hoveredEmoji.facebook ? facebookGif : facebook,
     pinterest: hoveredEmoji.pinterest ? pinterestGif : pinterest,
@@ -131,10 +116,6 @@ const SingleArtist = () => {
             <h3>
               {artist.artist_country}, {artist.artist_city}
             </h3>
-          </div>
-          <div className="middle-sa">
-            <h2>Booth 805</h2>
-            <h2>Main</h2>
           </div>
           <div
             className="bottom-sa"

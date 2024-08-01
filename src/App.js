@@ -35,6 +35,7 @@ import DashboardGalleries from "./Dashboard/DashboardGallery";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import AdminLogin from "./Components/Adminlogin";
 import TestPdfViewer from "./Components/TestPdfViewer";
+import Newsletter from "./Components/Newsletter";
 function App() {
   return (
     <div className="App">
@@ -117,6 +118,16 @@ function App() {
               <>
                 <Header />
                 <Exhibition />
+                <RealFooter />
+              </>
+            }
+          />
+          <Route
+            path="/newsletter"
+            element={
+              <>
+                <Header />
+                <Newsletter />
                 <RealFooter />
               </>
             }

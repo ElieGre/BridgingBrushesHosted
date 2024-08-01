@@ -73,12 +73,17 @@ const Header = () => {
                     <li onClick={() => setShowSidebar(false)}>
                       <a href="#">
                         <svg
+                          className="svg-white"
                           xmlns="http://www.w3.org/2000/svg"
                           height="26"
-                          viewBox="0 96 960 960"
+                          viewBox="0 0 24 24"
                           width="26"
                         >
-                          <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231-231 231Z" />
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path
+                            fill="#FFFFFF"
+                            d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7a1 1 0 0 0-1.41 1.41l4.89 4.89-4.88 4.89a1 1 0 0 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.88-4.89a1 1 0 0 0 0-1.4z"
+                          />
                         </svg>
                       </a>
                     </li>

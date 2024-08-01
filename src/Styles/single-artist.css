@@ -448,10 +448,13 @@
     align-items: center;
     padding: 20px;
     margin-bottom: 0;
-    margin-left: -200px !important;
+    margin-left: -210px !important;
   }
   .left-sa {
     width: 90%;
+  }
+  .on-top-sa {
+    margin-left: -30px;
   }
 
   .left-sa img {
@@ -482,7 +485,7 @@
     font-size: 1em;
   }
   .bottom-sa {
-    width: 90% !important;
+    width: 100% !important;
     margin-left: -16px;
     border-radius: 8px;
   }
@@ -498,6 +501,7 @@
     position: relative;
     bottom: 0;
     left: 0;
+    display: none;
   }
 
   .footer3-sa {
@@ -551,6 +555,10 @@
   }
   .button-sa {
     display: none;
+  }
+
+  .static-and-non-sa {
+    margin-top: 50px !important;
   }
 }
 

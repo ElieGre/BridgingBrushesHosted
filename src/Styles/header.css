@@ -195,6 +195,9 @@ a {
     align-items: center;
     color: black;
   }
+  /* .svg-white path {
+    fill: #ffffff;
+  } */
 
   .bigger-1 a:hover {
     background-color: #f0f0f0;
@@ -237,9 +240,9 @@ a {
     max-width: 800px;
   }
 
-  .header-center {
+  /* .header-center {
     display: none !important;
-  }
+  } */
 }
 
 @media (min-width: 601px) and (max-width: 1000px) {

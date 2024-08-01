@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../Styles/contactus2.css";
 
-const ContactUs2 = () => {
+const Newsletter = () => {
   useEffect(() => {
     // Create and append the Tally widget script to the document head
     const script = document.createElement("script");
@@ -37,16 +37,16 @@ const ContactUs2 = () => {
       }}
     >
       <iframe
-        data-tally-src="https://tally.so/r/3ELzZl"
+        data-tally-src="https://tally.so/r/nWP9je"
         width="100%"
         height="100%"
         frameborder="0"
         marginheight="0"
         marginwidth="0"
-        title="Contact Us form"
+        title="Newsletter sign-up"
       ></iframe>
     </div>
   );
 };
 
-export default ContactUs2;
+export default Newsletter;

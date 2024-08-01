@@ -13,11 +13,14 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
     artist_about: "",
     artist_work1name: "",
     artist_work1: null,
+    artist_work1des: "", // Add this line
     artist_work2name: "",
     artist_work2: null,
+    artist_work2des: "", // Add this line
     artist_work3name: "",
     artist_work3: null,
-    artist_pdf: null, // Add this line
+    artist_work3des: "", // Add this line
+    artist_pdf: null,
   });
   const [error, setError] = useState("");
   const formRef = useRef(null);
@@ -28,7 +31,7 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
       name.startsWith("artist_work") ||
       name === "artist_image" ||
       name === "artist_pdf"
-        ? files[0]
+        ? (files && files[0]) || null
         : value;
     setFormData({ ...formData, [name]: newValue });
   };
@@ -39,7 +42,7 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
     try {
       const formDataObject = new FormData(formRef.current);
       const response = await axios.post(
-        "https://bridges-backend-ob24.onrender.com/artists/artist/add",
+        "https://bridges-backend-ob24.onrender.com/artists/artists/add",
         formDataObject
       );
       onSuccess(response.data);
@@ -54,11 +57,13 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
         artist_about: "",
         artist_work1name: "",
         artist_work1: null,
+        artist_work1des: "", // Reset this field
         artist_work2name: "",
         artist_work2: null,
+        artist_work2des: "", // Reset this field
         artist_work3name: "",
         artist_work3: null,
-        artist_pdf: null, // Reset this field
+        artist_pdf: null,
       });
       setError("");
     } catch (error) {
@@ -175,6 +180,16 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
         />
       </div>
       <div className="form-group">
+        <label>Artist Work 1 Description</label>
+        <input
+          type="text"
+          name="artist_work1des"
+          value={formData.artist_work1des}
+          onChange={handleChange}
+          placeholder="Artist Work 1 Description"
+        />
+      </div>
+      <div className="form-group">
         <label>Artist Work 1</label>
         <input
           type="file"
@@ -193,6 +208,16 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
           onChange={handleChange}
           placeholder="Artist Work 2 Name"
           required
+        />
+      </div>
+      <div className="form-group">
+        <label>Artist Work 2 Description</label>
+        <input
+          type="text"
+          name="artist_work2des"
+          value={formData.artist_work2des}
+          onChange={handleChange}
+          placeholder="Artist Work 2 Description"
         />
       </div>
       <div className="form-group">
@@ -225,6 +250,16 @@ const AddArtistForm = ({ onCancel, onSuccess }) => {
           accept="image/*"
           required
         />
+        <div className="form-group">
+          <label>Artist Work 3 Description</label>
+          <input
+            type="text"
+            name="artist_work3des"
+            value={formData.artist_work3des}
+            onChange={handleChange}
+            placeholder="Artist Work 3 Description"
+          />
+        </div>
       </div>
       <div className="form-group">
         <label>Artist PDF</label>
