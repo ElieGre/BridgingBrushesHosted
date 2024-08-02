@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Draggable from "react-draggable";
 import "./dashboardcv.css";
 import AddArtistForm from "../Components/AddArtistForm"; // Import your AddArtistForm component
 
@@ -80,36 +79,6 @@ const DashboardArtists = () => {
     }
   };
 
-  function dataURLToBlob(dataURI) {
-    if (!dataURI || typeof dataURI !== "string") {
-      console.error("Invalid dataURI: ", dataURI);
-      return null;
-    }
-
-    // Split the data URI into its components
-    const splitDataURI = dataURI.split(",");
-    if (splitDataURI.length !== 2) {
-      console.error("Invalid dataURI format: ", dataURI);
-      return null;
-    }
-
-    // Determine if the data URI is base64 or not
-    const byteString =
-      splitDataURI[0].indexOf("base64") >= 0
-        ? atob(splitDataURI[1])
-        : unescape(splitDataURI[1]);
-
-    const mimeString = splitDataURI[0].split(":")[1].split(";")[0];
-
-    // Convert byteString to Uint8Array
-    const ia = new Uint8Array(byteString.length);
-    for (let i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-
-    return new Blob([ia], { type: mimeString });
-  }
-
   const handleEditSave = () => {
     const formData = new FormData();
 
@@ -121,13 +90,8 @@ const DashboardArtists = () => {
         key === "artist_work3" ||
         key === "artist_pdf"
       ) {
-        if (currentArtist[key] instanceof Blob) {
+        if (currentArtist[key] instanceof File) {
           formData.append(key, currentArtist[key]);
-        } else {
-          const blob = dataURLToBlob(currentArtist[key]);
-          if (blob) {
-            formData.append(key, blob);
-          }
         }
       } else {
         formData.append(key, currentArtist[key]);
@@ -135,15 +99,11 @@ const DashboardArtists = () => {
     });
 
     axios
-      .put(
-        `https://bridges-backend-ob24.onrender.com/artists/${currentArtist._id}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      )
+      .put(`https://bridges-backend-ob24.onrender.com/artists/${currentArtist._id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then(() => {
         setArtists((prevArtists) =>
           prevArtists.map((artist) =>
@@ -166,21 +126,10 @@ const DashboardArtists = () => {
 
   const handleImageUpload = (e, imageName) => {
     const file = e.target.files[0];
-
-    if (!file) {
-      // If no file is chosen, do nothing
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setCurrentArtist((prevArtist) => ({
-        ...prevArtist,
-        [imageName]: reader.result,
-      }));
-    };
-
-    reader.readAsDataURL(file);
+    setCurrentArtist((prevArtist) => ({
+      ...prevArtist,
+      [imageName]: file,
+    }));
   };
 
   const openImageInNewTab = (url) => {
@@ -198,14 +147,10 @@ const DashboardArtists = () => {
 
   const handleNewImageUpload = (e, imageName) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setNewArtist((prevArtist) => ({
-        ...prevArtist,
-        [imageName]: reader.result,
-      }));
-    };
-    reader.readAsDataURL(file);
+    setNewArtist((prevArtist) => ({
+      ...prevArtist,
+      [imageName]: file,
+    }));
   };
 
   const countWords = (text) => {
@@ -213,7 +158,6 @@ const DashboardArtists = () => {
       ? text.split(/\s+/).filter((word) => word.length > 0).length
       : 0;
   };
-
   return (
     <div className="dashboard-cv">
       <fieldset className="cv-fieldset">

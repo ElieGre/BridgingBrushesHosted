@@ -11,16 +11,14 @@ const PdfViewer = ({ isOpen, onRequestClose, artistId }) => {
     const fetchPdfUrl = async () => {
       try {
         const requestUrl = `https://bridges-backend-ob24.onrender.com/artists/artist/pdf/${artistId}`;
-        console.log("Request URL:", requestUrl); // Log the request URL
+        console.log("Request URL:", requestUrl);
 
-        const response = await axios.get(requestUrl, { responseType: "blob" });
-        console.log("PDF Response Data:", response.data);
+        const response = await axios.get(requestUrl);
 
-        // Create a URL for the PDF blob
-        const url = URL.createObjectURL(response.data);
-        console.log("PDF URL:", url);
+        // Log response data if needed
+        // console.log("PDF Response Data:", response.data);
 
-        setPdfUrl(url);
+        setPdfUrl(requestUrl);
       } catch (error) {
         console.error("Error fetching PDF URL:", error);
       }
