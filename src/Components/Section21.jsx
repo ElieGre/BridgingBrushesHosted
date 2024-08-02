@@ -141,6 +141,9 @@ const Section21 = () => {
       )}
       {artist2 && (
         <div className="artist-list hideOnMobile1">
+          <div className="right-rect4">
+            <img src={greenrect} alt="" />
+          </div>
           <div className="right-image-des2">
             <img
               src={artist2.artist_image || smallimage4}

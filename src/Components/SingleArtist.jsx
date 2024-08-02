@@ -31,7 +31,7 @@ const SingleArtist = () => {
   });
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
-  const [pdfUrl, setPdfUrl] = useState(null);
+  const [artistId, setArtistId] = useState(null);
   const sliderRef = useRef(null);
 
   useEffect(() => {
@@ -41,20 +41,7 @@ const SingleArtist = () => {
           `https://bridges-backend-ob24.onrender.com/artists/artists/${artist_name}/${artist_lastname}`
         );
         setArtist(response.data);
-
-        const artistId = response.data._id;
-        console.log("Artist ID:", artistId);
-
-        if (response.data.artist_pdf) {
-          const pdfResponse = await axios.get(
-            `https://bridges-backend-ob24.onrender.com/artists/artist/pdf/${artistId}`
-          );
-
-          const url = `https://bridges-backend-ob24.onrender.com${pdfResponse.data.artist_pdf}`;
-          console.log("PDF URL:", url);
-
-          setPdfUrl(url);
-        }
+        setArtistId(response.data._id);
       } catch (error) {
         console.error("Error fetching artist data:", error);
       }
@@ -72,12 +59,7 @@ const SingleArtist = () => {
   };
 
   const openPdfModal = () => {
-    if (pdfUrl) {
-      console.log("Opening PDF Modal");
-      setIsPdfModalOpen(true);
-    } else {
-      console.error("PDF URL is not available");
-    }
+    setIsPdfModalOpen(true);
   };
 
   const closePdfModal = () => {
@@ -155,7 +137,7 @@ const SingleArtist = () => {
             <PdfViewer
               isOpen={isPdfModalOpen}
               onRequestClose={closePdfModal}
-              pdfUrl={pdfUrl}
+              artistId={artistId}
             />
           </div>
         </div>

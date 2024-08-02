@@ -7,6 +7,7 @@ import goldline from "../Images/exhitbition-line.png";
 
 const EventsandPrograms = () => {
   const [exhibitions, setExhibitions] = useState([]);
+  const navigate = useNavigate();
 
   const fetchExhibitions = async () => {
     try {
@@ -23,7 +24,9 @@ const EventsandPrograms = () => {
     fetchExhibitions();
   }, []);
 
-  const navigate = useNavigate();
+  const handleExhibitionClick = (name) => {
+    navigate(`/exhibitions/${encodeURIComponent(name)}`);
+  };
 
   return (
     <div className="single-exhibition-page">
@@ -34,7 +37,12 @@ const EventsandPrograms = () => {
           </div>
           <div className="all-events-123">
             {exhibitions[0] && (
-              <div className="events-123">
+              <div
+                className="events-123"
+                onClick={() =>
+                  handleExhibitionClick(exhibitions[0].exhibition_name)
+                }
+              >
                 <img
                   className="cow-image"
                   src={exhibitions[0].exhibition_featured1image || imageevents}
@@ -62,7 +70,12 @@ const EventsandPrograms = () => {
               </div>
             )}
             {exhibitions[1] && (
-              <div className="events-1234">
+              <div
+                className="events-1234"
+                onClick={() =>
+                  handleExhibitionClick(exhibitions[1].exhibition_name)
+                }
+              >
                 <div className="right-exhibition45">
                   <div className="top-exheb4">
                     <h2>
@@ -90,7 +103,12 @@ const EventsandPrograms = () => {
               </div>
             )}
             {exhibitions[2] && (
-              <div className="events-123">
+              <div
+                className="events-123"
+                onClick={() =>
+                  handleExhibitionClick(exhibitions[2].exhibition_name)
+                }
+              >
                 <img
                   className="cow-image"
                   src={exhibitions[2].exhibition_featured3image || imageevents}

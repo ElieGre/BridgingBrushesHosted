@@ -114,7 +114,6 @@ const DashboardArtists = () => {
     const formData = new FormData();
 
     Object.keys(currentArtist).forEach((key) => {
-      // Check if the key corresponds to an uploaded file
       if (
         key === "artist_image" ||
         key === "artist_work1" ||
@@ -122,13 +121,13 @@ const DashboardArtists = () => {
         key === "artist_work3" ||
         key === "artist_pdf"
       ) {
-        // Append the file Blob if it exists
         if (currentArtist[key] instanceof Blob) {
           formData.append(key, currentArtist[key]);
         } else {
-          // Handle the case where the file is a data URL
           const blob = dataURLToBlob(currentArtist[key]);
-          formData.append(key, blob);
+          if (blob) {
+            formData.append(key, blob);
+          }
         }
       } else {
         formData.append(key, currentArtist[key]);
@@ -152,7 +151,7 @@ const DashboardArtists = () => {
           )
         );
         setIsEditing(false);
-        setCurrentArtist(null);
+        setCurrentArtist({});
         toast.success("Artist updated successfully");
       })
       .catch((error) => {
@@ -167,7 +166,11 @@ const DashboardArtists = () => {
 
   const handleImageUpload = (e, imageName) => {
     const file = e.target.files[0];
-    if (!file) return;
+
+    if (!file) {
+      // If no file is chosen, do nothing
+      return;
+    }
 
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -177,12 +180,7 @@ const DashboardArtists = () => {
       }));
     };
 
-    // Check if the file is of the correct type
-    if (file instanceof Blob) {
-      reader.readAsDataURL(file);
-    } else {
-      console.error("The uploaded file is not a Blob type.");
-    }
+    reader.readAsDataURL(file);
   };
 
   const openImageInNewTab = (url) => {
@@ -293,7 +291,12 @@ const DashboardArtists = () => {
                     />
                   </td>
                   <td>{artist.artist_work3des}</td>
-                  <td>{artist.artist_pdf ? "Yes" : "No"}</td>
+                  <td>
+                    <textarea
+                      value={artist.artist_pdf || "No PDF"}
+                      readOnly
+                    ></textarea>
+                  </td>
 
                   <td>
                     <button
@@ -331,7 +334,7 @@ const DashboardArtists = () => {
               </div>
             </div>
           )}
-          {isEditing && (
+          {isEditing && currentArtist && (
             <div className="modal">
               <div className="modal-content">
                 <span className="close" onClick={handleEditCancel}>
@@ -492,13 +495,10 @@ modal-body"
                       onChange={(e) => handleImageUpload(e, "artist_pdf")}
                     />
                     {currentArtist.artist_pdf && (
-                      <a
-                        href={currentArtist.artist_pdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View PDF
-                      </a>
+                      <div>
+                        <span>Current PDF: </span>
+                        <span>{currentArtist.artist_pdf.split("/").pop()}</span>
+                      </div>
                     )}
                   </label>
 

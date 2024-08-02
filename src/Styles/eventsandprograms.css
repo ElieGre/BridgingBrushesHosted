@@ -16,6 +16,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
 }
 
+.events-123,
+.events-1234 {
+  cursor: pointer;
+  transform: scale(1.05); /* Slightly increase scale on hover */
+}
+
 .all-events-123 {
   margin-left: 7%;
 }

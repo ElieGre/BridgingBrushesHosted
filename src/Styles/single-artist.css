@@ -501,7 +501,6 @@
     position: relative;
     bottom: 0;
     left: 0;
-    display: none;
   }
 
   .footer3-sa {
@@ -553,107 +552,98 @@
     width: 400px !important;
     margin-right: -15px;
   }
+  .footer3-sa {
+    display: none !important;
+  }
   .button-sa {
-    display: none;
+    display: block !important;
+    left: -20px;
+    margin-top: 40px;
   }
 
   .static-and-non-sa {
     margin-top: 50px !important;
   }
 }
-
 @media (min-width: 601px) and (max-width: 1024px) {
   .sa-all {
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 0;
-    padding: 20px;
+    margin-left: -150px;
+    margin-bottom: 200px;
   }
-
-  .left-sa img {
-    width: 80%;
-    height: auto;
-    margin-top: 15px;
-    margin-right: 0;
-    animation: animate123 1s forwards linear;
+  .bottom-sa p {
+    max-width: 350px;
   }
-
-  .right-sa {
+  .footer3-sa {
+    display: none;
+  }
+  .button-sa button {
+  }
+  .bottom-sa {
+    width: 90% !important;
+  }
+  .emoji-sa {
+    position: absolute;
+    top: 380px;
+    left: 100px !important;
+    margin-left: 150px;
+  }
+  .slide-content-sa {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: 5px;
   }
-
-  .on-top-sa h1 {
-    font-size: 2em;
-  }
-
-  .on-top-sa h3 {
-    font-size: 1.2em;
-  }
-
-  .middle-sa h2 {
-    font-size: 1.2em;
-  }
-
-  .bottom-sa p {
-    font-size: 1em;
-    margin-top: 10px;
-    max-width: 90%;
-  }
-
-  .emoji-sa {
-    margin-top: 20px;
-    position: relative;
-    bottom: 0;
-    left: 0;
-  }
-
-  .footer3-sa {
-    flex-direction: column;
-  }
-
-  .emojis-sa nav {
-    flex-direction: row;
-  }
-
-  .emojis-sa li {
-    margin-bottom: 0;
-    margin-right: 20px;
-  }
-
-  .static-images-sa {
-    flex-direction: row;
-    margin: 20px 0 40px 0;
-  }
-
-  .static-image-sa {
-    width: 80px;
-    height: 120px;
-    margin: 0 5px;
-  }
-
-  .gallery-sa {
-    width: 100%;
-    margin-bottom: 80px;
-  }
-
-  .painting-image-sa {
-    width: 80%;
-    height: auto;
-    margin-right: 0;
-  }
-
-  .painting-info-sa {
-    max-width: 90%;
+  .painting-info-sa h3 {
+    width: 500px !important;
   }
 }
+
 @media (min-width: 1700px) {
   .sa-all {
     position: relative;
     left: 450px;
     width: 70%;
+  }
+  .sa {
+    background-image: url("../Images//dannie.jpg");
+    background-size: cover; /* Ensure the image covers the entire element */
+    background-position: center; /* Center the image */
+  }
+  .bottom-sa {
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 150px;
+    max-width: 600px;
+    border: 2px solid rgba(255, 255, 255, 0.7); /* White border with slight opacity */
+    border-radius: 8px; /* Rounded corners for the border */
+    padding: 10px; /* Add some padding inside the border */
+    opacity: 1; /* Full opacity for the container */
+    background: rgba(
+      0,
+      0,
+      0,
+      0.2
+    ); /* Semi-transparent background for visibility */
+  }
+  .bottom-sa p {
+    background: rgba(
+      0,
+      0,
+      0,
+      0.8
+    ); /* Solid black background with opacity for the text */
+    color: #846f63;
+    padding: 10px; /* Padding for the text background */
+    border-radius: 4px; /* Rounded corners for the text background */
+  }
+  .painting-info-sa h3 {
+    color: #000000 !important;
+    max-width: 600px;
+    width: 400px;
+    text-align: center;
+  }
+  .footer3-sa {
+    display: none;
+  }
+  .button-sa {
+    position: absolute;
   }
 }
