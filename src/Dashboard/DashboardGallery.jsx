@@ -48,10 +48,36 @@ const DashboardGalleries = () => {
   };
 
   const handleEditSave = () => {
+    const formData = new FormData();
+    formData.append("gallery_name", currentGallery.gallery_name);
+    formData.append("gallery_date", currentGallery.gallery_date);
+    formData.append("gallery_country", currentGallery.gallery_country);
+    formData.append("gallery_city", currentGallery.gallery_city);
+    formData.append("gallery_host", currentGallery.gallery_host);
+    formData.append("gallery_description", currentGallery.gallery_description);
+    formData.append("gallery_image", currentGallery.gallery_image);
+    formData.append(
+      "gallery_featured_artists1",
+      currentGallery.gallery_featured_artists1
+    );
+    formData.append(
+      "gallery_featured_artists2",
+      currentGallery.gallery_featured_artists2
+    );
+    formData.append(
+      "gallery_featured_artists3",
+      currentGallery.gallery_featured_artists3
+    );
+
     axios
       .put(
         `https://bridges-backend-ob24.onrender.com/gallery/${currentGallery._id}`,
-        currentGallery
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       )
       .then(() => {
         setGalleries((prevGalleries) =>
@@ -71,6 +97,19 @@ const DashboardGalleries = () => {
   const handleEditCancel = () => {
     setIsEditing(false);
     setCurrentGallery(null);
+  };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCurrentGallery((prevGallery) => ({
+          ...prevGallery,
+          gallery_image: reader.result,
+        }));
+      };
+      reader.readAsDataURL(file); // Convert file to base64 URL
+    }
   };
 
   return (
@@ -191,16 +230,17 @@ const DashboardGalleries = () => {
               <label>
                 Gallery Image:
                 <input
-                  type="text"
+                  type="file"
                   name="gallery_image"
-                  value={currentGallery.gallery_image}
-                  onChange={handleEditChange}
+                  onChange={handleImageChange}
                 />
-                <img
-                  src={currentGallery.gallery_image}
-                  alt="Gallery"
-                  className="gallery-image"
-                />
+                {currentGallery.gallery_image && (
+                  <img
+                    src={currentGallery.gallery_image}
+                    alt="Gallery"
+                    className="gallery-image"
+                  />
+                )}
               </label>
               <label>
                 Featured Artist 1:

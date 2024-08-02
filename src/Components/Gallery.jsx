@@ -10,7 +10,7 @@ const Gallery = () => {
   useEffect(() => {
     axios
       .get(
-        "https://bridges-backend-ob24.onrender.com/gallery/666375343d2bfd58d0c49d96"
+        "https://bridges-backend-ob24.onrender.com/gallery/66ad280aec0518d3e5416e6b"
       )
       .then((response) => {
         setGallery1(response.data);
@@ -21,10 +21,10 @@ const Gallery = () => {
 
     axios
       .get(
-        "https://bridges-backend-ob24.onrender.com/gallery/666375383d2bfd58d0c49d98"
+        "https://bridges-backend-ob24.onrender.com/gallery/66ad285fec0518d3e5416e6d"
       )
       .then((response) => {
-        setGallery2(response.data);
+        setGallery2(response.data); 
       })
       .catch((error) => {
         console.error("Error fetching the second gallery", error);
