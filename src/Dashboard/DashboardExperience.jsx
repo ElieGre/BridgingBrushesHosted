@@ -109,7 +109,7 @@ const DashboardExperience = () => {
 
   return (
     <div className="dashboard-cv">
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <fieldset className="cv-fieldset">
         <div className="cv" id="cv">
           <h1>Exhibitions</h1>
@@ -127,10 +127,7 @@ const DashboardExperience = () => {
                 <th>Description</th>
                 <th>Featured Artist 1</th>
                 <th>Image 1</th>
-                <th>Featured Artist 2</th>
-                <th>Image 2</th>
-                <th>Featured Artist 3</th>
-                <th>Image 3</th>
+
                 <th>Actions</th>
               </tr>
             </thead>
@@ -166,28 +163,7 @@ const DashboardExperience = () => {
                       }
                     />
                   </td>
-                  <td>{exhibition.exhibition_featured2name}</td>
-                  <td>
-                    <img
-                      src={exhibition.exhibition_featured2image}
-                      alt={exhibition.exhibition_featured2name}
-                      className="artist-img"
-                      onClick={() =>
-                        openImageInNewTab(exhibition.exhibition_featured2image)
-                      }
-                    />
-                  </td>
-                  <td>{exhibition.exhibition_featured3name}</td>
-                  <td>
-                    <img
-                      src={exhibition.exhibition_featured3image}
-                      alt={exhibition.exhibition_featured3name}
-                      className="artist-img"
-                      onClick={() =>
-                        openImageInNewTab(exhibition.exhibition_featured3image)
-                      }
-                    />
-                  </td>
+
                   <td>
                     <button
                       className="edit-btn"
@@ -287,54 +263,7 @@ const DashboardExperience = () => {
                   }
                 />
               </label>
-              <label>
-                Featured Artist 2:
-                <input
-                  type="text"
-                  name="exhibition_featured2name"
-                  value={currentExhibition.exhibition_featured2name}
-                  onChange={handleEditChange}
-                />
-              </label>
-              <label>
-                Image 2 URL:
-                <input
-                  type="text"
-                  name="exhibition_featured2image"
-                  value={currentExhibition.exhibition_featured2image}
-                  onChange={handleEditChange}
-                />
-                <input
-                  type="file"
-                  onChange={(e) =>
-                    handleImageUpload(e, "exhibition_featured2image")
-                  }
-                />
-              </label>
-              <label>
-                Featured Artist 3:
-                <input
-                  type="text"
-                  name="exhibition_featured3name"
-                  value={currentExhibition.exhibition_featured3name}
-                  onChange={handleEditChange}
-                />
-              </label>
-              <label>
-                Image 3 URL:
-                <input
-                  type="text"
-                  name="exhibition_featured3image"
-                  value={currentExhibition.exhibition_featured3image}
-                  onChange={handleEditChange}
-                />
-                <input
-                  type="file"
-                  onChange={(e) =>
-                    handleImageUpload(e, "exhibition_featured3image")
-                  }
-                />
-              </label>
+
               <button className="save-btn" onClick={handleEditSave}>
                 Save
               </button>

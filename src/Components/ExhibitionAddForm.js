@@ -11,18 +11,12 @@ const ExhibitionAddForm = ({ onCancel, onSuccess = () => {} }) => {
     exhibition_city: "",
     exhibition_featured1name: "",
     exhibition_featured1image: null,
-    exhibition_featured2name: "",
-    exhibition_featured2image: null,
-    exhibition_featured3name: "",
-    exhibition_featured3image: null,
     exhibition_opening_hours: "",
     exhibition_closing_hours: "",
   });
 
   const [imagePreviews, setImagePreviews] = useState({
     exhibition_featured1image: null,
-    exhibition_featured2image: null,
-    exhibition_featured3image: null,
   });
 
   const [error, setError] = useState("");
@@ -53,7 +47,7 @@ const ExhibitionAddForm = ({ onCancel, onSuccess = () => {} }) => {
     try {
       const formDataObject = new FormData(formRef.current);
       const response = await axios.post(
-        "https://bridges-backend-ob24.onrender.com/exhibition/add",
+        "https://bridges-backend-ob24.onrender.com/exhibitions/exhibition/add",
         formDataObject
       );
       onSuccess(response.data);
@@ -64,17 +58,11 @@ const ExhibitionAddForm = ({ onCancel, onSuccess = () => {} }) => {
         exhibition_city: "",
         exhibition_featured1name: "",
         exhibition_featured1image: null,
-        exhibition_featured2name: "",
-        exhibition_featured2image: null,
-        exhibition_featured3name: "",
-        exhibition_featured3image: null,
         exhibition_opening_hours: "",
         exhibition_closing_hours: "",
       });
       setImagePreviews({
         exhibition_featured1image: null,
-        exhibition_featured2image: null,
-        exhibition_featured3image: null,
       });
       setError("");
       toast.success("Exhibition added successfully!");
@@ -180,62 +168,7 @@ const ExhibitionAddForm = ({ onCancel, onSuccess = () => {} }) => {
           />
         )}
       </div>
-      <div className="form-group">
-        <label>Featured Art 2 Name</label>
-        <input
-          type="text"
-          name="exhibition_featured2name"
-          value={formData.exhibition_featured2name}
-          onChange={handleChange}
-          placeholder="Featured Artist 2 Name"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label>Featured Art 2 image</label>
-        <input
-          type="file"
-          name="exhibition_featured2image"
-          onChange={handleChange}
-          accept="image/*"
-          required
-        />
-        {imagePreviews.exhibition_featured2image && (
-          <img
-            src={imagePreviews.exhibition_featured2image}
-            alt="Preview"
-            style={{ width: "100px", height: "100px", marginTop: "10px" }}
-          />
-        )}
-      </div>
-      <div className="form-group">
-        <label>Featured Art 3 Name</label>
-        <input
-          type="text"
-          name="exhibition_featured3name"
-          value={formData.exhibition_featured3name}
-          onChange={handleChange}
-          placeholder="Featured Artist 3 Name"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label>Featured Art 3 image</label>
-        <input
-          type="file"
-          name="exhibition_featured3image"
-          onChange={handleChange}
-          accept="image/*"
-          required
-        />
-        {imagePreviews.exhibition_featured3image && (
-          <img
-            src={imagePreviews.exhibition_featured3image}
-            alt="Preview"
-            style={{ width: "100px", height: "100px", marginTop: "10px" }}
-          />
-        )}
-      </div>
+
       {error && <p>{error}</p>}
       <button type="submit">Submit</button>
       <button type="button" onClick={onCancel}>
