@@ -64,6 +64,7 @@ a {
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+  width: 0px !important;
 }
 
 .weird-blue {

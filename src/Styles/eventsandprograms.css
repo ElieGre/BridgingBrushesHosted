@@ -263,6 +263,7 @@
     ); /* Maintain background color with transparency */
     border-radius: 10px; /* Maintain rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Maintain shadow */
+    margin-top: 50px;
   }
 
   .all-events-123 {
