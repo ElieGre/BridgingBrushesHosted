@@ -3,17 +3,17 @@ import { useParams } from "react-router-dom";
 import Modal from "react-modal";
 
 const TestPdfViewer = () => {
-  const { artistId } = useParams(); // Get the artistId from the route
+  const { artistFirstName, artistLastName } = useParams(); // Get the artist first and last names from the route
   const [isOpen, setIsOpen] = useState(false);
   const [pdfUrl, setPdfUrl] = useState("");
 
   useEffect(() => {
-    if (artistId) {
+    if (artistFirstName && artistLastName) {
       setPdfUrl(
-        `https://bridges-backend-ob24.onrender.com/artists/artist/pdf/${artistId}`
+        `https://bridges-backend-ob24.onrender.com/artists/artist/pdf/name/${artistFirstName}/${artistLastName}`
       );
     }
-  }, [artistId]);
+  }, [artistFirstName, artistLastName]);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);

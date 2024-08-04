@@ -245,7 +245,7 @@ const DashboardArtists = () => {
                   <td>
                     {artist.artist_pdf ? (
                       <a
-                        href={`/testpdf/${artist._id}`}
+                        href={`/artists/artist/pdf/name/${artist.artist_name}/${artist.artist_lastname}`}
                         // Removed target and rel attributes since you're using React Router
                       >
                         {artist.artist_pdf.split("/").pop()}
