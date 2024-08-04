@@ -93,7 +93,7 @@ function App() {
             }
           />
           <Route
-            path="/testpdf"
+            path="/testpdf/:artistId"
             element={
               <>
                 <Header />

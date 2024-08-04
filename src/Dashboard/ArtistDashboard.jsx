@@ -99,11 +99,15 @@ const DashboardArtists = () => {
     });
 
     axios
-      .put(`https://bridges-backend-ob24.onrender.com/artists/${currentArtist._id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+      .put(
+        `https://bridges-backend-ob24.onrender.com/artists/${currentArtist._id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then(() => {
         setArtists((prevArtists) =>
           prevArtists.map((artist) =>
@@ -236,10 +240,16 @@ const DashboardArtists = () => {
                   </td>
                   <td>{artist.artist_work3des}</td>
                   <td>
-                    <textarea
-                      value={artist.artist_pdf || "No PDF"}
-                      readOnly
-                    ></textarea>
+                    {artist.artist_pdf ? (
+                      <a
+                        href={`/testpdf/${artist._id}`}
+                        // Removed target and rel attributes since you're using React Router
+                      >
+                        {artist.artist_pdf.split("/").pop()}
+                      </a>
+                    ) : (
+                      "No PDF"
+                    )}
                   </td>
 
                   <td>
@@ -438,12 +448,15 @@ modal-body"
                       type="file"
                       onChange={(e) => handleImageUpload(e, "artist_pdf")}
                     />
-                    {currentArtist.artist_pdf && (
-                      <div>
-                        <span>Current PDF: </span>
-                        <span>{currentArtist.artist_pdf.split("/").pop()}</span>
-                      </div>
-                    )}
+                    {currentArtist.artist_pdf &&
+                      typeof currentArtist.artist_pdf === "string" && (
+                        <div>
+                          <span>Current PDF: </span>
+                          <span>
+                            {currentArtist.artist_pdf.split("/").pop()}
+                          </span>
+                        </div>
+                      )}
                   </label>
 
                   <button className="save-btn" onClick={handleEditSave}>
