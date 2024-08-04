@@ -130,10 +130,13 @@ const DashboardArtists = () => {
 
   const handleImageUpload = (e, imageName) => {
     const file = e.target.files[0];
-    setCurrentArtist((prevArtist) => ({
-      ...prevArtist,
-      [imageName]: file,
-    }));
+    if (file) {
+      const objectURL = URL.createObjectURL(file);
+      setCurrentArtist((prevArtist) => ({
+        ...prevArtist,
+        [imageName]: objectURL,
+      }));
+    }
   };
 
   const openImageInNewTab = (url) => {
