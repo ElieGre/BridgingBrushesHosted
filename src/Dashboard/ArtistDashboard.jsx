@@ -165,6 +165,28 @@ const DashboardArtists = () => {
       ? text.split(/\s+/).filter((word) => word.length > 0).length
       : 0;
   };
+  const handleRemovePdf = (artistName, artistLastName) => {
+    axios
+      .delete(
+        `https://bridges-backend-ob24.onrender.com/artists/artists/${artistName}/${artistLastName}/pdf`
+      )
+      .then(() => {
+        toast.success("PDF removed successfully");
+        // Refresh the artist list to reflect the changes
+        axios
+          .get("https://bridges-backend-ob24.onrender.com/artists")
+          .then((response) => {
+            setArtists(response.data);
+          })
+          .catch((error) => {
+            console.error("There was an error fetching the artists!", error);
+          });
+      })
+      .catch((error) => {
+        console.error("There was an error removing the PDF!", error);
+      });
+  };
+
   return (
     <div className="dashboard-cv">
       <fieldset className="cv-fieldset">
@@ -244,12 +266,24 @@ const DashboardArtists = () => {
                   <td>{artist.artist_work3des}</td>
                   <td>
                     {artist.artist_pdf ? (
-                      <a
-                        href={`/artists/artist/pdf/name/${artist.artist_name}/${artist.artist_lastname}`}
-                        // Removed target and rel attributes since you're using React Router
-                      >
-                        {artist.artist_pdf.split("/").pop()}
-                      </a>
+                      <>
+                        <a
+                          href={`/artists/artist/pdf/name/${artist.artist_name}/${artist.artist_lastname}`}
+                        >
+                          {artist.artist_pdf.split("/").pop()}
+                        </a>
+                        <button
+                          className="remove-pdf-btn"
+                          onClick={() =>
+                            handleRemovePdf(
+                              artist.artist_name,
+                              artist.artist_lastname
+                            )
+                          }
+                        >
+                          &times;
+                        </button>
+                      </>
                     ) : (
                       "No PDF"
                     )}

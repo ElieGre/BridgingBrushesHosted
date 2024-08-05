@@ -91,3 +91,14 @@
   background-color: transparent;
   color: #846f63;
 }
+.remove-pdf-btn {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.remove-pdf-btn:hover {
+  color: darkred;
+}
