@@ -491,6 +491,11 @@
     margin-top: 20px !important;
   }
 }
+@media screen and (min-width: 1200px) and (max-width: 1450px) {
+  .content-container {
+    margin-left: 35px;
+  }
+}
 @media (min-width: 1700px) {
   .events-123,
   .events-1234 {
@@ -732,11 +737,11 @@
     left: 60px;
   }
   .content-container {
-    margin-left: 100px;
+    margin-left: 40px;
   }
 }
 
-@media (min-width: 1450px) and (max-width: 1650px) {
+@media (min-width: 1350px) and (max-width: 1650px) {
   .exhibiii-button {
     margin-left: -80px !important;
   }

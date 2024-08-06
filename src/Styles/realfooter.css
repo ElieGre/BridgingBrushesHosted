@@ -265,3 +265,25 @@
     max-width: 600px !important;
   }
 }
+@media (min-width: 1250px) and (max-width: 1550px) {
+  .emojis nav {
+    width: 550px !important;
+    margin-left: 20px;
+  }
+  .copyrightbottom nav {
+    width: 850px;
+  }
+  .footer3 {
+    position: relative;
+    left: -200px;
+  }
+  .copyrightbottom li:nth-child(1) {
+    margin-top: 20px;
+  }
+  .copyrightbottom li:nth-child(2) {
+    margin-top: 20px;
+  }
+  .copyrightbottom li:nth-child(4) {
+    margin-top: 20px;
+  }
+}

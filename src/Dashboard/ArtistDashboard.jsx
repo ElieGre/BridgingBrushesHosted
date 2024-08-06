@@ -28,6 +28,7 @@ const DashboardArtists = () => {
     artist_pdf: null,
   });
   const [aboutWordCount, setAboutWordCount] = useState(0);
+  const [previewImage, setPreviewImage] = useState(null);
 
   useEffect(() => {
     axios
@@ -40,17 +41,24 @@ const DashboardArtists = () => {
       });
   }, []);
 
-  const handleDelete = (artistId) => {
+  const handleDelete = (artistId, artistPdfId) => {
+    // Delete the artist's PDF file
     axios
-      .delete(`https://bridges-backend-ob24.onrender.com/artists/${artistId}`)
+      .delete(`https://bridges-backend-ob24.onrender.com/pdfs/${artistPdfId}`)
+      .then(() => {
+        // Proceed to delete the artist
+        return axios.delete(
+          `https://bridges-backend-ob24.onrender.com/artists/${artistId}`
+        );
+      })
       .then(() => {
         setArtists((prevArtists) =>
           prevArtists.filter((artist) => artist._id !== artistId)
         );
-        toast.success("Artist deleted successfully");
+        toast.success("Artist and PDF deleted successfully");
       })
       .catch((error) => {
-        console.error("There was an error deleting the artist!", error);
+        console.error("There was an error deleting the artist or PDF!", error);
       });
   };
 
@@ -87,8 +95,7 @@ const DashboardArtists = () => {
         key === "artist_image" ||
         key === "artist_work1" ||
         key === "artist_work2" ||
-        key === "artist_work3" ||
-        key === "artist_pdf"
+        key === "artist_work3"
       ) {
         if (currentArtist[key] instanceof File) {
           formData.append(key, currentArtist[key]);
@@ -109,11 +116,11 @@ const DashboardArtists = () => {
         }
       )
       .then(() => {
-        setArtists((prevArtists) =>
-          prevArtists.map((artist) =>
-            artist._id === currentArtist._id ? currentArtist : artist
-          )
-        );
+        // Fetch updated artist list to ensure image URL updates
+        return axios.get("https://bridges-backend-ob24.onrender.com/artists");
+      })
+      .then((response) => {
+        setArtists(response.data);
         setIsEditing(false);
         setCurrentArtist({});
         toast.success("Artist updated successfully");
@@ -131,11 +138,15 @@ const DashboardArtists = () => {
   const handleImageUpload = (e, imageName) => {
     const file = e.target.files[0];
     if (file) {
-      const objectURL = URL.createObjectURL(file);
-      setCurrentArtist((prevArtist) => ({
-        ...prevArtist,
-        [imageName]: objectURL,
-      }));
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCurrentArtist((prevArtist) => ({
+          ...prevArtist,
+          [imageName]: file,
+          [`${imageName}Preview`]: reader.result, // Store the preview URL
+        }));
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -186,6 +197,18 @@ const DashboardArtists = () => {
         console.error("There was an error removing the PDF!", error);
       });
   };
+  const handleImagePreview = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setPreviewImage(reader.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <div className="dashboard-cv">
@@ -225,7 +248,7 @@ const DashboardArtists = () => {
                   <td>{artist.artist_arttype}</td>
                   <td>
                     <img
-                      src={artist.artist_image}
+                      src={artist.artist_image || "default-image-url"} // Ensure a default URL is provided if image is missing
                       alt={artist.artist_name}
                       className="artist-img"
                       onClick={() => openImageInNewTab(artist.artist_image)}
@@ -297,8 +320,9 @@ const DashboardArtists = () => {
                       Edit
                     </button>
                     <button
-                      className="delete-btn"
-                      onClick={() => handleDelete(artist._id)}
+                      onClick={() =>
+                        handleDelete(artist._id, artist.artist_pdf)
+                      }
                     >
                       Delete
                     </button>
@@ -332,10 +356,7 @@ const DashboardArtists = () => {
                   &times;
                 </span>
                 <h2>Edit Artist</h2>
-                <div
-                  className="
-modal-body"
-                >
+                <div className="modal-body">
                   <label>
                     Name:
                     <input
@@ -378,13 +399,26 @@ modal-body"
                       type="file"
                       onChange={(e) => handleImageUpload(e, "artist_image")}
                     />
-                    {currentArtist.artist_image && (
-                      <img
-                        src={currentArtist.artist_image}
-                        alt="Preview"
-                        className="artist-img-preview"
-                      />
-                    )}
+                    <div>
+                      {currentArtist.artist_imagePreview ? (
+                        <img
+                          src={currentArtist.artist_imagePreview}
+                          alt="Preview"
+                          className="artist-img-preview"
+                        />
+                      ) : currentArtist.artist_image ? (
+                        <img
+                          src={currentArtist.artist_image}
+                          alt="Current"
+                          className="artist-img-preview"
+                          onClick={() =>
+                            openImageInNewTab(currentArtist.artist_image)
+                          }
+                        />
+                      ) : (
+                        "No image available"
+                      )}
+                    </div>
                   </label>
                   <label>
                     Country:
@@ -419,13 +453,26 @@ modal-body"
                       type="file"
                       onChange={(e) => handleImageUpload(e, "artist_work1")}
                     />
-                    {currentArtist.artist_work1 && (
-                      <img
-                        src={currentArtist.artist_work1}
-                        alt="Preview"
-                        className="artist-img-preview"
-                      />
-                    )}
+                    <div>
+                      {currentArtist.artist_work1Preview ? (
+                        <img
+                          src={currentArtist.artist_work1Preview}
+                          alt="Preview"
+                          className="artist-img-preview"
+                        />
+                      ) : currentArtist.artist_work1 ? (
+                        <img
+                          src={currentArtist.artist_work1}
+                          alt="Current"
+                          className="artist-img-preview"
+                          onClick={() =>
+                            openImageInNewTab(currentArtist.artist_work1)
+                          }
+                        />
+                      ) : (
+                        "No work 1 image available"
+                      )}
+                    </div>
                   </label>
                   <label>
                     Work 1 Description:
@@ -441,13 +488,26 @@ modal-body"
                       type="file"
                       onChange={(e) => handleImageUpload(e, "artist_work2")}
                     />
-                    {currentArtist.artist_work2 && (
-                      <img
-                        src={currentArtist.artist_work2}
-                        alt="Preview"
-                        className="artist-img-preview"
-                      />
-                    )}
+                    <div>
+                      {currentArtist.artist_work2Preview ? (
+                        <img
+                          src={currentArtist.artist_work2Preview}
+                          alt="Preview"
+                          className="artist-img-preview"
+                        />
+                      ) : currentArtist.artist_work2 ? (
+                        <img
+                          src={currentArtist.artist_work2}
+                          alt="Current"
+                          className="artist-img-preview"
+                          onClick={() =>
+                            openImageInNewTab(currentArtist.artist_work2)
+                          }
+                        />
+                      ) : (
+                        "No work 2 image available"
+                      )}
+                    </div>
                   </label>
                   <label>
                     Work 2 Description:
@@ -463,13 +523,26 @@ modal-body"
                       type="file"
                       onChange={(e) => handleImageUpload(e, "artist_work3")}
                     />
-                    {currentArtist.artist_work3 && (
-                      <img
-                        src={currentArtist.artist_work3}
-                        alt="Preview"
-                        className="artist-img-preview"
-                      />
-                    )}
+                    <div>
+                      {currentArtist.artist_work3Preview ? (
+                        <img
+                          src={currentArtist.artist_work3Preview}
+                          alt="Preview"
+                          className="artist-img-preview"
+                        />
+                      ) : currentArtist.artist_work3 ? (
+                        <img
+                          src={currentArtist.artist_work3}
+                          alt="Current"
+                          className="artist-img-preview"
+                          onClick={() =>
+                            openImageInNewTab(currentArtist.artist_work3)
+                          }
+                        />
+                      ) : (
+                        "No work 3 image available"
+                      )}
+                    </div>
                   </label>
                   <label>
                     Work 3 Description:
@@ -479,23 +552,20 @@ modal-body"
                       onChange={handleEditChange}
                     />
                   </label>
-                  <label>
-                    PDF:
-                    <input
-                      type="file"
-                      onChange={(e) => handleImageUpload(e, "artist_pdf")}
-                    />
-                    {currentArtist.artist_pdf &&
-                      typeof currentArtist.artist_pdf === "string" && (
-                        <div>
-                          <span>Current PDF: </span>
-                          <span>
-                            {currentArtist.artist_pdf.split("/").pop()}
-                          </span>
-                        </div>
-                      )}
-                  </label>
-
+                  {/* <label>
+          PDF:
+          <input
+            type="file"
+            onChange={(e) => handleImageUpload(e, "artist_pdf")}
+          />
+          {currentArtist.artist_pdf &&
+            typeof currentArtist.artist_pdf === "string" && (
+              <div>
+                <span>Current PDF: </span>
+                <span>{currentArtist.artist_pdf.split("/").pop()}</span>
+              </div>
+            )}
+        </label> */}
                   <button className="save-btn" onClick={handleEditSave}>
                     Save
                   </button>
