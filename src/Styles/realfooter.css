@@ -286,4 +286,11 @@
   .copyrightbottom li:nth-child(4) {
     margin-top: 20px;
   }
+  .footer2 {
+    display: none;
+  }
+  .all-footer {
+    margin-left: 30px !important;
+    width: 90% !important;
+  }
 }

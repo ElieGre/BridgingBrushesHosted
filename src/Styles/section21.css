@@ -828,3 +828,8 @@ button-special {
     background: teal;
   }
 }
+@media screen and (min-width: 1250px) and (max-width: 1500px) {
+  .footer2 {
+    display: none;
+  }
+}

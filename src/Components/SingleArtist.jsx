@@ -103,7 +103,7 @@ const SingleArtist = () => {
             className="bottom-sa"
             style={{
               backgroundImage: `url(${artist.artist_work1})`,
-              width: `50%`,
+              width: `70%`,
               height: `auto`,
             }}
           >
