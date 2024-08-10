@@ -31,20 +31,40 @@ const DashboardArtists = () => {
   const [previewImage, setPreviewImage] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("https://bridges-backend-ob24.onrender.com/artists")
-      .then((response) => {
-        setArtists(response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error fetching the artists!", error);
-      });
+    fetchArtists();
   }, []);
 
-  const handleDelete = (artistId, artistPdfId) => {
-    // Delete the artist's PDF file
+  // Function to fetch artist data
+  const fetchArtists = async () => {
+    try {
+      const response = await axios.get(
+        "https://bridges-backend-ob24.onrender.com/artists"
+      );
+      setArtists(response.data);
+    } catch (error) {
+      console.error("There was an error fetching the artists!", error);
+      toast.error("Failed to fetch artists.");
+    }
+  };
+
+  const handleDelete = (artistId, artistFirstName, artistLastName) => {
+    // Construct URL for deleting the artist's PDF file
+    const pdfDeleteUrl = `https://bridges-backend-ob24.onrender.com/artists/artists/${artistFirstName}/${artistLastName}/pdf`;
+
+    // Attempt to delete the artist's PDF file
     axios
-      .delete(`https://bridges-backend-ob24.onrender.com/pdfs/${artistPdfId}`)
+      .delete(pdfDeleteUrl)
+      .catch((error) => {
+        // Check if the error status is 404 (PDF not found)
+        if (error.response && error.response.status === 404) {
+          console.log("PDF not found, proceeding to delete artist.");
+          // Proceed to delete the artist
+          return Promise.resolve(); // Resolve to continue to the artist deletion step
+        } else {
+          // If it's another type of error, reject to handle it in the catch below
+          return Promise.reject(error);
+        }
+      })
       .then(() => {
         // Proceed to delete the artist
         return axios.delete(
@@ -52,6 +72,7 @@ const DashboardArtists = () => {
         );
       })
       .then(() => {
+        // Update state to remove the artist from the list
         setArtists((prevArtists) =>
           prevArtists.filter((artist) => artist._id !== artistId)
         );
@@ -59,6 +80,7 @@ const DashboardArtists = () => {
       })
       .catch((error) => {
         console.error("There was an error deleting the artist or PDF!", error);
+        toast.error("Error deleting artist or PDF");
       });
   };
 
@@ -209,6 +231,9 @@ const DashboardArtists = () => {
       reader.readAsDataURL(file);
     }
   };
+  const handleRefresh = () => {
+    fetchArtists();
+  };
 
   return (
     <div className="dashboard-cv">
@@ -217,6 +242,9 @@ const DashboardArtists = () => {
           <h1>Artists</h1>
           <button className="add-btn" onClick={() => setIsAdding(true)}>
             Add Artist
+          </button>
+          <button className="refresh-btn" onClick={handleRefresh}>
+            Refresh Artists
           </button>
           <table className="artists-table">
             <thead>

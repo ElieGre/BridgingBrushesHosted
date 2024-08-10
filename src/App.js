@@ -36,6 +36,7 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import AdminLogin from "./Components/Adminlogin";
 import TestPdfViewer from "./Components/TestPdfViewer";
 import Newsletter from "./Components/Newsletter";
+import Multiple from "./Components/Multiple";
 function App() {
   return (
     <div className="App">
@@ -47,16 +48,11 @@ function App() {
               <>
                 <Header />
                 <Hero4 />
-                {/* <Hero /> */}
-                {/* <Hero2 /> */}
-                {/* <Section1 /> */}
-                <Section21 />
-                {/* <Section2 /> */}
-                {/* <New /> */}
+                <Multiple />
+
+                {/* <Section21 />
                 <Gallery />
-                <EventsandPrograms />
-                {/* <Counter /> */}
-                {/* <Footer /> */}
+                <EventsandPrograms /> */}
                 <RealFooter />
                 <title>Bridging Brushes</title>
               </>

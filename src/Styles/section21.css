@@ -17,16 +17,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-top: 200px; */
   background-image: url("../Images/dannie.jpg");
   background-size: cover; /* Ensures the image covers the entire container */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
   position: relative; /* Required for the overlay */
   z-index: 1;
-  /* margin-bottom: 40px; */
-  /* margin-top: 10px; */
-  margin-bottom: -40px !important;
+  margin-bottom: 0px !important;
+  border-radius: 10px;
 }
 
 .section2-container::before {
@@ -324,6 +322,12 @@ button-special {
 .button-special123:active:after {
   background: teal;
 }
+.left-artist-des h2 {
+  color: #b89d4f;
+}
+.left-artist-des2 h2 {
+  color: #b89d4f;
+}
 
 @media (max-width: 600px) {
   .artist-list {
@@ -526,7 +530,7 @@ button-special {
     z-index: 1;
     /* margin-bottom: 40px; */
     /* margin-top: 10px; */
-    margin-bottom: -40px !important;
+    margin-bottom: 0px !important;
   }
 
   .section2-container::before {
@@ -609,7 +613,7 @@ button-special {
 
   .right-rect img,
   .right-rect2 img {
-    width: 100px;
+    width: 300px;
     height: 300px;
   }
   .right-rect2 img {
@@ -617,7 +621,7 @@ button-special {
   }
   .right-rect4 img {
     margin-right: 80px;
-    width: 100px;
+    width: 300px;
     height: 300px;
   }
 

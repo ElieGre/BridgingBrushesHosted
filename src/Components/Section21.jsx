@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-
 import { useNavigate } from "react-router-dom";
 
 import "../Styles/section2.css";
 import smallimage4 from "../Images/image_placeholder4.png";
-import greenrect from "../Images/green rectangle.png";
 import "../Styles/section21.css"; // Import the animations
 
 const Section21 = () => {
@@ -116,6 +114,9 @@ const Section21 = () => {
 
   return (
     <div className={`section2-container ${visible ? "visible" : ""}`} ref={ref}>
+      <div className="top-123">
+        <h1 className="main-title">Featured Galleries</h1>
+      </div>
       {artist1 && (
         <div className="artist-list">
           <div className="left-artist-des">
@@ -135,14 +136,14 @@ const Section21 = () => {
             />
           </div>
           <div className="right-rect">
-            <img src={greenrect} alt="" />
+            <img src={artist1.artist_work1 || smallimage4} alt="" />
           </div>
         </div>
       )}
       {artist2 && (
         <div className="artist-list hideOnMobile1">
           <div className="right-rect4">
-            <img src={greenrect} alt="" />
+            <img src={artist2.artist_work1 || smallimage4} alt="" />
           </div>
           <div className="right-image-des2">
             <img
@@ -181,14 +182,14 @@ const Section21 = () => {
             />
           </div>
           <div className="right-rect">
-            <img src={greenrect} alt="" />
+            <img src={artist3.artist_work1 || smallimage4} alt="" />
           </div>
         </div>
       )}
       {artist4 && (
         <div className="artist-list hideOnMobile1">
           <div className="right-rect4">
-            <img src={greenrect} alt="" />
+            <img src={artist4.artist_work1 || smallimage4} alt="" />
           </div>
           <div className="right-image-des2">
             <img

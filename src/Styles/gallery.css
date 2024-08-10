@@ -8,7 +8,8 @@
   background-repeat: no-repeat;
   position: relative;
   z-index: 1;
-  margin-bottom: -40px !important;
+  margin-bottom: 0px !important;
+  border-radius: 10px;
 }
 
 .gallery-home::before {
@@ -17,7 +18,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 80%;
   background: rgba(0, 0, 0, 0.5); /* Dark overlay */
   z-index: -1;
 }
@@ -52,7 +53,7 @@
   margin-bottom: 0px;
   border: 2px solid #b89d4f; /* Border around each gallery section */
   border-radius: 10px; /* Rounded corners for the border */
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  /* background-color: rgba(255, 255, 255, 0.8);  */
   padding: 20px; /* Padding inside the box */
 }
 
@@ -82,8 +83,9 @@
   line-height: 30px;
   letter-spacing: 1.2px;
   font-size: 20px;
-  color: black; /* Change text color to black for better contrast */
+  color: #b89d4f !important; /* Change text color to black for better contrast */
   text-align: left;
+  font-family: "Neue Montreal" !important;
 }
 
 .date-time,
@@ -92,6 +94,7 @@
 .description,
 .featured-artists {
   margin-bottom: 10px;
+  color: #b89d4f;
 }
 
 /* Add a hover effect for images */
@@ -99,4 +102,7 @@
 .image-gallery2 img:hover {
   cursor: pointer;
   transform: scale(1.05); /* Slightly increase scale on hover */
+}
+.gallery-title {
+  color: #b89d4f;
 }
