@@ -131,18 +131,24 @@ const SingleArtist = () => {
                 )}
               </ul>
             </nav>
-            <button className="button-sa" onClick={openPdfModal}>
-              View {artist.artist_name} {artist.artist_lastname}'s Pitch
-            </button>
+            <div className="artisto">
+              <h2>Artist's Pitch</h2>
+              <button className="button-sa1" onClick={openPdfModal}>
+                View {artist.artist_name} {artist.artist_lastname}'s Pitch
+              </button>
+            </div>
             <PdfViewer
               isOpen={isPdfModalOpen}
               onRequestClose={closePdfModal}
               artistId={artistId}
+              artistName={`${artist.artist_name} ${artist.artist_lastname}`}
             />
           </div>
         </div>
       </div>
       <div className="static-and-non-sa">
+        <div className="linoi"></div>
+        <h2>Artist's Latest Work</h2>
         <div className="static-images-sa">
           {[0, 1, 2].map((index) => (
             <img

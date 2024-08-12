@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import axios from "axios";
 
-const PdfViewer = ({ isOpen, onRequestClose, artistId }) => {
+const PdfViewer = ({ isOpen, onRequestClose, artistId, artistName }) => {
   const [pdfUrl, setPdfUrl] = useState(null);
 
   useEffect(() => {
@@ -38,6 +38,7 @@ const PdfViewer = ({ isOpen, onRequestClose, artistId }) => {
       <button onClick={onRequestClose} className="close-modal-button">
         Close
       </button>
+      <h2>{artistName}'s Pitch</h2>
       {pdfUrl ? (
         <iframe
           src={pdfUrl}

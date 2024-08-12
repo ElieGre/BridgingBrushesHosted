@@ -364,6 +364,9 @@
   .top-exheb4 h2 {
     font-size: 25px;
   }
+  .events-and-programs {
+    margin-bottom: 0px;
+  }
 }
 @media (min-width: 601px) and (max-width: 850px) {
   .events-123,

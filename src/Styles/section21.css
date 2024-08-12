@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("../Images/dannie.jpg");
+  background-image: url("../Images/dannie5.jpg");
   background-size: cover; /* Ensures the image covers the entire container */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -400,6 +400,9 @@ button-special {
   .artist-nav li {
     margin-left: 20px;
   }
+  .button-special {
+    margin-left: 30%;
+  }
   .button-special p {
     z-index: 1;
     position: relative;
@@ -522,7 +525,7 @@ button-special {
     flex-direction: column;
     align-items: center;
     /* margin-top: 200px; */
-    background-image: url("../Images/dannie.jpg");
+    background-image: url("../Images/dannie5.jpg");
     background-size: cover; /* Ensures the image covers the entire container */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
