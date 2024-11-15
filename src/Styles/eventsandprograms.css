@@ -24,6 +24,7 @@
 
 .all-events-123 {
   margin-left: 7%;
+  color: #846f63 !important;
 }
 
 .right-exhibition,
@@ -80,7 +81,7 @@
   width: 130px;
   height: 42px;
   line-height: 1.8em;
-  color: white;
+  color: #846f63 !important;
   margin-bottom: 34px;
   font-size: 18px;
 }
@@ -494,9 +495,12 @@
     margin-top: 20px !important;
   }
 }
-@media screen and (min-width: 1200px) and (max-width: 1450px) {
+@media screen and (min-width: 1200px) and (max-width: 1600px) {
   .content-container {
     margin-left: 35px;
+  }
+  .all-events-123 {
+    margin-left: 7.8% !important;
   }
 }
 @media (min-width: 1700px) {

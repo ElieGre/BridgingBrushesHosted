@@ -83,11 +83,13 @@
   line-height: 30px;
   letter-spacing: 1.2px;
   font-size: 20px;
-  color: #b89d4f !important; /* Change text color to black for better contrast */
+  color: #b89d4f; /* Change text color to black for better contrast */
   text-align: left;
   font-family: "Neue Montreal" !important;
 }
-
+.text-box p {
+  color: #f4f4f9 !important;
+}
 .date-time,
 .location,
 .host,

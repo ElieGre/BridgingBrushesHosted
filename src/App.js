@@ -7,6 +7,8 @@ import Section2 from "./Components/Section2";
 import Artists from "./Components/Artists";
 import New from "./Components/New";
 import SingleArtist from "./Components/SingleArtist";
+import SingleArtist2 from "./Components/SingleArtist2";
+import SingleArtist2Fetched from "./Components/SingleArtist2Fetched";
 import Footer from "./Components/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Exhibition from "./Components/Exhibition";
@@ -69,11 +71,31 @@ function App() {
             }
           />
           <Route
+            path="/sing2"
+            element={
+              <>
+                <Header />
+                <SingleArtist2 />
+                <RealFooter />
+              </>
+            }
+          />
+          {/* <Route
             path="/artists/:artist_name/:artist_lastname"
             element={
               <>
                 <Header />
                 <SingleArtist />
+                <RealFooter />
+              </>
+            }
+          /> */}
+          <Route
+            path="/artists/:artist_name/:artist_lastname"
+            element={
+              <>
+                <Header />
+                <SingleArtist2Fetched />
                 <RealFooter />
               </>
             }

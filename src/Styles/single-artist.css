@@ -818,4 +818,7 @@
     padding: 10px; /* Padding for the text background */
     border-radius: 4px; /* Rounded corners for the text background */
   }
+  .sa-all {
+    left: 0px;
+  }
 }

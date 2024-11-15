@@ -835,8 +835,32 @@ button-special {
     background: teal;
   }
 }
-@media screen and (min-width: 1250px) and (max-width: 1500px) {
+@media screen and (min-width: 1250px) and (max-width: 1600px) {
   .footer2 {
     display: none;
+  }
+  .right-rect img,
+  .right-rect2 img {
+    min-width: 300px !important;
+  }
+  .right-rect4 img {
+    min-width: 300px !important;
+    margin-left: 80px;
+  }
+  .right-image-des2 img {
+    width: 445px !important;
+    margin-left: 0px !important;
+    position: relative;
+    left: 80px;
+  }
+  .left-artist-des2 p {
+    width: 300px;
+  }
+  .left-artist-des p {
+    width: 300px;
+  }
+  .left-artist-des2 {
+    position: relative;
+    left: 60px;
   }
 }
