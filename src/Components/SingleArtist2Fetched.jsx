@@ -9,10 +9,12 @@ import image2 from "../Images/exhibition2.jpg";
 import image3 from "../Images/exhibition4.jpg";
 import Modal from "react-modal";
 import axios from "axios";
+import PdfViewer from "./PdfViewer"; // Import PdfViewer component
 
 const SingleArtist2Fetched = () => {
   const { artist_name, artist_lastname } = useParams(); // Get URL params
   const [artist, setArtist] = useState(null);
+  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false); // State for modal visibility
 
   const sliderData = [
     {
@@ -58,11 +60,8 @@ const SingleArtist2Fetched = () => {
     fetchArtist();
   }, [artist_name, artist_lastname]);
 
-  const [buttonClicked, setButtonClicked] = useState(false);
-
-  const handleHelloThereClick = () => {
-    setButtonClicked(true);
-    alert("Hello There!"); // You can customize this action as needed
+  const handleCheckPdfClick = () => {
+    setIsPdfModalOpen(true); // Open the PDF modal when the button is clicked
   };
 
   if (!artist) return <div>Loading...</div>;
@@ -105,8 +104,11 @@ const SingleArtist2Fetched = () => {
         </Slider>
       </div>
 
+      {/* Button to trigger PDF modal */}
       <div className="contact-info2">
-        <button>Check {artist.artist_name}'s PDF</button>
+        <button onClick={handleCheckPdfClick}>
+          Check {artist.artist_name} {artist.artist_lastname}'s PDF
+        </button>
       </div>
 
       {/* Contact Section */}
@@ -151,6 +153,14 @@ const SingleArtist2Fetched = () => {
           </a>
         </div>
       </div>
+
+      {/* Pass artistId and artistName to the PdfViewer component */}
+      <PdfViewer
+        isOpen={isPdfModalOpen}
+        onRequestClose={() => setIsPdfModalOpen(false)} // Close modal on request
+        artistId={artist._id}
+        artistName={`${artist.artist_name} ${artist.artist_lastname}`}
+      />
     </div>
   );
 };
