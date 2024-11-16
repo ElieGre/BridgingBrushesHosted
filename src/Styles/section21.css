@@ -99,6 +99,7 @@
 
 .right-image-des img,
 .right-image-des2 img {
+  border-radius: 8px !important;
   max-width: 445px;
   width: 445px;
   height: 300px;
@@ -862,5 +863,8 @@ button-special {
   .left-artist-des2 {
     position: relative;
     left: 60px;
+  }
+  .copyrightbottom nav li:nth-child(3) {
+    margin-top: 0px !important;
   }
 }
