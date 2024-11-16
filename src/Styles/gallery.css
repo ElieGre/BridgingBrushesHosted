@@ -51,7 +51,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 0px;
-  border: 2px solid #b89d4f; /* Border around each gallery section */
+  /* border: 2px solid #b89d4f;  */
   border-radius: 10px; /* Rounded corners for the border */
   /* background-color: rgba(255, 255, 255, 0.8);  */
   padding: 20px; /* Padding inside the box */

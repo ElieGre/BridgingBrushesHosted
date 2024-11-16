@@ -48,7 +48,7 @@
     text-align: center;
   }
   .gallery-section img {
-    display: block !important;
+    display: none !important;
   }
   .image-gallery2 {
     width: 50px;
