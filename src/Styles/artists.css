@@ -3,7 +3,13 @@
   width: 500px;
   margin: 20px auto; /* Center the input field */
 }
-
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #3d2f1e;
+}
 .ui-input {
   width: 100%;
   padding: 10px 10px 10px 40px;

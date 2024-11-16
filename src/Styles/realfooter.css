@@ -4,6 +4,7 @@
   display: flex;
   margin-left: -30px;
   margin-bottom: 100px;
+  background-color: #3d2f1e;
 }
 
 .location1 {
@@ -15,7 +16,14 @@
   margin-right: 100px;
   margin-left: 100px;
 }
-
+.navigoo {
+  background-color: #3d2f1e !important;
+  box-shadow: none !important;
+}
+.navigoo2 {
+  background-color: #3d2f1e !important;
+  box-shadow: none !important;
+}
 .location1 h2 {
   width: 102px;
   font-size: 25px;
@@ -51,14 +59,18 @@
   text-decoration: none;
   list-style-type: none;
   margin-left: 100px;
-  margin-top: 50px;
+  margin-top: 30px;
   color: white;
 }
 .emojis nav {
   display: flex;
   text-decoration: none;
   list-style-type: none;
-  margin-left: 100px;
+  margin-left: 0px;
+}
+.navigoo2 ul {
+  position: relative;
+  left: 90px;
 }
 .white-emoji {
   width: 55px;
@@ -107,6 +119,9 @@
   left: -195px;
   top: -55px;
 }
+.navigoo ul {
+  margin-top: 20px;
+}
 
 .subscribe-footer button {
   background-color: transparent;
@@ -128,6 +143,7 @@
 .footer3 {
   height: 250px;
   max-width: 470px;
+  margin-top: 30px;
 }
 .button {
   background: #fff;
@@ -171,6 +187,13 @@
   left: 0;
   right: 0;
   opacity: 1;
+}
+.copyrightbottom nav li:nth-child(3) {
+  margin-top: -20px !important;
+}
+
+.navigoo2 ul {
+  max-width: 100%;
 }
 
 @media (max-width: 600px) {

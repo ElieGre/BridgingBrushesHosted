@@ -49,7 +49,7 @@ const RealFooter = () => {
           </div>
         </div>
         <div className="copyrightbottom">
-          <nav>
+          <nav className="navigoo">
             <ul>
               <li>
                 <a href="#">Privacy</a>
@@ -70,7 +70,7 @@ const RealFooter = () => {
       </div>
       <div className="footer3">
         <div className="emojis">
-          <nav>
+          <nav className="navigoo2">
             <ul>
               <li>
                 <a

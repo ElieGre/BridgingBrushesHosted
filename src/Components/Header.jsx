@@ -44,7 +44,7 @@ const Header = () => {
           </div>
           <div className="header-center">
             <div className="header-1">
-              <nav>
+              <nav className="navigado">
                 <ul className="header-ul">
                   <li className="hideOnMobile">
                     <Link to="/">Home</Link>

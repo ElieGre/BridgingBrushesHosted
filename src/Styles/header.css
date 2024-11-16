@@ -8,6 +8,10 @@
   font-weight: 400;
   font-style: normal;
 }
+.navigado {
+  box-shadow: none !important;
+  background-color: #3d2f1e !important;
+}
 
 body {
   background-color: #1f1f1f;
@@ -39,7 +43,7 @@ a {
   display: flex;
   width: 100%;
   height: 200px;
-  background-color: #1f1f1f;
+  background-color: #3d2f1e;
   font-family: Rubik, sans-serif;
   color: #1f1f1f !important;
 }
