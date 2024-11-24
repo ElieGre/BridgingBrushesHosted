@@ -11,6 +11,7 @@
 .navigado {
   box-shadow: none !important;
   background-color: #3d2f1e !important;
+  font-size: 2rem !important;
 }
 
 body {
@@ -33,10 +34,20 @@ a {
   text-decoration: none;
   color: #ffffff !important;
 }
+nav ul a {
+  font-size: 1.2rem !important;
+}
+nav ul a:hover {
+  color: #fff !important;
+}
+:root {
+  primary: #fff !important;
+}
 
 .header-ul a:hover {
   cursor: pointer;
-  color: orangered !important;
+  color: #d4a373 !important; /* Use a softer coral shade */
+  transition: color 0.3s ease; /* Smooth transition */
 }
 
 .header-all {

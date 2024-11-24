@@ -49,13 +49,14 @@ const Header = () => {
                   <li className="hideOnMobile">
                     <Link to="/">Home</Link>
                   </li>
-                  <li className="hideOnMobile">
-                    <Link to="/artists">Artists</Link>
-                  </li>
+
                   <li className="hideOnMobile">
                     <Link className="weird-blue" to="/exhibitions">
                       Exhibitions
                     </Link>
+                  </li>
+                  <li className="hideOnMobile">
+                    <Link to="/artists">Artists</Link>
                   </li>
                   <li className="hideOnMobile">
                     <Link className="weird-blue" to="/aboutus">
@@ -92,20 +93,21 @@ const Header = () => {
                         Home
                       </a>
                     </li>
-                    <li>
-                      <a
-                        href="/artists"
-                        onClick={() => handleNavigation("/artists")}
-                      >
-                        Artists
-                      </a>
-                    </li>
+
                     <li>
                       <a
                         href="/exhibitions"
                         onClick={() => handleNavigation("/exhibitions")}
                       >
                         Exhibitions
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/artists"
+                        onClick={() => handleNavigation("/artists")}
+                      >
+                        Artists
                       </a>
                     </li>
                     <li>

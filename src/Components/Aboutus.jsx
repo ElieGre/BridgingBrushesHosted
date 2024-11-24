@@ -5,11 +5,24 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../Styles/aboutus.css";
 import image1 from "../Images/exhibition1.jpg";
 import image2 from "../Images/exhibition2.jpg";
-// import image3 from "../Images/exhibition3.jpg"; // Ensure this is the correct image path
 
 const AboutUs = () => {
-  const [aboutData, setAboutData] = useState(null);
-  const [contactData, setContactData] = useState(null);
+  const [aboutData, setAboutData] = useState({
+    abouttext1: `Join us in crafting solid bridges that bring art and culture to new horizons!
+    Founded by Danielle Moussalli, Bridging Brushes emerged from her vibrant career in film production across the Middle East, particularly in Lebanon. After relocating to Washington, D.C., Danielle discovered a dynamic art scene that inspired her to shift her focus toward curating and promoting art and cultural projects.
+    Established in 2024, Bridging Brushes is dedicated to creating bespoke artistic and cultural events. Collaborating with artists, writers, filmmakers, and designers, we bring each project to life with creativity and purpose, opening new horizons for artists.
+    Bridging Brushes is here to forge meaningful connections, find unique opportunities, and reach new audiences. We support artists in thriving and expanding their reach while providing galleries, buyers, and distributors with a reliable partner to handle logistics and ensure each project unfolds seamlessly.`,
+    aboutimg1: image1,
+    aboutimg2: image2,
+    aboutimg3: null, // Optional fallback for additional images
+  });
+
+  const [contactData, setContactData] = useState({
+    contact_facebook_link: "https://facebook.com/bridgingbrushes",
+    contact_instagram_link: "https://instagram.com/bridgingbrushes",
+    contact_youtube_link: "https://youtube.com/bridgingbrushes",
+    contact_pinterest_link: "https://pinterest.com/bridgingbrushes",
+  });
 
   useEffect(() => {
     const fetchAboutData = async () => {
@@ -17,8 +30,7 @@ const AboutUs = () => {
         const response = await axios.get(
           "https://bridges-backend-ob24.onrender.com/about/"
         );
-        console.log("About Data:", response.data);
-        setAboutData(response.data[0]); // Assuming the response contains an array with a single object
+        if (response.data?.length) setAboutData(response.data[0]);
       } catch (error) {
         console.error("Error fetching about data:", error);
       }
@@ -29,8 +41,7 @@ const AboutUs = () => {
         const response = await axios.get(
           "https://bridges-backend-ob24.onrender.com/contact123/"
         );
-        console.log("Contact Data:", response.data);
-        setContactData(response.data); // Assuming the response contains an object
+        setContactData(response.data || contactData);
       } catch (error) {
         console.error("Error fetching contact data:", error);
       }
@@ -39,44 +50,6 @@ const AboutUs = () => {
     fetchAboutData();
     fetchContactData();
   }, []);
-
-  // useEffect(() => {
-  //   if (aboutData && contactData) {
-  //     const sr = ScrollReveal({
-  //       distance: "60px",
-  //       duration: 1000,
-  //       delay: 200,
-  //       reset: true,
-  //     });
-
-  //     sr.reveal(".aboutus-main-title, .aboutus-section-title", {
-  //       delay: 700,
-  //       origin: "left",
-  //     });
-  //     sr.reveal(".aboutus-sec-01 .aboutus-image, .aboutus-info", {
-  //       delay: 800,
-  //       origin: "bottom",
-  //     });
-  //     sr.reveal(".aboutus-text-box", {
-  //       delay: 900,
-  //       origin: "right",
-  //     });
-  //     sr.reveal(".aboutus-media-icons i", {
-  //       delay: 700,
-  //       origin: "bottom",
-  //       interval: 200,
-  //     });
-  //     sr.reveal(".aboutus-sec-02 .aboutus-image, .aboutus-sec-03 img", {
-  //       delay: 800,
-  //       origin: "top",
-  //     });
-  //     sr.reveal(".aboutus-media-info li", {
-  //       delay: 700,
-  //       origin: "left",
-  //       interval: 200,
-  //     });
-  //   }
-  // }, [aboutData, contactData]);
 
   if (!aboutData || !contactData) {
     return <p>Loading...</p>;
@@ -96,55 +69,22 @@ const AboutUs = () => {
               />
             </div>
             <div className="aboutus-text-box">
-              <h3>Welcome to Bridging Bridges</h3>
-              <p>{aboutData.abouttext1}</p>
-            </div>
-          </div>
-          <div className="aboutus-media-icons">
-            <a
-              href={contactData.contact_facebook_link}
-              className="aboutus-icon"
-            >
-              <i className="fab fa-facebook"></i>
-            </a>
-            <a
-              href={contactData.contact_instagram_link}
-              className="aboutus-icon"
-            >
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href={contactData.contact_youtube_link} className="aboutus-icon">
-              <i className="fab fa-youtube"></i>
-            </a>
-            <a
-              href={contactData.contact_pinterest_link}
-              className="aboutus-icon"
-            >
-              <i className="fab fa-pinterest"></i>
-            </a>
-          </div>
-        </div>
-      </section>
-      <section className="aboutus-sec-02">
-        <div className="aboutus-inner-container">
-          <h3 className="aboutus-section-title">Our Mission</h3>
-          <div className="aboutus-content">
-            <div className="aboutus-image">
-              <img
-                src={aboutData.aboutimg2 || image2}
-                alt="Mission"
-                loading="lazy"
-              />
-            </div>
-            <div className="aboutus-info">
-              <h4 className="aboutus-info-title">
-                Connecting Artists and Audience
-              </h4>
-              <p>{aboutData.abouttext2}</p>
+              <h3>Welcome to Bridging Brushes</h3>
+              <p>
+                Join us in crafting solid bridges that bring art and culture to
+                new horizons!
+              </p>
+              <p>
+                Founded by Danielle Moussalli, Bridging Brushes is dedicated to
+                creating bespoke artistic and cultural events. We collaborate
+                with artists, writers, filmmakers, and designers to bring each
+                project to life, opening new horizons for creators.
+              </p>
             </div>
           </div>
         </div>
       </section>
+
       <section className="aboutus-sec-03">
         <div className="aboutus-inner-container">
           <h3 className="aboutus-section-title">Follow Us</h3>
@@ -186,7 +126,11 @@ const AboutUs = () => {
               </ul>
             </div>
             <div className="aboutus-image">
-              <img src={aboutData.aboutimg3} alt="Community" loading="lazy" />
+              <img
+                src={aboutData.aboutimg3 || image2}
+                alt="Community"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
