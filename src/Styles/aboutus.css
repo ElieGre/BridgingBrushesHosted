@@ -9,6 +9,8 @@
 
 .aboutus-container {
   background: #111222;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important  ;
 }
 
 .aboutus-sec-01,
@@ -44,17 +46,21 @@
 
 .aboutus-content {
   position: relative;
-  width: 1150px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.aboutus-image {
+.aboutus-image123 {
   position: relative;
   width: 800px;
   height: 400px;
   overflow: hidden;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .aboutus-image img {
@@ -112,6 +118,7 @@
 .aboutus-media-info {
   width: 400px;
   margin-left: 50px;
+  font-family: "Poppins", sans-serif;
 }
 
 .aboutus-media-info li {
@@ -140,6 +147,7 @@
 
 .aboutus-sec-03 {
   margin-bottom: 100px;
+  margin-left: -190px !important;
 }
 
 html {
@@ -170,6 +178,12 @@ html {
   font-weight: 700;
   margin-bottom: 30px;
 }
+.aboutus-main-title2 {
+  font-size: 3.5em;
+  font-weight: 700;
+  margin-bottom: 30px;
+  margin-left: 150px !important;
+}
 
 .aboutus-content {
   display: flex;
@@ -191,10 +205,49 @@ html {
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
+  position: relative;
 }
 
 .aboutus-image img:hover {
   transform: scale(1.05);
+}
+.sectiones2 {
+  flex: 1 1;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  max-width: 83%;
+  margin-left: 5%;
+  margin-top: 50px;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #f3f3f3;
+  justify-content: center;
+}
+.sectiones2 p {
+  color: #f3f3f3 !important;
+}
+.sectiones3 {
+  flex: 1 1;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  max-width: 34%;
+  margin-top: -0px;
+  margin-left: 60%;
+  font-size: 1.1em;
+  line-height: 1.6;
+  display: relative;
+  display: none;
+}
+.sectiones3 p {
+  color: #f3f3f3 !important;
 }
 
 .aboutus-text-box {
@@ -216,6 +269,30 @@ html {
   font-size: 1.1em;
   line-height: 1.6;
   color: #cfcfcf;
+}
+.aboutus-sec-03 {
+  margin-top: -150px;
+}
+
+/* Modal styling */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  border: 2px solid #fff;
+  border-radius: 5px;
 }
 
 @media only screen and (max-width: 768px) {

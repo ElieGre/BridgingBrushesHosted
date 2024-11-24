@@ -39,6 +39,7 @@ import AdminLogin from "./Components/Adminlogin";
 import TestPdfViewer from "./Components/TestPdfViewer";
 import Newsletter from "./Components/Newsletter";
 import Multiple from "./Components/Multiple";
+import MagaliExheb from "./Components/MagaliExheb";
 function App() {
   return (
     <div className="App">
@@ -175,6 +176,16 @@ function App() {
               <>
                 <Header />
                 <AdminLogin />
+                <RealFooter />
+              </>
+            }
+          />
+          <Route
+            path="/mkexheb"
+            element={
+              <>
+                <Header />
+                <MagaliExheb />
                 <RealFooter />
               </>
             }

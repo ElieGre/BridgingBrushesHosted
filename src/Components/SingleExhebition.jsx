@@ -3,10 +3,16 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../Styles/single-exhebition.css"; // Make sure the file name matches
 import bannerImage from "../Images/exhibition1.jpg";
+import image1 from "../Images/AF exhibition/IMG_7317.JPG";
+import image2 from "../Images/AF exhibition/IMG_7319.JPG";
+import image3 from "../Images/AF exhibition/IMG_7324.JPG";
+import image4 from "../Images/AF exhibition/IMG_7329.JPG";
 
 const SingleExhibition = () => {
   const { exhibitionName } = useParams(); // Change id to exhibitionName to match the route parameter
   const [exhibition, setExhibition] = useState(null);
+  const imageGallery = [image1, image2, image3, image4];
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const fetchExhibition = async () => {
@@ -83,6 +89,24 @@ const SingleExhibition = () => {
           </div>
         </div>
       </div>
+      <div className="image-grid">
+        {imageGallery.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Exhibition image ${index + 1}`}
+            className="grid-image"
+            onClick={() => setSelectedImage(image)}
+          />
+        ))}
+      </div>
+
+      {/* Modal for Selected Image */}
+      {selectedImage && (
+        <div className="image-modal" onClick={() => setSelectedImage(null)}>
+          <img src={selectedImage} alt="Selected" className="modal-image" />
+        </div>
+      )}
     </div>
   );
 };
