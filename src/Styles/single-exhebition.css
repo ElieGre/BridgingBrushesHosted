@@ -12,7 +12,7 @@
 
 .banner1 {
   width: 100%; /* Full width */
-  height: 800px; /* Adjust the height as needed */
+  max-height: 70%; /* Adjust the height as needed */
   background-size: cover;
   background-position: center;
   position: relative; /* Enable absolute positioning for overlay */
@@ -45,7 +45,7 @@
 }
 
 .exhibition-title1 {
-  font-size: 3.5em; /* Make the font size bigger */
+  font-size: 3rem; /* Make the font size bigger */
   font-weight: bold;
   margin: 0; /* Remove default margin */
   color: #b89d4f; /* Ensure text is visible on dark background */
@@ -53,6 +53,7 @@
   position: relative;
   top: 150px;
   left: -30px;
+  text-align: center;
 }
 
 .info-box1 {
@@ -85,19 +86,22 @@
   margin-top: 20px;
   position: absolute;
   bottom: -20%;
-  left: 15%;
+  left: 9.5%;
   z-index: 999;
+  width: 420px !important;
 }
 
 .artist-button {
-  padding: 12px 34px;
+  /* padding: 12px 34px; */
   font-size: 1.2rem;
   font-weight: 600;
   color: #ffffff;
   background-color: #333; /* Simple, sleek dark background */
-  border: 2px solid #333; /* Matches the background */
+  border: 2px solid #3d2f1e; /* Matches the background */
   border-radius: 8px; /* Slightly rounded corners */
   transition: all 0.2s ease-in-out;
+  width: 210px;
+  margin-left: 30px;
 }
 
 .artist-button:hover {
@@ -105,7 +109,10 @@
   border-color: #555; /* Matches the hover background */
   cursor: pointer;
 }
-
+.artist-statement {
+  justify-content: center;
+  text-align: center;
+}
 .artist-button:focus {
   outline: none;
   background-color: #222; /* Darker focus state */
@@ -118,11 +125,12 @@
 }
 .image-grid {
   position: absolute;
-  bottom: 20px;
+  bottom: -80px;
   left: 150px !important;
   display: grid;
   grid-template-columns: repeat(4, 100px); /* 4 columns of 100px each */
   gap: 10px; /* Spacing between images */
+  z-index: 999;
 }
 
 .grid-image {
@@ -161,6 +169,8 @@
   background: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
+  justify-content: center;
+  text-align: center;
 }
 
 .sui-generis-section h2 {
@@ -172,6 +182,9 @@
   font-size: 1rem;
   line-height: 1.5;
   margin: 5px 0;
+}
+.sui-generis-section h3 {
+  position: relative;
 }
 @media (max-width: 600px) {
   .single-exhibition-page1 {
@@ -329,5 +342,121 @@
     font-weight: bold;
     color: #dd7f1f;
     display: block; /* Make label a block element to have the content below it */
+  }
+}
+@media (max-width: 450px) {
+  .exhibition-details1 {
+    display: none;
+  }
+  .exhibition-description1 {
+    display: none;
+  }
+  .single-exhibition-page1 {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .banner1 {
+    height: 100%; /* Smaller height for compact screens */
+    margin-bottom: 15px;
+  }
+
+  .banner-content1 {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    text-align: center; /* Align text to the center */
+    max-width: 90%;
+  }
+
+  .exhibition-title1 {
+    font-size: 1.5em; /* Smaller font size */
+    top: auto; /* Remove relative positioning for better alignment */
+    left: auto;
+    margin: 0; /* Remove unnecessary margin */
+  }
+
+  .info-box1 {
+    padding: 10px;
+    max-width: 100%; /* Use full width */
+    font-size: 0.85em; /* Slightly smaller text */
+  }
+
+  .info-box1 p {
+    font-size: 16px;
+  }
+
+  .exhibition-description1 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    text-align: center; /* Ensure the description is centered */
+  }
+
+  .button-container {
+    flex-direction: row;
+    gap: 10px; /* Increase spacing between buttons */
+    position: absolute;
+    top: 775px;
+    left: 30px;
+    display: flex;
+  }
+
+  .artist-button {
+    width: 300px; /* Buttons take full width */
+    height: 80px;
+    padding: 10px; /* Smaller padding */
+    font-size: 1rem; /* Adjust font size */
+    margin-bottom: 10px;
+    margin-top: 60px !important;
+    position: relative;
+    left: 50px;
+  }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+    gap: 5px; /* Reduced gap */
+    position: static; /* Remove absolute positioning */
+    margin-top: 70px; /* Add margin for spacing */
+  }
+
+  .grid-image {
+    width: 100%; /* Full width of grid cell */
+    /* height: auto; Maintain aspect ratio */
+    border: 1px solid #fff; /* Thinner border */
+  }
+
+  .image-grid2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+    gap: 5px; /* Reduced gap */
+    position: static; /* Remove absolute positioning */
+    margin-top: 80px; /* Add margin for spacing */
+    width: 100%;
+  }
+
+  .grid-image2 {
+    width: 100%; /* Full width of grid cell */
+    /* height: auto; Maintain aspect ratio */
+    border: 1px solid #fff; /* Thinner border */
+  }
+  .sui-generis-section {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 0.9em; /* Smaller font size */
+  }
+  .sui-generis-section h3 {
+    font-size: 1.5rem;
+  }
+
+  .sui-generis-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .sui-generis-section p {
+    font-size: 0.9rem;
   }
 }

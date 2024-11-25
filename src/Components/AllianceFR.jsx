@@ -1,0 +1,123 @@
+import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import "../Styles/single-exhebition.css";
+import bannerImage from "../Images/exhibition1.jpg";
+import image1 from "../Images/AF exhibition/IMG_7317.JPG";
+import image2 from "../Images/AF exhibition/IMG_7319.JPG";
+import image3 from "../Images/AF exhibition/IMG_7324.JPG";
+import image4 from "../Images/AF exhibition/IMG_7329.JPG";
+import PdfViewer2 from "./PdfViewer2";
+import AFCatalogue from "../Images/AF exhibition/catalog.pdf";
+
+const AllianceExheb = () => {
+  const { exhibitionName } = useParams();
+  const navigate = useNavigate();
+  const imageGallery = [image1, image2, image3, image4];
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isCatalogueOpen, setIsCatalogueOpen] = useState(false);
+
+  const exhibition = {
+    exhibition_name: "Alliance Francaise",
+    exhibition_description:
+      "Bridging Brushes artists took part of the Avenues of Connections & the Art of Francophone World Exhibition in Washington DC in March 2024.",
+    exhibition_dates: "April-May 2024",
+    exhibition_location: "Washington, D.C.",
+    sui_generis: {
+      title:
+        "ARTOMATIC WASHINGTON DC 2024 Edition – Fadi ELCHAMAA-MARWAN CHAMAA-JANE FASYAL",
+      dates: "April-May 2024",
+      location: "Washington DC",
+      about_artist: `Nevine Mattar, a Lebanese artist renowned for her diverse artistic skills, has lived and studied across the globe, 
+      from the Far East to the West, absorbing a wide range of artistic influences. Her education spans several prestigious cities, 
+      including Beirut, London, Los Angeles, New York, and Japan. Beyond her artistic endeavors, Mattar is deeply involved in civic activities, 
+      particularly in promoting recycling arts, and she played a pivotal role in establishing the first Paper Mache Association in Lebanon. 
+      With a robust career that includes chairing art juries, yearly exhibitions worldwide since 1983, and contributions to murals, illustrations, 
+      set designs, and fashion, Mattar also dedicates herself to academia, teaching Cultural Studies at leading Lebanese universities. 
+      Her academic and teaching career continues to thrive, making her a prominent figure in both the artistic and educational spheres.`,
+    },
+  };
+
+  const openCatalogue = () => setIsCatalogueOpen(true);
+  const closeCatalogue = () => setIsCatalogueOpen(false);
+
+  return (
+    <div className="single-exhibition-page1">
+      <div
+        className="banner1"
+        style={{
+          backgroundImage: `url(${bannerImage})`,
+        }}
+      >
+        <div className="banner-content1">
+          <h1 className="exhibition-title1">{exhibition.exhibition_name}</h1>
+          <div className="info-box1">
+            <p className="exhibition-description1">
+              {exhibition.exhibition_description}
+            </p>
+            <div className="exhibition-details1">
+              <div className="detail-item1">
+                <span className="detail-label">Dates:</span>{" "}
+                {exhibition.exhibition_dates}
+              </div>
+              <div className="detail-item1">
+                <span className="detail-label">Location:</span>{" "}
+                {exhibition.exhibition_location}
+              </div>
+            </div>
+            <div className="sui-generis-section">
+              <h2>{exhibition.sui_generis.title}</h2>
+              <p>
+                <strong>Dates:</strong> {exhibition.sui_generis.dates}
+              </p>
+              <p>
+                <strong>Location:</strong> {exhibition.sui_generis.location}
+              </p>
+              <h3>About the Artist</h3>
+              <p>{exhibition.sui_generis.about_artist}</p>
+              <button
+                className="button-special"
+                onClick={() => navigate("/afexheb")}
+              >
+                <p>Read More</p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="both">
+        <div className="image-grid2">
+          {imageGallery.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={`Exhibition image ${index + 1}`}
+              className="grid-image2"
+              onClick={() => setSelectedImage(image)}
+            />
+          ))}
+        </div>
+        <div className="button-container3">
+          <button className="artist-button3" onClick={openCatalogue}>
+            View Catalogue
+          </button>
+
+          <PdfViewer2
+            isOpen={isCatalogueOpen}
+            onRequestClose={closeCatalogue}
+            pdfUrl={AFCatalogue}
+            title="Exhibition Catalogue"
+          />
+        </div>
+      </div>
+
+      {selectedImage && (
+        <div className="image-modal" onClick={() => setSelectedImage(null)}>
+          <img src={selectedImage} alt="Selected" className="modal-image" />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default AllianceExheb;

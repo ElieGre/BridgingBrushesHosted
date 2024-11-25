@@ -51,8 +51,8 @@ const Header = () => {
                   </li>
 
                   <li className="hideOnMobile">
-                    <Link className="weird-blue" to="/exhibitions">
-                      Exhibitions
+                    <Link className="weird-blue" to="/projects">
+                      Projects
                     </Link>
                   </li>
                   <li className="hideOnMobile">
@@ -96,10 +96,10 @@ const Header = () => {
 
                     <li>
                       <a
-                        href="/exhibitions"
-                        onClick={() => handleNavigation("/exhibitions")}
+                        href="/projects"
+                        onClick={() => handleNavigation("/projects")}
                       >
-                        Exhibitions
+                        Projects
                       </a>
                     </li>
                     <li>

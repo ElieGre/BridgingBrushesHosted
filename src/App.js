@@ -40,6 +40,10 @@ import TestPdfViewer from "./Components/TestPdfViewer";
 import Newsletter from "./Components/Newsletter";
 import Multiple from "./Components/Multiple";
 import MagaliExheb from "./Components/MagaliExheb";
+import ZeinaExheb from "./Components/ZeinaExheb";
+import NevineExheb from "./Components/NevineMatar";
+import AllianceExheb from "./Components/AllianceFR";
+import Projects from "./Components/Proejcts";
 function App() {
   return (
     <div className="App">
@@ -171,6 +175,16 @@ function App() {
             }
           />
           <Route
+            path="/projects"
+            element={
+              <>
+                <Header />
+                <Projects />
+                <RealFooter />
+              </>
+            }
+          />
+          <Route
             path="/admin"
             element={
               <>
@@ -186,6 +200,36 @@ function App() {
               <>
                 <Header />
                 <MagaliExheb />
+                <RealFooter />
+              </>
+            }
+          />
+          <Route
+            path="/zmexheb"
+            element={
+              <>
+                <Header />
+                <ZeinaExheb />
+                <RealFooter />
+              </>
+            }
+          />
+          <Route
+            path="/nmexheb"
+            element={
+              <>
+                <Header />
+                <NevineExheb />
+                <RealFooter />
+              </>
+            }
+          />
+          <Route
+            path="/afexheb"
+            element={
+              <>
+                <Header />
+                <AllianceExheb />
                 <RealFooter />
               </>
             }

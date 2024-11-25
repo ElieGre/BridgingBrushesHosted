@@ -4,76 +4,60 @@ import "../Styles/eventsandprograms.css";
 import imageevents from "../Images/exhibition-cow.png";
 import goldline from "../Images/exhitbition-line.png";
 
+import img1 from "../Images/MagaliKatra/mini-imagem-magali.png";
+import img2 from "../Images/AF exhibition/IMG_7317.JPG";
+import img3 from "../Images/ZeinaNader/mini-imagem.png";
+
 const EventsandPrograms = () => {
   const navigate = useNavigate();
 
-  // Static exhibition data
+  // Static exhibition data with respective navigation paths
   const [exhibitions] = useState([
     {
       _id: "66666d0bf76f73f4cbc32f7f",
-      exhibition_name: "Art Expo 2024",
+      exhibition_name: "SUI GENERIS SOCIETY",
       exhibition_description:
         "Annual art exhibition showcasing modern artworks.",
       exhibition_country: "United States",
-      exhibition_city: "New York12",
-      exhibition_featured1name: "The Masterpiece",
-      exhibition_featured1image:
-        "https://res.cloudinary.com/docxw6ugs/image/upload/v1717988614/w1gvjvhelbhyfxkmkdfw.jpg",
-      exhibition_featured2name: "Sculpture Showcase",
-      exhibition_featured2image:
-        "https://res.cloudinary.com/docxw6ugs/image/upload/v1717988615/h2zncgwspmgibpug1nqx.jpg",
-      exhibition_featured3name: "Abstract Collection",
-      exhibition_featured3image:
-        "https://res.cloudinary.com/docxw6ugs/image/upload/v1717988616/lzffaovjvci9k3s9zy9j.jpg",
+      exhibition_city: "New York",
+      exhibition_featured_image: img1,
       exhibition_opening_hours: "9:00 AM",
       exhibition_closing_hours: "6:00 PM",
       exhibition_day: "18",
       exhibition_month: "August",
+      navigation_path: "/mkexheb",
     },
     {
       _id: "66667276f76f73f4cbc32fa9",
-      exhibition_name: "Contemporary Art Festival",
+      exhibition_name: "Francophone World Exhibition",
       exhibition_description:
         "Celebrating contemporary art trends from around the world.",
       exhibition_country: "United Kingdom",
       exhibition_city: "London",
-      exhibition_featured1name: "The Innovators",
-      exhibition_featured1image:
-        "https://res.cloudinary.com/docxw6ugs/image/upload/v1717990001/be6xeodqgfgtjk5ikgbp.jpg",
-      exhibition_featured2name: "Mixed Media Marvels",
-      exhibition_featured2image:
-        "https://res.cloudinary.com/docxw6ugs/image/upload/v1717990002/bahqdk1mqiodjm4qv31r.jpg",
-      exhibition_featured3name: "Experimental Exhibits",
-      exhibition_featured3image:
-        "https://res.cloudinary.com/docxw6ugs/image/upload/v1717990004/n7iymf13iplki4itikok.jpg",
+      exhibition_featured_image: img2,
       exhibition_opening_hours: "10:00 AM",
       exhibition_closing_hours: "7:00 PM",
       exhibition_day: "18",
       exhibition_month: "August",
+      navigation_path: "/afexheb",
     },
     {
       _id: "66ae80464d90142166086d95",
-      exhibition_name: "Contemporary Art Festival",
-      exhibition_description:
-        "Celebrating contemporary art trends from around the world.",
+      exhibition_name: "Chromaticity",
+      exhibition_description: "An exploration of diverse artistic cultures.",
       exhibition_country: "United Kingdom",
       exhibition_city: "London",
-      exhibition_featured1name: "The Innovator",
-      exhibition_featured1image:
-        "https://res.cloudinary.com/docxw6ugs/image/upload/v1722712133/vrwu0f0vkhzeezkwaw26.png",
-      exhibition_featured2name: null,
-      exhibition_featured2image: null,
-      exhibition_featured3name: null,
-      exhibition_featured3image: null,
+      exhibition_featured_image: img3,
       exhibition_opening_hours: "10:00 AM",
       exhibition_closing_hours: "7:00 PM",
       exhibition_day: "18",
       exhibition_month: "August",
+      navigation_path: "/znexheb",
     },
   ]);
 
-  const handleExhibitionClick = (name) => {
-    navigate(`/exhibitions/${encodeURIComponent(name)}`);
+  const handleExhibitionClick = (path) => {
+    navigate(path);
   };
 
   return (
@@ -89,16 +73,13 @@ const EventsandPrograms = () => {
                 key={exhibition._id}
                 className={index % 2 === 0 ? "events-123" : "events-1234"}
                 onClick={() =>
-                  handleExhibitionClick(exhibition.exhibition_name)
+                  handleExhibitionClick(exhibition.navigation_path)
                 }
               >
                 <img
                   className={`cow-image ${index % 2 === 0 ? "" : "4"}`}
-                  src={
-                    exhibition[`exhibition_featured${index + 1}image`] ||
-                    imageevents
-                  }
-                  alt=""
+                  src={exhibition.exhibition_featured_image || imageevents}
+                  alt={exhibition.exhibition_name}
                 />
                 <div className="right-exhibition">
                   <div className="top-exheb">
@@ -123,9 +104,7 @@ const EventsandPrograms = () => {
           </div>
           <div className="exhibiii">
             <button className="exhibiii-button">
-              <p onClick={() => navigate("/exhibitions")}>
-                VIEW ALL EXHIBITIONS
-              </p>
+              <p onClick={() => navigate("/projects")}>VIEW ALL EXHIBITIONS</p>
             </button>
           </div>
         </div>
