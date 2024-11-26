@@ -1,45 +1,41 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom"; // Import useParams
-import { FaFacebook, FaPinterest, FaLinkedin, FaTwitter } from "react-icons/fa"; // Social media icons
-import Slider from "react-slick"; // Import slider component
-import "../Styles/singleartist2.css"; // External CSS for styling
+import { FaFacebook, FaPinterest, FaLinkedin, FaTwitter } from "react-icons/fa";
+import Slider from "react-slick";
+import "../Styles/singleartist2.css";
 import artistImage from "../Images/stock_face6.png";
 import image1 from "../Images/exhibition1.jpg";
 import image2 from "../Images/exhibition2.jpg";
 import image3 from "../Images/exhibition4.jpg";
-import Modal from "react-modal";
-import PdfViewer from "./PdfViewer"; // Import PdfViewer component
+import PdfViewer2 from "./PdfViewer2";
+import ZeinaBooklet from "../Images/ZeinaNader/Catalog.pdf";
 
-const SingleArtist2Fetched = () => {
-  const { artist_name, artist_lastname } = useParams(); // Get URL params
-  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false); // State for modal visibility
+const ArtistZN = () => {
+  const [isPitchOpen, setIsPitchOpen] = useState(false);
 
-  // Static artist data
-  const staticArtistData = {
-    artist_name: "Kevin",
-    artist_lastname: "Abosch",
-    artist_image: artistImage,
-    artist_about:
-      "Kevin Abosch is an internationally acclaimed artist working across multiple mediums.",
-    artist_exhibitions:
-      "Notable exhibitions include showcases at The Hermitage Museum, St Petersburg, and the National Museum of China.",
+  const openPitch = () => setIsPitchOpen(true);
+  const closePitch = () => setIsPitchOpen(false);
+
+  const artist = {
+    artist_name: "Zeina",
+    artist_lastname: "Nader",
+    artist_about: `International award-winning artist Zeina Nader has always followed her passion for painting and writing, believing deeply that all forms of art communicate.`,
+    artist_exhibitions: `Zeina has exhibited her work in solos, duos, and collectives worldwide in cities such as New York, Tokyo, Paris, London, and more. She celebrated her 100th exhibition in 2022 in Barcelona.
+      Zeina is also an author of four books and an art columnist for international media outlets. Fluent in five languages, she teaches art to students of all ages.`,
+    artist_highlights: `In 2021, her painting was acquired by the Peoria Riverfront Museum in the USA for their permanent collection. In 2023, another painting was acquired by the London School of Economics in the UK. Recently, a large artwork was acquired by the Ritz-Carlton DIFC in Dubai for their main entrance lobby. To Zeina, life itself is the greatest artwork to exist.`,
   };
 
   const sliderData = [
     {
       image: image1,
-      description:
-        "Kevin Abosch's photography installation at The Hermitage Museum, St Petersburg.",
+      description: "Zeina Nader's painting displayed at a gallery in Paris.",
     },
     {
       image: image2,
-      description:
-        "A sculpture exhibition by Kevin Abosch at the National Museum of China.",
+      description: "Zeina's work featured at an art exhibition in Tokyo.",
     },
     {
       image: image3,
-      description:
-        "Kevin Abosch's blockchain-themed art showcased at ZKM in Germany.",
+      description: "Zeina's latest collection showcased in Barcelona.",
     },
   ];
 
@@ -53,30 +49,27 @@ const SingleArtist2Fetched = () => {
     autoplaySpeed: 3000,
   };
 
-  const handleCheckPdfClick = () => {
-    setIsPdfModalOpen(true); // Open the PDF modal when the button is clicked
-  };
-
   return (
     <div className="single-artist-container" style={{ position: "relative" }}>
       <div className="single-artist">
         <h3 className="single-artist__title">
-          {staticArtistData.artist_name} {staticArtistData.artist_lastname}
+          {artist.artist_name} {artist.artist_lastname}
         </h3>
         <hr className="single-artist__divider" />
         <div className="single-artist__image-wrapper">
           <img
             className="single-artist__image"
-            src={staticArtistData.artist_image}
-            alt={`${staticArtistData.artist_name} ${staticArtistData.artist_lastname}`}
+            src={artistImage}
+            alt={artist.artist_name}
           />
         </div>
         <div className="single-artist__info">
-          <p className="single-artist__description">
-            {staticArtistData.artist_about}
-          </p>
+          <p className="single-artist__description">{artist.artist_about}</p>
           <p className="single-artist__exhibitions">
-            {staticArtistData.artist_exhibitions}
+            {artist.artist_exhibitions}
+          </p>
+          <p className="single-artist__highlights">
+            {artist.artist_highlights}
           </p>
         </div>
       </div>
@@ -99,11 +92,7 @@ const SingleArtist2Fetched = () => {
 
       {/* Button to trigger PDF modal */}
       <div className="contact-info2">
-        <button onClick={handleCheckPdfClick}>
-          Check {staticArtistData.artist_name}{" "}
-          {staticArtistData.artist_lastname}
-          's PDF
-        </button>
+        <button onClick={openPitch}>Check {artist.artist_name}'s Pitch</button>
       </div>
 
       {/* Contact Section */}
@@ -149,14 +138,15 @@ const SingleArtist2Fetched = () => {
         </div>
       </div>
 
-      {/* Pass artistName to the PdfViewer component */}
-      <PdfViewer
-        isOpen={isPdfModalOpen}
-        onRequestClose={() => setIsPdfModalOpen(false)} // Close modal on request
-        artistName={`${staticArtistData.artist_name} ${staticArtistData.artist_lastname}`}
+      {/* PDF Viewer Modal */}
+      <PdfViewer2
+        isOpen={isPitchOpen}
+        onRequestClose={closePitch}
+        pdfUrl={ZeinaBooklet}
+        title="Zeina's Pitch"
       />
     </div>
   );
 };
 
-export default SingleArtist2Fetched;
+export default ArtistZN;

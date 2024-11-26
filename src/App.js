@@ -44,6 +44,9 @@ import ZeinaExheb from "./Components/ZeinaExheb";
 import NevineExheb from "./Components/NevineMatar";
 import AllianceExheb from "./Components/AllianceFR";
 import Projects from "./Components/Proejcts";
+import ArtistMK from "./Components/ArtistMK";
+import ArtistZN from "./Components/ArtistZN";
+import ArtistNM from "./Components/ArtistNM";
 function App() {
   return (
     <div className="App">
@@ -95,12 +98,33 @@ function App() {
               </>
             }
           /> */}
+
           <Route
-            path="/artists/:artist_name/:artist_lastname"
+            path="/MagaliKatra"
             element={
               <>
                 <Header />
-                <SingleArtist2Fetched />
+                <ArtistMK />
+                <RealFooter />
+              </>
+            }
+          />
+          <Route
+            path="/ZeinaNader"
+            element={
+              <>
+                <Header />
+                <ArtistZN />
+                <RealFooter />
+              </>
+            }
+          />
+          <Route
+            path="/NevineMattar"
+            element={
+              <>
+                <Header />
+                <ArtistNM />
                 <RealFooter />
               </>
             }

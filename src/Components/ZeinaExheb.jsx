@@ -120,7 +120,7 @@ const ZeinaExheb = () => {
               <p>{exhibition.sui_generis.about_artist}</p>
               <button
                 className="button-special"
-                onClick={() => navigate("/afexheb")}
+                onClick={() => navigate("/ZeinaNader")}
               >
                 <p>Read More</p>
               </button>

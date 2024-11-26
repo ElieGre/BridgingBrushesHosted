@@ -1,28 +1,36 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom"; // Import useParams
-import { FaFacebook, FaPinterest, FaLinkedin, FaTwitter } from "react-icons/fa"; // Social media icons
-import Slider from "react-slick"; // Import slider component
-import "../Styles/singleartist2.css"; // External CSS for styling
+import { FaFacebook, FaPinterest, FaLinkedin, FaTwitter } from "react-icons/fa";
+import Slider from "react-slick";
+import "../Styles/singleartist2.css";
 import artistImage from "../Images/stock_face6.png";
 import image1 from "../Images/exhibition1.jpg";
 import image2 from "../Images/exhibition2.jpg";
 import image3 from "../Images/exhibition4.jpg";
 import Modal from "react-modal";
-import PdfViewer from "./PdfViewer"; // Import PdfViewer component
+import PdfViewer2 from "./PdfViewer2";
+import MagaliCatalogue from "../Images/MagaliKatra/Exhibition-Catalog.pdf";
+import MagaliBooklet from "../Images/MagaliKatra/Booklet-Artist.pdf";
 
-const SingleArtist2Fetched = () => {
-  const { artist_name, artist_lastname } = useParams(); // Get URL params
-  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false); // State for modal visibility
+const ArtistMK = () => {
+  const [isCatalogueOpen, setIsCatalogueOpen] = useState(false);
+  const [isPitchOpen, setIsPitchOpen] = useState(false);
 
-  // Static artist data
-  const staticArtistData = {
-    artist_name: "Kevin",
-    artist_lastname: "Abosch",
-    artist_image: artistImage,
-    artist_about:
-      "Kevin Abosch is an internationally acclaimed artist working across multiple mediums.",
-    artist_exhibitions:
-      "Notable exhibitions include showcases at The Hermitage Museum, St Petersburg, and the National Museum of China.",
+  const openCatalogue = () => setIsCatalogueOpen(true);
+  const closeCatalogue = () => setIsCatalogueOpen(false);
+
+  const openPitch = () => setIsPitchOpen(true);
+  const closePitch = () => setIsPitchOpen(false);
+
+  const artist = {
+    artist_name: "Magalie",
+    artist_lastname: "Katra",
+    artist_about: `Katra's art is visual poetry overflowing with energy and vivacity, with a distinctive signature style.
+      The artist captures and highlights human identities, portraying people through bold graphics, assertive postures,
+      graceful fluidity, and engaging compositions. With a mastery of graphic rhythm, she holds up a mirror to contemporary
+      life and depicts the underlying core of society.`,
+    artist_exhibitions: `Katra’s work has been showcased in many galleries, locally and internationally. Her projects include several
+      endeavors in Europe and the USA, featuring street art, book illustrations, and fashion design, conveying her vibrant spirit,
+      energy, and unique signature.`,
   };
 
   const sliderData = [
@@ -53,30 +61,30 @@ const SingleArtist2Fetched = () => {
     autoplaySpeed: 3000,
   };
 
+  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
+
   const handleCheckPdfClick = () => {
-    setIsPdfModalOpen(true); // Open the PDF modal when the button is clicked
+    setIsPdfModalOpen(true);
   };
 
   return (
     <div className="single-artist-container" style={{ position: "relative" }}>
       <div className="single-artist">
         <h3 className="single-artist__title">
-          {staticArtistData.artist_name} {staticArtistData.artist_lastname}
+          {artist.artist_name} {artist.artist_lastname}
         </h3>
         <hr className="single-artist__divider" />
         <div className="single-artist__image-wrapper">
           <img
             className="single-artist__image"
-            src={staticArtistData.artist_image}
-            alt={`${staticArtistData.artist_name} ${staticArtistData.artist_lastname}`}
+            src={artistImage}
+            alt={artist.artist_name}
           />
         </div>
         <div className="single-artist__info">
-          <p className="single-artist__description">
-            {staticArtistData.artist_about}
-          </p>
+          <p className="single-artist__description">{artist.artist_about}</p>
           <p className="single-artist__exhibitions">
-            {staticArtistData.artist_exhibitions}
+            {artist.artist_exhibitions}
           </p>
         </div>
       </div>
@@ -99,11 +107,7 @@ const SingleArtist2Fetched = () => {
 
       {/* Button to trigger PDF modal */}
       <div className="contact-info2">
-        <button onClick={handleCheckPdfClick}>
-          Check {staticArtistData.artist_name}{" "}
-          {staticArtistData.artist_lastname}
-          's PDF
-        </button>
+        <button onClick={openPitch}>Check {artist.artist_name}'s Pitch</button>
       </div>
 
       {/* Contact Section */}
@@ -149,14 +153,15 @@ const SingleArtist2Fetched = () => {
         </div>
       </div>
 
-      {/* Pass artistName to the PdfViewer component */}
-      <PdfViewer
-        isOpen={isPdfModalOpen}
-        onRequestClose={() => setIsPdfModalOpen(false)} // Close modal on request
-        artistName={`${staticArtistData.artist_name} ${staticArtistData.artist_lastname}`}
+      {/* PDF Viewer Modal */}
+      <PdfViewer2
+        isOpen={isPitchOpen}
+        onRequestClose={closePitch}
+        pdfUrl={MagaliBooklet}
+        title="Artist's Pitch"
       />
     </div>
   );
 };
 
-export default SingleArtist2Fetched;
+export default ArtistMK;
