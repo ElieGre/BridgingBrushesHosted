@@ -97,7 +97,7 @@
   font-weight: 600;
   color: #ffffff;
   background-color: #333; /* Simple, sleek dark background */
-  border: 2px solid #3d2f1e; /* Matches the background */
+  border: 2px solid #1e1e1e; /* Matches the background */
   border-radius: 8px; /* Slightly rounded corners */
   transition: all 0.2s ease-in-out;
   width: 210px;

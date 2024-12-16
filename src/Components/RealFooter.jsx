@@ -156,7 +156,7 @@ const RealFooter = () => {
           </nav>
         </div>
         <div className="stay-up">
-          <p>
+          <p style={{ color: "white" }}>
             Stay up-to-date on Bridging Brushes artists, exhibitions, and
             events.
           </p>

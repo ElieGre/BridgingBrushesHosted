@@ -10,7 +10,7 @@
 }
 .navigado {
   box-shadow: none !important;
-  background-color: #3d2f1e !important;
+  background-color: #1e1e1e !important;
   font-size: 2rem !important;
 }
 
@@ -54,7 +54,7 @@ nav ul a:hover {
   display: flex;
   width: 100%;
   height: 200px;
-  background-color: #3d2f1e;
+  background-color: #1e1e1e;
   font-family: Rubik, sans-serif;
   color: #1f1f1f !important;
 }

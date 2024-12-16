@@ -7,13 +7,17 @@
   max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #1e1e1e;
   border: 1px solid #ddd;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #f6f0e6 !important;
+
+  /* Add outer shadow */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+    /* Regular outer shadow */ inset 0 0 5px rgba(255, 255, 255, 0.2); /* Inner shadow for border highlight */
+
   margin-top: -2%;
   margin-bottom: 2%;
-  color: #846f63 !important;
 }
 
 /* Main artist section */
@@ -22,7 +26,7 @@
   max-width: 600px;
   padding-right: 20px;
   border-right: 1px solid #ddd; /* Separation between artist and slider */
-  color: #846f63 !important;
+  color: #f6f0e6 !important;
 }
 
 /* Title styling */
@@ -31,7 +35,7 @@
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #333;
+  color: #f6f0e6;
 }
 .contact-info2 {
   max-width: 100%;
@@ -59,6 +63,7 @@
 
 .single-artist__image {
   width: 300px;
+  max-height: 350px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -96,12 +101,13 @@
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
+  max-height: 450px;
 }
 
 /* Description styling */
 .slider-description {
   font-size: 0.9rem;
-  color: #555;
+  color: #f6f0e6;
   margin-top: 5px;
 }
 .contact-info {
@@ -111,7 +117,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: #1e1e1e;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 15px;
@@ -124,7 +130,7 @@
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #333;
+  color: #f6f0e6;
 }
 
 .contact-info__icons {
@@ -134,7 +140,7 @@
 
 .contact-info__icon {
   font-size: 1.5rem;
-  color: #555;
+  color: #f6f0e6;
   transition: color 0.3s ease;
 }
 
@@ -148,7 +154,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: #1e1e1e;
   border: 1px solid #ddd;
   border-radius: 10px;
   /* padding: 15px; */
@@ -225,6 +231,7 @@
     width: 100%;
     /* left: 25%; */
     top: 10px;
+    left: 0%;
   }
 
   .contact-info__icons {

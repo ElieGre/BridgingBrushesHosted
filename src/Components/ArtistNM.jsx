@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { FaFacebook, FaPinterest, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Slider from "react-slick";
 import "../Styles/singleartist2.css";
-import artistImage from "../Images/stock_face6.png";
-import image1 from "../Images/exhibition1.jpg";
-import image2 from "../Images/exhibition2.jpg";
+import image1 from "../Images/NevineMatar/image1-Beyond-LOOKS.png";
+import image2 from "../Images/NevineMatar/image2-Antarandabla.png";
 import image3 from "../Images/exhibition4.jpg";
 import PdfViewer2 from "./PdfViewer2";
 import NMBooklet from "../Images/NevineMatar/Catalog.pdf";
+import artistImage from "../Images/NevineMatar/nevine-matar-small.png";
 
 const ArtistNM = () => {
   const [isPitchOpen, setIsPitchOpen] = useState(false);
@@ -26,11 +26,11 @@ const ArtistNM = () => {
   const sliderData = [
     {
       image: image1,
-      description: "N. Mattar's mural showcased at a gallery in Beirut.",
+      description: "Beyond Looks Oil & Acrylic on Canvas 39x39",
     },
     {
       image: image2,
-      description: "An art installation by Mattar in New York.",
+      description: "Antar and Abla Oil & Acrylic on Canvas 47x47",
     },
     {
       image: image3,
@@ -63,12 +63,17 @@ const ArtistNM = () => {
           />
         </div>
         <div className="single-artist__info">
-          <p className="single-artist__description">{artist.artist_about}</p>
-          <p className="single-artist__exhibitions">
-            {artist.artist_exhibitions}
+          <p
+            className="single-artist__description"
+            style={{ color: "#f6f0e6" }}
+          >
+            {artist.artist_about}
           </p>
-          <p className="single-artist__highlights">
-            {artist.artist_highlights}
+          <p
+            className="single-artist__exhibitions"
+            style={{ color: "#f6f0e6" }}
+          >
+            {artist.artist_exhibitions}
           </p>
         </div>
       </div>

@@ -14,23 +14,12 @@ const AboutUs = () => {
     aboutimg3: null, // Optional fallback for additional images
   });
 
-  const [contactData, setContactData] = useState(null);
-
-  useEffect(() => {
-    const fetchContactData = async () => {
-      try {
-        const response = await axios.get(
-          "https://bridges-backend-ob24.onrender.com/contact123/"
-        );
-        console.log("Contact Data:", response.data);
-        setContactData(response.data); // Assuming the response contains an object
-      } catch (error) {
-        console.error("Error fetching contact data:", error);
-      }
-    };
-
-    fetchContactData();
-  }, []);
+  const [contactData, setContactData] = useState({
+    contact_facebook_link: "chicken12@hotmail.com123",
+    contact_pinterest_link: "https://www.pinterest.com/example",
+    contact_youtube_link: "https://www.youtube.com/example",
+    contact_instagram_link: "https://www.instagram.com/example",
+  });
 
   // Check if contactData is still null
   if (!contactData) {

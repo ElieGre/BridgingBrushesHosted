@@ -4,7 +4,7 @@
   display: flex;
   margin-left: -30px;
   margin-bottom: 100px;
-  background-color: #3d2f1e;
+  background-color: #1e1e1e;
 }
 
 .location1 {
@@ -17,11 +17,11 @@
   margin-left: 100px;
 }
 .navigoo {
-  background-color: #3d2f1e !important;
+  background-color: #1e1e1e !important;
   box-shadow: none !important;
 }
 .navigoo2 {
-  background-color: #3d2f1e !important;
+  background-color: #1e1e1e !important;
   box-shadow: none !important;
 }
 .location1 h2 {
@@ -146,7 +146,7 @@
   margin-top: 30px;
 }
 .button {
-  background: #fff;
+  background: #1e1e1e;
   border: none;
   padding: 10px 20px;
   display: inline-block;
@@ -159,6 +159,8 @@
   position: relative;
   top: -30px;
   left: 200px;
+  border: 1px solid #fef0e6;
+  color: white !important;
 }
 
 .span123 {
@@ -190,6 +192,7 @@
 }
 .copyrightbottom nav li:nth-child(3) {
   margin-top: -20px !important;
+  color: white;
 }
 
 .navigoo2 ul {

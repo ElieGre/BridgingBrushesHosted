@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { FaFacebook, FaPinterest, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Slider from "react-slick";
 import "../Styles/singleartist2.css";
-import artistImage from "../Images/stock_face6.png";
-import image1 from "../Images/exhibition1.jpg";
-import image2 from "../Images/exhibition2.jpg";
-import image3 from "../Images/exhibition4.jpg";
+import image1 from "../Images/MagaliKatra/image-1-the-happy.png";
+import image2 from "../Images/MagaliKatra/image-2-let's-stay.png";
+import image3 from "../Images/MagaliKatra/image-3-dividedwefall.png";
 import Modal from "react-modal";
 import PdfViewer2 from "./PdfViewer2";
 import MagaliCatalogue from "../Images/MagaliKatra/Exhibition-Catalog.pdf";
 import MagaliBooklet from "../Images/MagaliKatra/Booklet-Artist.pdf";
+import artistImage from "../Images/MagaliKatra/magali-small-image.png";
 
 const ArtistMK = () => {
   const [isCatalogueOpen, setIsCatalogueOpen] = useState(false);
@@ -36,18 +36,16 @@ const ArtistMK = () => {
   const sliderData = [
     {
       image: image1,
-      description:
-        "Kevin Abosch's photography installation at The Hermitage Museum, St Petersburg.",
+      description: "The Happy Crowd | 2024 Acrylic on Canvas | 38 x 38  inch",
     },
     {
       image: image2,
       description:
-        "A sculpture exhibition by Kevin Abosch at the National Museum of China.",
+        "Let’s stay together | 2024 Acrylic on Canvas | 38 x 38  inch",
     },
     {
       image: image3,
-      description:
-        "Kevin Abosch's blockchain-themed art showcased at ZKM in Germany.",
+      description: "Divided we fall | 2024 Acrylic on Canvas | 35  x 47  inch",
     },
   ];
 
@@ -82,8 +80,16 @@ const ArtistMK = () => {
           />
         </div>
         <div className="single-artist__info">
-          <p className="single-artist__description">{artist.artist_about}</p>
-          <p className="single-artist__exhibitions">
+          <p
+            className="single-artist__description"
+            style={{ color: "#f6f0e6" }}
+          >
+            {artist.artist_about}
+          </p>
+          <p
+            className="single-artist__exhibitions"
+            style={{ color: "#f6f0e6" }}
+          >
             {artist.artist_exhibitions}
           </p>
         </div>

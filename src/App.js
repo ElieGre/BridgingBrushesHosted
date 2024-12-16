@@ -47,6 +47,7 @@ import Projects from "./Components/Proejcts";
 import ArtistMK from "./Components/ArtistMK";
 import ArtistZN from "./Components/ArtistZN";
 import ArtistNM from "./Components/ArtistNM";
+import Artists2 from "./Components/Artists2";
 function App() {
   return (
     <div className="App">
@@ -73,7 +74,7 @@ function App() {
             element={
               <>
                 <Header />
-                <Artists />
+                <Artists2 />
                 <RealFooter />
               </>
             }

@@ -2,12 +2,12 @@
 
 .background-container {
   /* Replace 'your-background-image.jpg' with the path to your image */
-  background-image: url("../Images/dannie3.jpg");
+  background-color: #1e1e1e;
   background-repeat: no-repeat;
   background-attachment: fixed; /* For smooth scrolling effect */
   background-size: cover;
   background-position: center;
-  overflow-y: scroll;
+  /*  overflow-y: scroll; */
   -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
   min-height: 100vh;
   padding: 20px;

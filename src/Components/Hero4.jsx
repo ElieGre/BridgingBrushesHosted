@@ -8,9 +8,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css";
-import gallery1 from "../Images/GALLERY1.jpg";
-import gallery2 from "../Images/GALLERY2.jpg";
-import gallery3 from "../Images/GALLERY3.jpg";
+import gallery1 from "../Images/MagaliKatra/mini-imagem-magali.png";
+import gallery2 from "../Images/NevineMatar/nevine-matar-imagem.png";
+import gallery3 from "../Images/ZeinaNader/image-3-seascape.png";
 import gallery4 from "../Images/exhibition-cow.png";
 
 import "../Styles/hero3.css";
@@ -25,47 +25,33 @@ const Hero4 = () => {
     const staticPaintings = [
       {
         feature_image_of_painting: gallery1,
-        feature_artist_name: "Artist One",
-        feature_artist_last_name: "Lastname",
-        feature_genre: "Abstract",
-        feature_tag1: "Tag1",
-        feature_tag2: "Tag2",
-        feature_description_of_painting:
-          "This is the description of painting one.",
-        feature_name_of_painting: "Painting One",
+        feature_artist_name: "Magali",
+        feature_artist_last_name: "Katra",
+        feature_genre: "Poetry",
+        feature_tag1: "Energy",
+        feature_tag2: "Vivacity",
+        feature_description_of_painting: "The crowd - 2024",
+        feature_name_of_painting: "The crowd",
       },
       {
         feature_image_of_painting: gallery2,
-        feature_artist_name: "Artist Two",
-        feature_artist_last_name: "Lastname",
-        feature_genre: "Modern",
-        feature_tag1: "Tag3",
-        feature_tag2: "Tag4",
-        feature_description_of_painting:
-          "This is the description of painting two.",
+        feature_artist_name: "Nevine",
+        feature_artist_last_name: "Mattar",
+        feature_genre: "Poetry",
+        feature_tag1: "Energy",
+        feature_tag2: "Vivacity",
+        feature_description_of_painting: "Beyond Looks",
         feature_name_of_painting: "Painting Two",
       },
       {
         feature_image_of_painting: gallery3,
-        feature_artist_name: "Artist Three",
-        feature_artist_last_name: "Lastname",
-        feature_genre: "Surreal",
-        feature_tag1: "Tag5",
-        feature_tag2: "Tag6",
-        feature_description_of_painting:
-          "This is the description of painting three.",
+        feature_artist_name: "Zeina",
+        feature_artist_last_name: "Nader",
+        feature_genre: "Poetry",
+        feature_tag1: "Energy",
+        feature_tag2: "Vivacity",
+        feature_description_of_painting: "Seascape",
         feature_name_of_painting: "Painting Three",
-      },
-      {
-        feature_image_of_painting: gallery4,
-        feature_artist_name: "Artist Four",
-        feature_artist_last_name: "Lastname",
-        feature_genre: "Renaissance",
-        feature_tag1: "Tag7",
-        feature_tag2: "Tag8",
-        feature_description_of_painting:
-          "This is the description of painting four.",
-        feature_name_of_painting: "Painting Four",
       },
     ];
 
@@ -127,18 +113,26 @@ const Hero4 = () => {
         {paintings.map(
           (painting, index) =>
             activePainting === painting && (
-              <div className="content active" key={index}>
-                <h4>
+              <div
+                className="content active"
+                key={index}
+                style={{ color: "white" }}
+              >
+                <h4 style={{ color: "white" }}>
                   {painting.feature_artist_name}{" "}
                   {painting.feature_artist_last_name}
                 </h4>
-                <h4>
-                  <span>2023</span>
+                <h4 style={{ color: "white" }}>
+                  <span style={{ color: "white" }}>2023</span>
                   <span>
                     <i>{painting.feature_genre}</i>
                   </span>
-                  <span>{painting.feature_tag1}</span>
-                  <span>{painting.feature_tag2}</span>
+                  <span style={{ color: "white" }}>
+                    {painting.feature_tag1}
+                  </span>
+                  <span style={{ color: "white" }}>
+                    {painting.feature_tag2}
+                  </span>
                 </h4>
                 <p>{painting.feature_description_of_painting}</p>
               </div>

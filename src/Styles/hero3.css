@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #000000;
+  background: #1e1e1e;
   font-family: "Poppins", sans-serif;
 }
 
@@ -65,7 +65,7 @@
   height: 100%;
   color: #ffffff;
   background: transparent;
-  border: 1 solid rgba(255, 255, 255, 0.5);
+  border: 1px rgba(255, 255, 255, 0.5);
   outline: none;
   border-radius: 4px;
   padding: 0 10px 0 45px !important;
@@ -83,13 +83,13 @@
   left: 10px;
   padding-right: 10px;
   color: #ffffff;
-  border-right: 1 px solid #ffffff;
+  border-right: 1px solid #ffffff;
 }
 
 .banner {
   position: relative;
-  width: 100%;
-  min-height: 100vh;
+  width: 75%;
+  min-height: auto;
   padding: 0 100px;
   display: flex !important;
   justify-content: space-between;
@@ -99,6 +99,10 @@
   background-position: center;
   overflow: hidden;
   transition: 0.5s;
+  margin-left: 12.5%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 5); /* Adds a shadow under the header */
 }
 
 .banner :before {
@@ -110,21 +114,29 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  background: rhba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0);
 }
 .content {
   position: relative;
   max-width: 550px;
   display: none;
   visibility: hidden;
-  transform: sclade(0);
+  transform: scale(0);
   transition: 0.5s;
 }
 .content.active {
+  color: white !important;
   display: block;
   visibility: visible;
   transform: scale(1);
   transition: 0.5s;
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  border: 2px solid rgba(0, 0, 0, 0.5); /* Border with slight transparency */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  padding: 20px; /* Add some padding for content spacing */
+  border-radius: 10px; /* Optional: Rounded corners */
+  position: relative;
+  right: 40px;
 }
 
 .movie-title {
@@ -184,7 +196,7 @@
 }
 
 .banner .content .buttonwww a:nth-child(2) {
-  background: rgba (0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -253,8 +265,8 @@
 
 .sci {
   position: absolute;
-  bottom: 50px;
-  right: 100px;
+  bottom: 150px;
+  right: 33px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -319,11 +331,15 @@
     padding: 0 20px !important;
     flex-direction: column-reverse !important;
     text-align: center !important;
+    width: 100%;
+    margin-left: 0px;
   }
 
   .content {
     max-width: 100% !important;
     margin: 0 auto !important;
+    position: relative;
+    left: 0px;
   }
 
   .movie-title {

@@ -3,7 +3,7 @@
   width: 1100px;
   height: 400px;
   display: flex;
-  margin-left: 13 0px;
+  margin-left: 130px;
   margin-bottom: 160px;
   border: 1px solid #b89d4f; /* Add border */
   background-color: rgba(
@@ -213,7 +213,7 @@
   margin-bottom: 100px;
   align-items: center;
   margin-top: 00px;
-  background-image: url("../Images/dannie3.jpg");
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -228,7 +228,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0);
   z-index: -1;
 }
 
@@ -497,7 +497,7 @@
 }
 @media screen and (min-width: 1200px) and (max-width: 1600px) {
   .content-container {
-    margin-left: 35px;
+    margin-left: -105px;
   }
   .all-events-123 {
     margin-left: 7.8% !important;
@@ -509,7 +509,7 @@
     width: 1100px;
     height: 400px;
     display: flex;
-    margin-left: 13 0px;
+    margin-left: 130px;
     margin-bottom: 160px;
     border: 1px solid #b89d4f; /* Add border */
     background-color: rgba(
@@ -519,7 +519,7 @@
       0.8
     ); /* Add background color with some transparency */
     border-radius: 10px; /* Optional: Add rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0); /* Optional: Add shadow for better visibility */
     margin-left: 200px;
   }
 
@@ -556,7 +556,7 @@
     ); /* Add background color with some transparency */
     padding: 20px; /* Add padding for spacing inside the box */
     border-radius: 10px; /* Optional: Add rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0); /* Optional: Add shadow for better visibility */
   }
 
   .top-exheb,
@@ -713,7 +713,6 @@
     margin-bottom: 100px;
     align-items: center;
     margin-top: 00px;
-    background-image: url("../Images/dannie3.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -728,7 +727,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0);
     z-index: -1;
   }
 

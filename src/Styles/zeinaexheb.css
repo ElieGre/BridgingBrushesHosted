@@ -198,6 +198,7 @@
 .sui-generis-section h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
+  color: #846f63;
 }
 
 .sui-generis-section p {
@@ -207,6 +208,7 @@
 }
 .sui-generis-section h3 {
   position: relative;
+  color: #846f63;
 }
 @media (max-width: 600px) {
   .single-exhibition-page1 {

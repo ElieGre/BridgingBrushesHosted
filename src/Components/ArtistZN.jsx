@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { FaFacebook, FaPinterest, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Slider from "react-slick";
 import "../Styles/singleartist2.css";
-import artistImage from "../Images/stock_face6.png";
-import image1 from "../Images/exhibition1.jpg";
-import image2 from "../Images/exhibition2.jpg";
-import image3 from "../Images/exhibition4.jpg";
+import artistImage from "../Images/ZeinaNader/zeina-nader-small.png";
+import image1 from "../Images/ZeinaNader/image-1-chromatic.png";
+import image2 from "../Images/ZeinaNader/image-2-skyline.png";
+import image3 from "../Images/ZeinaNader/image-3-seascape.png";
 import PdfViewer2 from "./PdfViewer2";
 import ZeinaBooklet from "../Images/ZeinaNader/Catalog.pdf";
 
@@ -27,15 +27,15 @@ const ArtistZN = () => {
   const sliderData = [
     {
       image: image1,
-      description: "Zeina Nader's painting displayed at a gallery in Paris.",
+      description: "Chromatic Horizon 140 x 80 cmAcrylic on canvas",
     },
     {
       image: image2,
-      description: "Zeina's work featured at an art exhibition in Tokyo.",
+      description: " Chromatic Skylines 150 x 100 cm Acrylic on canvas",
     },
     {
       image: image3,
-      description: "Zeina's latest collection showcased in Barcelona.",
+      description: "Seascape 100 x 80 cmAcrylic on canvas",
     },
   ];
 
@@ -64,12 +64,17 @@ const ArtistZN = () => {
           />
         </div>
         <div className="single-artist__info">
-          <p className="single-artist__description">{artist.artist_about}</p>
-          <p className="single-artist__exhibitions">
-            {artist.artist_exhibitions}
+          <p
+            className="single-artist__description"
+            style={{ color: "#f6f0e6" }}
+          >
+            {artist.artist_about}
           </p>
-          <p className="single-artist__highlights">
-            {artist.artist_highlights}
+          <p
+            className="single-artist__exhibitions"
+            style={{ color: "#f6f0e6" }}
+          >
+            {artist.artist_exhibitions}
           </p>
         </div>
       </div>
