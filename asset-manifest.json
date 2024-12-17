@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/BridgingBrushesHosted/static/css/main.b1437c87.css",
-    "main.js": "/BridgingBrushesHosted/static/js/main.6940132b.js",
+    "main.css": "/BridgingBrushesHosted/static/css/main.7b4305b5.css",
+    "main.js": "/BridgingBrushesHosted/static/js/main.8b79b9ae.js",
     "static/media/the-covenant.jpg": "/BridgingBrushesHosted/static/media/the-covenant.77628598875541f6eac8.jpg",
     "static/media/pidaras.mp4": "/BridgingBrushesHosted/static/media/pidaras.419378b79f45ffc27636.mp4",
     "static/media/IMG2.JPG": "/BridgingBrushesHosted/static/media/IMG2.db2fe82da11aa35f8b49.JPG",
@@ -84,11 +84,11 @@
     "static/media/slick.ttf": "/BridgingBrushesHosted/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/BridgingBrushesHosted/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/BridgingBrushesHosted/index.html",
-    "main.b1437c87.css.map": "/BridgingBrushesHosted/static/css/main.b1437c87.css.map",
-    "main.6940132b.js.map": "/BridgingBrushesHosted/static/js/main.6940132b.js.map"
+    "main.7b4305b5.css.map": "/BridgingBrushesHosted/static/css/main.7b4305b5.css.map",
+    "main.8b79b9ae.js.map": "/BridgingBrushesHosted/static/js/main.8b79b9ae.js.map"
   },
   "entrypoints": [
-    "static/css/main.b1437c87.css",
-    "static/js/main.6940132b.js"
+    "static/css/main.7b4305b5.css",
+    "static/js/main.8b79b9ae.js"
   ]
 }
