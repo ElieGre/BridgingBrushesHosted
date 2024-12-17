@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../Styles/single-exhebition.css";
-import bannerImage from "../Images/exhibition1.jpg";
+import bannerImage from "../Images/MagaliKatra/image-3-dividedwefall.png";
 import image1 from "../Images/AF exhibition/IMG_7317.JPG";
 import image2 from "../Images/AF exhibition/IMG_7319.JPG";
 import image3 from "../Images/AF exhibition/IMG_7324.JPG";
@@ -31,7 +31,7 @@ const MagaliExheb = () => {
     exhibition_artist: "Solo Show by Magali Katra",
     exhibition_opening_hours: "9:00 AM",
     exhibition_closing_hours: "6:00 PM",
-    exhibition_inauguration: "April 5th 2024, at 5pm",
+    exhibition_inauguration: "April 5th 2024",
     exhibition_location: "The Ven, Embassy Row Washington DC.",
     exhibition_length: "April 29th 2024",
     exhibition_country: "United States",

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../Styles/zeinaexheb.css";
-import bannerImage from "../Images/exhibition1.jpg";
+import bannerImage from "../Images/NevineMatar/image2-Antarandabla.png";
 import image1 from "../Images/NevineMatar/IMG1.JPG";
 import image2 from "../Images/NevineMatar/IMG2.JPG";
 import image3 from "../Images/NevineMatar/IMG3.JPG";

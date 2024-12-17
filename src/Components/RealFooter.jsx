@@ -40,12 +40,12 @@ const RealFooter = () => {
       <div className="footer1">
         <div className="location-footer1">
           <div className="location1">
-            <h2>London</h2>
-            <p>15 Bolton Street London W1J 8BG</p>
+            <h2>Washington</h2>
+            <p></p>
           </div>
           <div className="location1">
-            <h2>New York</h2>
-            <p>74 Leonard Street New York, NY 10013</p>
+            <h2>D.C.  -  USA</h2>
+            <p></p>
           </div>
         </div>
         <div className="copyrightbottom">
@@ -57,7 +57,7 @@ const RealFooter = () => {
               <li>
                 <a href="#">Cookies</a>
               </li>
-              <li>@2024 Bridgin Bushes</li>
+              <li>@2024 BridgingBrushes</li>
               <li>
                 <a href="/Contactus">Contact</a>
               </li>
@@ -72,26 +72,28 @@ const RealFooter = () => {
         <div className="emojis">
           <nav className="navigoo2">
             <ul>
-              <li>
-                <a
-                  href="https://www.facebook.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div
-                    className="white-emoji"
-                    onMouseEnter={() => handleMouseEnter("facebook")}
-                    onMouseLeave={() => handleMouseLeave("facebook")}
-                    style={{
-                      backgroundImage: `url(${
-                        hoveredEmoji.facebook ? facebookGif : facebook
-                      })`,
-                      width: `50px`,
-                      height: `50px`,
-                    }}
-                  ></div>
-                </a>
-              </li>
+              {/* 
+<li>
+  <a
+    href="https://www.facebook.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <div
+      className="white-emoji"
+      onMouseEnter={() => handleMouseEnter("facebook")}
+      onMouseLeave={() => handleMouseLeave("facebook")}
+      style={{
+        backgroundImage: `url(${
+          hoveredEmoji.facebook ? facebookGif : facebook
+        })`,
+        width: `50px`,
+        height: `50px`,
+      }}
+    ></div>
+  </a>
+</li>
+
               <li>
                 <a
                   href="https://www.pinterest.com/"
@@ -111,10 +113,10 @@ const RealFooter = () => {
                     }}
                   ></div>
                 </a>
-              </li>
+              </li>*/}
               <li>
                 <a
-                  href="https://www.instagram.com/"
+                  href="https://www.instagram.com/bridgingbrushes/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -134,7 +136,7 @@ const RealFooter = () => {
               </li>
               <li>
                 <a
-                  href="https://www.youtube.com/"
+                  href="https://www.youtube.com/@BridgingBrushes"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

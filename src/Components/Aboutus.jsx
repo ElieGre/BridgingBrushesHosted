@@ -17,8 +17,8 @@ const AboutUs = () => {
   const [contactData, setContactData] = useState({
     contact_facebook_link: "chicken12@hotmail.com123",
     contact_pinterest_link: "https://www.pinterest.com/example",
-    contact_youtube_link: "https://www.youtube.com/example",
-    contact_instagram_link: "https://www.instagram.com/example",
+    contact_youtube_link: "https://www.youtube.com/@BridgingBrushes",
+    contact_instagram_link: "https://www.instagram.com/bridgingbrushes/",
   });
 
   // Check if contactData is still null
@@ -64,14 +64,14 @@ const AboutUs = () => {
           <div className="aboutus-content">
             <div className="aboutus-media-info">
               <ul>
-                <li>
+                {/*<li>
                   <a
                     href={contactData.contact_facebook_link}
                     className="aboutus-icon"
                   >
                     <i className="fab fa-facebook"></i> Facebook
                   </a>
-                </li>
+                </li>*/}
                 <li>
                   <a
                     href={contactData.contact_instagram_link}
@@ -88,14 +88,14 @@ const AboutUs = () => {
                     <i className="fab fa-youtube"></i> YouTube
                   </a>
                 </li>
-                <li>
+                {/*<li>
                   <a
                     href={contactData.contact_pinterest_link}
                     className="aboutus-icon"
                   >
                     <i className="fab fa-pinterest"></i> Pinterest
                   </a>
-                </li>
+                </li>*/}
               </ul>
             </div>
             <div className="aboutus-image123">

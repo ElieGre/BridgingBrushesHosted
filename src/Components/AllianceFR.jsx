@@ -20,20 +20,18 @@ const AllianceExheb = () => {
     exhibition_name: "Alliance Francaise",
     exhibition_description:
       "Bridging Brushes artists took part of the Avenues of Connections & the Art of Francophone World Exhibition in Washington DC in March 2024.",
-    exhibition_dates: "April-May 2024",
+    exhibition_dates: "February - March",
     exhibition_location: "Washington, D.C.",
     sui_generis: {
       title:
         "ARTOMATIC WASHINGTON DC 2024 Edition – Fadi ELCHAMAA-MARWAN CHAMAA-JANE FASYAL",
-      dates: "April-May 2024",
+      dates: "February - March 2024",
       location: "Washington DC",
-      about_artist: `Nevine Mattar, a Lebanese artist renowned for her diverse artistic skills, has lived and studied across the globe, 
-      from the Far East to the West, absorbing a wide range of artistic influences. Her education spans several prestigious cities, 
-      including Beirut, London, Los Angeles, New York, and Japan. Beyond her artistic endeavors, Mattar is deeply involved in civic activities, 
-      particularly in promoting recycling arts, and she played a pivotal role in establishing the first Paper Mache Association in Lebanon. 
-      With a robust career that includes chairing art juries, yearly exhibitions worldwide since 1983, and contributions to murals, illustrations, 
-      set designs, and fashion, Mattar also dedicates herself to academia, teaching Cultural Studies at leading Lebanese universities. 
-      Her academic and teaching career continues to thrive, making her a prominent figure in both the artistic and educational spheres.`,
+      about_artist: `In collaboration with the Alliance Française of Washington DC, Bridging Brushes proudly participated in the Avenues of Connections & The Art of the Francophone World Exhibition held in Washington DC in March 2024. This prestigious event celebrated cultural diversity and artistic expression from Francophone communities around the globe, providing a platform to connect people through the universal language of art.
+
+Three talented artists were carefully selected to represent Bridging Brushes, showcasing their unique perspectives, techniques, and cultural influences. Each piece exhibited tells a story of heritage, identity, and creativity, reflecting the vibrant spirit of the Francophone world.
+
+Discover their captivating work and the powerful narratives behind their creations here!`,
     },
   };
 
@@ -72,14 +70,14 @@ const AllianceExheb = () => {
               <p>
                 <strong>Location:</strong> {exhibition.sui_generis.location}
               </p>
-              <h3>About the Artist</h3>
+              <h3></h3>
               <p>{exhibition.sui_generis.about_artist}</p>
-              <button
+              {/*  <button
                 className="button-special"
                 onClick={() => navigate("/afexheb")}
               >
                 <p>Read More</p>
-              </button>
+              </button>*/}
             </div>
           </div>
         </div>

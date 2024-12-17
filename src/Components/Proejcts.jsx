@@ -34,7 +34,7 @@ const Projects = () => {
 
   return (
     <div className="projects-page-oki">
-      <h1 className="projects-title-oki">Our Amazing Projects</h1>
+      <h1 className="projects-title-oki">Our Projects</h1>
       <div className="projects-grid-oki">
         {posters.map((poster, index) => (
           <div

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../Styles/zeinaexheb.css";
-import bannerImage from "../Images/exhibition1.jpg";
+import bannerImage from "../Images/ZeinaNader/image-1-chromatic.png";
 import image1 from "../Images/ZeinaNader/IMG1.JPG";
 import image2 from "../Images/ZeinaNader/IMG2.JPG";
 import image3 from "../Images/ZeinaNader/IMG3.JPG";
@@ -46,8 +46,8 @@ const ZeinaExheb = () => {
     exhibition_name: "Chromaticity: A Visual Journey",
     exhibition_description: `"Chromaticity" by Zeina Nader explores the energy and spirit of urban life in Washington, blending it with her Lebanese heritage.`,
     exhibition_artist: "Zeina Nader",
-    exhibition_inauguration: "December 1st 2024, at 5pm",
-    exhibition_length: "December 31st 2024",
+    exhibition_inauguration: "June 6th 2024",
+    exhibition_length: "June 30th 2024",
     exhibition_location: "Art District, Washington D.C.",
     exhibition_featured1image: null, // Use `bannerImage` as a fallback
     exhibition_contact_email: "contact@exhibition.com",
@@ -58,7 +58,7 @@ const ZeinaExheb = () => {
     sui_generis: {
       title:
         "ARTOMATIC WASHINGTON DC 2024 Edition – Solo Show by Nevine Mattar",
-      dates: "April-May 2024",
+      dates: "June 2024",
       location: "Washington DC",
       about_artist:
         "International award-winning artist Zeina Nader has always followed her passion for painting and writing, believing deeply that all forms of art communicate.Zeina exhibited her work, in solos, duos and collectives, all around the world in cities such as New York, Tokyo, Paris, London, Madrid, Milan, Monaco, Copenhagen and Bruges to name a few. She celebrated in 2022, her hundredth exhibition, which took place in Barcelona.",
