@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/BridgingBrushesHosted/static/css/main.7b4305b5.css",
-    "main.js": "/BridgingBrushesHosted/static/js/main.aba81e81.js",
+    "main.js": "/BridgingBrushesHosted/static/js/main.c3bbbf7c.js",
     "static/media/the-covenant.jpg": "/BridgingBrushesHosted/static/media/the-covenant.77628598875541f6eac8.jpg",
     "static/media/pidaras.mp4": "/BridgingBrushesHosted/static/media/pidaras.419378b79f45ffc27636.mp4",
     "static/media/IMG2.JPG": "/BridgingBrushesHosted/static/media/IMG2.db2fe82da11aa35f8b49.JPG",
@@ -85,10 +85,10 @@
     "static/media/slick.woff": "/BridgingBrushesHosted/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/BridgingBrushesHosted/index.html",
     "main.7b4305b5.css.map": "/BridgingBrushesHosted/static/css/main.7b4305b5.css.map",
-    "main.aba81e81.js.map": "/BridgingBrushesHosted/static/js/main.aba81e81.js.map"
+    "main.c3bbbf7c.js.map": "/BridgingBrushesHosted/static/js/main.c3bbbf7c.js.map"
   },
   "entrypoints": [
     "static/css/main.7b4305b5.css",
-    "static/js/main.aba81e81.js"
+    "static/js/main.c3bbbf7c.js"
   ]
 }
