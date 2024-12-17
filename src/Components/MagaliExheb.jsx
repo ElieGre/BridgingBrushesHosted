@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../Styles/single-exhebition.css";
 import bannerImage from "../Images/MagaliKatra/image-3-dividedwefall.png";
-import image1 from "../Images/AF exhibition/IMG_7317.JPG";
-import image2 from "../Images/AF exhibition/IMG_7319.JPG";
-import image3 from "../Images/AF exhibition/IMG_7324.JPG";
-import image4 from "../Images/AF exhibition/IMG_7329.JPG";
+import image1 from "../Images/MagaliKatra/IMG1.JPG";
+import image2 from "../Images/MagaliKatra/IMG2.JPG";
+import image3 from "../Images/MagaliKatra/IMG3.JPG";
+import image4 from "../Images/MagaliKatra/IMG4.JPG";
+import image5 from "../Images/MagaliKatra/IMG5.JPG";
+import image6 from "../Images/MagaliKatra/IMG6.JPG";
+import image7 from "../Images/MagaliKatra/IMG7.JPG";
+import image8 from "../Images/MagaliKatra/IMG8.JPG";
+import image9 from "../Images/MagaliKatra/IMG9.JPG";
+import image10 from "../Images/MagaliKatra/IMG10.JPG";
+import image11 from "../Images/MagaliKatra/IMG11.JPG";
+import image12 from "../Images/MagaliKatra/IMG12.JPG";
 import PdfViewer2 from "./PdfViewer2";
 import MagaliCatalogue from "../Images/MagaliKatra/Exhibition-Catalog.pdf";
 import MagaliBooklet from "../Images/MagaliKatra/Booklet-Artist.pdf";
@@ -13,7 +21,20 @@ import MagaliBooklet from "../Images/MagaliKatra/Booklet-Artist.pdf";
 const MagaliExheb = () => {
   const { exhibitionName } = useParams();
   const navigate = useNavigate();
-  const imageGallery = [image1, image2, image3, image4];
+  const imageGallery = [
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+    image7,
+    image8,
+    image9,
+    image10,
+    image11,
+    image12,
+  ];
   const [selectedImage, setSelectedImage] = useState(null);
   const [isCatalogueOpen, setIsCatalogueOpen] = useState(false);
   const [isPitchOpen, setIsPitchOpen] = useState(false);

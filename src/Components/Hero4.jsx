@@ -24,16 +24,6 @@ const Hero4 = () => {
     // Static paintings data
     const staticPaintings = [
       {
-        feature_image_of_painting: gallery1,
-        feature_artist_name: "Magali",
-        feature_artist_last_name: "Katra",
-        feature_genre: "Poetry",
-        feature_tag1: "Energy",
-        feature_tag2: "Vivacity",
-        feature_description_of_painting: "The crowd - 2024",
-        feature_name_of_painting: "The crowd",
-      },
-      {
         feature_image_of_painting: gallery2,
         feature_artist_name: "Nevine",
         feature_artist_last_name: "Mattar",
@@ -43,6 +33,17 @@ const Hero4 = () => {
         feature_description_of_painting: "Beyond Looks",
         feature_name_of_painting: "Painting Two",
       },
+      {
+        feature_image_of_painting: gallery1,
+        feature_artist_name: "Magali",
+        feature_artist_last_name: "Katra",
+        feature_genre: "Poetry",
+        feature_tag1: "Energy",
+        feature_tag2: "Vivacity",
+        feature_description_of_painting: "The crowd - 2024",
+        feature_name_of_painting: "The crowd",
+      },
+
       {
         feature_image_of_painting: gallery3,
         feature_artist_name: "Zeina",

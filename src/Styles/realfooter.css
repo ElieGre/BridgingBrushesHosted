@@ -21,7 +21,7 @@
   box-shadow: none !important;
 }
 .navigoo2 {
-  background-color: #1e1e1e !important;
+  background-color: transparent !important;
   box-shadow: none !important;
 }
 .location1 h2 {
@@ -263,6 +263,22 @@
   .button {
     margin-left: 0px;
     margin-top: -70px;
+  }
+  .button {
+    background: #1e1e1e;
+    border: none;
+    padding: 10px 20px;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    width: 120px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transform: skew(-21deg);
+    position: relative;
+    top: -250px;
+    left: 200px;
+    border: 1px solid #fef0e6;
   }
 }
 @media (min-width: 601px) and (max-width: 1024px) {
