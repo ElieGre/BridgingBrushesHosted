@@ -1,0 +1,22 @@
+/* PdfViewerMobile.css */
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .pdf-viewer-container {
+    height: 80vh; /* Set height to 80% of the viewport height */
+    width: 100%; /* Full width on mobile */
+    overflow: auto; /* Allow scrolling */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    position: relative;
+  }
+
+  .pdf-viewer {
+    width: 100%; /* Make the PDF viewer take up full width */
+    height: 100%; /* Make the PDF viewer take up full height */
+  }
+  .rpv-core__viewer rpv-core__viewer--light {
+    width: 400px !important;
+  }
+}
