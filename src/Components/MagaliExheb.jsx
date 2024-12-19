@@ -15,8 +15,8 @@ import image10 from "../Images/MagaliKatra/IMG10.JPG";
 import image11 from "../Images/MagaliKatra/IMG11.JPG";
 import image12 from "../Images/MagaliKatra/IMG12.JPG";
 import PdfViewer2 from "./PdfViewer2";
-import MagaliCatalogue from "../Images/MagaliKatra/Exhibition-Catalog.pdf";
-import MagaliBooklet from "../Images/MagaliKatra/Booklet-Artist.pdf";
+const MagaliCatalogue = "/MK-Exhibition-Catalog.pdf";
+const MagaliBooklet = "/MK-Booklet-Artist.pdf";
 
 const MagaliExheb = () => {
   const { exhibitionName } = useParams();

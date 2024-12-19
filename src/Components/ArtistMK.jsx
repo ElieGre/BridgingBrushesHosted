@@ -8,8 +8,8 @@ import image3 from "../Images/MagaliKatra/image-3-dividedwefall.png";
 import Modal from "react-modal";
 import PdfViewer2 from "./PdfViewer2";
 import MagaliCatalogue from "../Images/MagaliKatra/Exhibition-Catalog.pdf";
-import MagaliBooklet from "../Images/MagaliKatra/Booklet-Artist.pdf";
 import artistImage from "../Images/MagaliKatra/magali-small-image.png";
+const MagaliBooklet = "/MK-Booklet-Artist.pdf";
 
 const ArtistMK = () => {
   const [isCatalogueOpen, setIsCatalogueOpen] = useState(false);

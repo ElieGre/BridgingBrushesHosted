@@ -8,7 +8,8 @@ import image3 from "../Images/NevineMatar/IMG3.JPG";
 import image4 from "../Images/NevineMatar/IMG4.JPG";
 
 import PdfViewer2 from "./PdfViewer2";
-import ArtomaticCatalogue from "../Images/NevineMatar/Catalog.pdf";
+// No need to import the PDF, instead use the path directly
+const ArtomaticCatalogue = "/NM-Catalog.pdf";
 
 const NevineExheb = () => {
   const navigate = useNavigate();
@@ -30,7 +31,6 @@ const NevineExheb = () => {
       With a robust career that includes chairing art juries, yearly exhibitions worldwide since 1983, and contributions to murals, illustrations, 
       set designs, and fashion, Mattar also dedicates herself to academia, teaching Cultural Studies at leading Lebanese universities. 
       Her academic and teaching career continues to thrive, making her a prominent figure in both the artistic and educational spheres.`,
-
     sui_generis: {
       title:
         "ARTOMATIC WASHINGTON DC 2024 Edition – Solo Show by Nevine Mattar",
@@ -113,7 +113,7 @@ const NevineExheb = () => {
           <PdfViewer2
             isOpen={isCatalogueOpen}
             onRequestClose={closeCatalogue}
-            pdfUrl={ArtomaticCatalogue}
+            pdfUrl={ArtomaticCatalogue} // This now uses the path correctly
             title="Exhibition Catalogue"
           />
         </div>

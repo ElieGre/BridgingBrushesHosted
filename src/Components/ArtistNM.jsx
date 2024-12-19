@@ -6,8 +6,8 @@ import image1 from "../Images/NevineMatar/image1-Beyond-LOOKS.png";
 import image2 from "../Images/NevineMatar/image2-Antarandabla.png";
 import image3 from "../Images/exhibition4.jpg";
 import PdfViewer2 from "./PdfViewer2";
-import NMBooklet from "../Images/NevineMatar/Catalog.pdf";
 import artistImage from "../Images/NevineMatar/nevine-matar-small.png";
+const NMBooklet = "/NM-Catalog.pdf";
 
 const ArtistNM = () => {
   const [isPitchOpen, setIsPitchOpen] = useState(false);

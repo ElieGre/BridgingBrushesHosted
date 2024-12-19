@@ -7,7 +7,7 @@ import image1 from "../Images/ZeinaNader/image-1-chromatic.png";
 import image2 from "../Images/ZeinaNader/image-2-skyline.png";
 import image3 from "../Images/ZeinaNader/image-3-seascape.png";
 import PdfViewer2 from "./PdfViewer2";
-import ZeinaBooklet from "../Images/ZeinaNader/Catalog.pdf";
+const ZeinaBooklet = "/ZN-Catalog.pdf";
 
 const ArtistZN = () => {
   const [isPitchOpen, setIsPitchOpen] = useState(false);
