@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaFacebook, FaPinterest, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Slider from "react-slick";
 import "../Styles/singleartist2.css";
-import artistImage from "../Images/ZeinaNader/zeina-nader-small.png";
+import artistImage from "../Images/ZeinaNader/zeina-nader-BIG.png.jpg";
 import image1 from "../Images/ZeinaNader/image-1-chromatic.png";
 import image2 from "../Images/ZeinaNader/image-2-skyline.png";
 import image3 from "../Images/ZeinaNader/image-3-seascape.png";

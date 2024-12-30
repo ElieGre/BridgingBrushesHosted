@@ -4,7 +4,7 @@
   display: flex;
   margin-left: -30px;
   margin-bottom: 100px;
-  background-color: #1e1e1e;
+  background-color: #080404;
 }
 
 .location1 {
@@ -17,7 +17,7 @@
   margin-left: 100px;
 }
 .navigoo {
-  background-color: #1e1e1e !important;
+  background-color: #080404 !important;
   box-shadow: none !important;
 }
 .navigoo2 {
@@ -146,7 +146,7 @@
   margin-top: 30px;
 }
 .button {
-  background: #1e1e1e;
+  background: #080404;
   border: none;
   padding: 10px 20px;
   display: inline-block;
@@ -265,7 +265,7 @@
     margin-top: -70px;
   }
   .button {
-    background: #1e1e1e;
+    background: #080404;
     border: none;
     padding: 10px 20px;
     display: inline-block;

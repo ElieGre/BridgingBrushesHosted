@@ -6,7 +6,21 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #1e1e1e;
+  background-color: #080404;
+  font-family: "Poppins", sans-serif;
+  background-color: #080404;
+  background-image: url("./Images/Picture1.png");
+
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* For smooth scrolling effect */
+  background-size: cover;
+  background-position: center;
+  /*  overflow-y: scroll; */
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+  min-height: 100vh;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 footer {

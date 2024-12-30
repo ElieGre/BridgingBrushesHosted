@@ -1,0 +1,94 @@
+.welcome-container {
+  text-align: center;
+  margin-left: 80px;
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.welcome-flex {
+  display: flex;
+}
+
+.left-text {
+  color: #fff;
+  width: 400px;
+  justify-content: center;
+  text-align: center;
+}
+
+.left-text h2 {
+  font-size: 35px;
+  width: 350px;
+  margin-left: 15px;
+}
+
+.left-text p {
+  width: 420px;
+  font-size: 20px;
+}
+
+.welcome-image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.image-circle-container {
+  display: flex;
+  gap: 20px; /* Space between the images */
+}
+
+.image-circle2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 8px solid #cdcccd; /* Default border */
+  width: 150px; /* Default size */
+  height: 150px; /* Default size */
+}
+
+/* Use nth-child to change sizes for each circle */
+.image-circle2:nth-child(1) {
+  width: 150px;
+  height: 150px;
+}
+
+.image-circle2:nth-child(2) {
+  width: 175px;
+  height: 175px;
+  border: 10px solid #cdcccd; /* Larger border */
+}
+
+.image-circle2:nth-child(3) {
+  width: 200px;
+  height: 200px;
+  border: 12px solid #cdcccd; /* Larger border */
+}
+
+.image-circle2:nth-child(4) {
+  width: 225px;
+  height: 225px;
+  border: 14px solid #cdcccd; /* Largest border */
+}
+
+.circle-image2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images fill the circle without distortion */
+}
+
+/* Media query to hide the images on mobile */
+@media (max-width: 768px) {
+  .image-circle-container {
+    display: none; /* Hide image container on mobile */
+  }
+  .left-text {
+    margin-left: -100px;
+  }
+  .left-text p {
+    width: 100%;
+    margin-left: 10px;
+  }
+}

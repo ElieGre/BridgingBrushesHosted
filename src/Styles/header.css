@@ -1,30 +1,29 @@
+.header-box {
+  position: relative; /* Or fixed, depending on design */
+  z-index: 10; /* Higher than 1 */
+}
+
 .header-ul {
   list-style-type: none;
   padding: 0;
   display: flex;
   justify-content: space-between;
   font-size: 30px;
-  font-family: "Libre Baskerville", serif;
   font-weight: 400;
   font-style: normal;
 }
 .navigado {
   box-shadow: none !important;
-  background-color: #1e1e1e !important;
+  background-color: transparent !important; /* Transparent background */
   font-size: 2rem !important;
 }
 
-body {
-  background-color: #1f1f1f;
-}
-
 nav {
-  background-color: #1f1f1f !important;
+  background-color: transparent !important; /* Transparent background */
 }
 
 .header-ul li,
 a {
-  font-family: Libre Baskerville, sans-serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
@@ -54,8 +53,8 @@ nav ul a:hover {
   display: flex;
   width: 100%;
   height: 200px;
-  background-color: #1e1e1e;
-  font-family: Rubik, sans-serif;
+  background-color: transparent !important; /* Transparent background */
+  font-family: "Poppins", sans-serif;
   color: #1f1f1f !important;
 }
 
@@ -64,7 +63,7 @@ nav ul a:hover {
 }
 
 .header-1 nav {
-  background-color: #1f1f1f;
+  background-color: transparent !important; /* Transparent background */
 }
 
 .header-2 {
@@ -205,6 +204,7 @@ nav ul a:hover {
 
   .bigger-1 a {
     height: 100%;
+    width: 50% !important;
     padding: 0 30px;
     text-decoration: none;
     display: flex;

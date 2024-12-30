@@ -6,10 +6,10 @@ import gallery1 from "../Images/MagaliKatra/mini-imagem-magali.png";
 import gallery2 from "../Images/NevineMatar/nevine-matar-imagem.png";
 import gallery3 from "../Images/ZeinaNader/mini-imagem.png";
 
-import pici1 from "../Images/MagaliKatra/magali-small-image.png";
+import pici1 from "../Images/MagaliKatra/magaly-katra-BIG.jpg";
 import pici2 from "../Images/NevineMatar/nevine-matar-small.png";
 
-import pici3 from "../Images/ZeinaNader/zeina-nader-small.png";
+import pici3 from "../Images/ZeinaNader/zeina-nader-BIG.png.jpg";
 
 const Artists2 = () => {
   const [searchTerm, setSearchTerm] = useState("");

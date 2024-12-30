@@ -48,6 +48,8 @@ import ArtistMK from "./Components/ArtistMK";
 import ArtistZN from "./Components/ArtistZN";
 import ArtistNM from "./Components/ArtistNM";
 import Artists2 from "./Components/Artists2";
+import Hero5 from "./Components/Hero5";
+import RealFooter2 from "./Components/Realfooter2";
 function App() {
   return (
     <div className="App">
@@ -57,14 +59,14 @@ function App() {
             path="/"
             element={
               <>
-                <Header />
-                <Hero4 />
+                <Hero5 />
                 <Multiple />
 
                 {/* <Section21 />
                 <Gallery />
                 <EventsandPrograms /> */}
-                <RealFooter />
+                {/* <RealFooter2 /> */}
+                {/* <RealFooter2 /> */}
                 <title>Bridging Brushes</title>
               </>
             }
@@ -75,7 +77,7 @@ function App() {
               <>
                 <Header />
                 <Artists2 />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -85,7 +87,7 @@ function App() {
               <>
                 <Header />
                 <SingleArtist2 />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -95,7 +97,7 @@ function App() {
               <>
                 <Header />
                 <SingleArtist />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           /> */}
@@ -106,7 +108,7 @@ function App() {
               <>
                 <Header />
                 <ArtistMK />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -116,7 +118,7 @@ function App() {
               <>
                 <Header />
                 <ArtistZN />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -126,7 +128,7 @@ function App() {
               <>
                 <Header />
                 <ArtistNM />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -136,7 +138,7 @@ function App() {
               <>
                 <Header />
                 <AboutUs />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -146,7 +148,7 @@ function App() {
               <>
                 <Header />
                 <TestPdfViewer />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -156,7 +158,7 @@ function App() {
               <>
                 <Header />
                 <ContactUs2 />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -166,7 +168,7 @@ function App() {
               <>
                 <Header />
                 <Exhibition />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -176,7 +178,7 @@ function App() {
               <>
                 <Header />
                 <Newsletter />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -186,7 +188,7 @@ function App() {
               <>
                 <Header />
                 <SingleExhebition />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -205,7 +207,7 @@ function App() {
               <>
                 <Header />
                 <Projects />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -215,7 +217,7 @@ function App() {
               <>
                 <Header />
                 <AdminLogin />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -225,7 +227,7 @@ function App() {
               <>
                 <Header />
                 <MagaliExheb />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -235,7 +237,7 @@ function App() {
               <>
                 <Header />
                 <ZeinaExheb />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -245,7 +247,7 @@ function App() {
               <>
                 <Header />
                 <NevineExheb />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -255,7 +257,7 @@ function App() {
               <>
                 <Header />
                 <AllianceExheb />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />
@@ -320,7 +322,7 @@ function App() {
               <>
                 <Header />
                 <DashboardGalleries />
-                <RealFooter />
+                <RealFooter2 />
               </>
             }
           />

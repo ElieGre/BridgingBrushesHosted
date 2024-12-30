@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../Styles/aboutus.css";
-import image11 from "../Images/exhibition-cow.png";
-import image2 from "../Images/exhibition2.jpg";
+import image11 from "../Images/exhibition1.jpg";
+import image2 from "../Images/Owner-IMAGE.jpg";
 
 const AboutUs = () => {
   const [aboutData123] = useState({
@@ -46,7 +46,7 @@ const AboutUs = () => {
           </div>
           <div className="allsectiones">
             <div className="sectiones2">
-              <p>
+              <p className="p-of-the-sectiones2">
                 {aboutData123.abouttext2}
                 {aboutData123.abouttext3}
               </p>
@@ -100,7 +100,7 @@ const AboutUs = () => {
             </div>
             <div className="aboutus-image123">
               <img
-                src={aboutData123.aboutimg2}
+                src={aboutData123.aboutimg1}
                 alt="Community"
                 loading="lazy"
               />

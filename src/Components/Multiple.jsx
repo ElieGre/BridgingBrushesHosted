@@ -3,6 +3,9 @@ import Section21 from "../Components/Section21";
 import Gallery from "./Gallery";
 import EventsandPrograms from "./EventsandPrograms";
 import "../Styles/multiple.css";
+import Header from "./Header";
+import Realfoote2 from "./Realfooter2";
+import Welcome from "./Welcome";
 
 const Multiple = () => {
   return (
@@ -13,9 +16,12 @@ const Multiple = () => {
       {/* <div className="component-shadow">
         <Gallery />
       </div> */}
+      <Header />
+      <Welcome />
       <div className="component-shadow">
         <EventsandPrograms />
       </div>
+      <Realfoote2 />
     </div>
   );
 };

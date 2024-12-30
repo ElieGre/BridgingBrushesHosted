@@ -25,7 +25,7 @@ const AllianceExheb = () => {
     exhibition_location: "Washington, D.C.",
     sui_generis: {
       title:
-        "ARTOMATIC WASHINGTON DC 2024 Edition – Fadi ELCHAMAA-MARWAN CHAMAA-JANE FASYAL",
+        "Avenues of Connections & the Art of Francophone World Exhibition:Fadi ELCHAMAA-MARWAN CHAMAA-JANE FASYALL",
       dates: "February - March 2024",
       location: "Washington DC",
       about_artist: `In collaboration with the Alliance Française of Washington DC, Bridging Brushes proudly participated in the Avenues of Connections & The Art of the Francophone World Exhibition held in Washington DC in March 2024. This prestigious event celebrated cultural diversity and artistic expression from Francophone communities around the globe, providing a platform to connect people through the universal language of art.
@@ -98,7 +98,7 @@ Discover their captivating work and the powerful narratives behind their creatio
         </div>
         <div className="button-container3">
           <button className="artist-button3" onClick={openCatalogue}>
-            View Catalogue
+            View Catalog
           </button>
 
           <PdfViewer2

@@ -61,10 +61,8 @@ const MagaliExheb = () => {
       title: "SUI Generis Society – Solo Show by Magali Katra",
       dates: "April 5th 2024 to April 28th 2024",
       location: "Washington DC",
-      about_artist: `Katra’s art is visual poetry overflowing with energy and vivacity, with a distinctive signature style. 
-        The artist captures human identities, portraying people through bold graphics, assertive postures, 
-        graceful fluidity, and engaging compositions. With a mastery of graphic rhythm, she holds up a mirror to 
-        contemporary life and depicts the underlying core of society.`,
+      about_artist: `It is about a world where our paths cross for a moment, a day, or sometimes, for a lifetime.It’s about the people we meet and greet, love or dislike, connect with or despise, cherish or forget, privilege or exclude.It is an ongoing journey where we all long for the unwritten pages of future connections, relations and encounters.It is a sequence of chapters we somehow begin or end; communities we integrate or escape; and societies we belong to or cast aside.However, people cross paths in each other’s lives, they linger. But with a change of role, status, substance, or significance.Some only become a memory - dated and classified, and others cross it for new beginnings and ongoing inspiration.
+`,
     },
   };
 
@@ -109,7 +107,7 @@ const MagaliExheb = () => {
               <p>
                 <strong>Location:</strong> {exhibition.sui_generis.location}
               </p>
-              <h3>About the Artist</h3>
+              <h3>Artist Statement</h3>
               <p>{exhibition.sui_generis.about_artist}</p>
               <button
                 className="button-special"
@@ -137,7 +135,7 @@ const MagaliExheb = () => {
         <div className="button-container3">
           <div className="duo-both">
             <button className="artist-button4" onClick={openCatalogue}>
-              View Catalogue
+              View Catalog
             </button>
             <button className="artist-button4" onClick={openPitch}>
               View Artist's Pitch

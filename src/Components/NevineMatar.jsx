@@ -107,7 +107,7 @@ const NevineExheb = () => {
         </div>
         <div className="button-container3">
           <button className="artist-button3" onClick={openCatalogue}>
-            View Catalogue
+            View Catalog
           </button>
 
           <PdfViewer2

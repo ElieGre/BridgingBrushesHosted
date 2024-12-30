@@ -16,8 +16,7 @@ import image9 from "../Images/ZeinaNader/IMG13.JPG";
 import image12 from "../Images/ZeinaNader/IMG12.JPG";
 
 import PdfViewer2 from "./PdfViewer2";
-import ZeinaCatalogue from "../Images/ZeinaNader/Catalog.pdf";
-import MagaliBooklet from "../Images/MagaliKatra/Booklet-Artist.pdf";
+// Remove this import: import ZeinaCatalogue from "/ZN-CAtalog.pdf";
 
 const ZeinaExheb = () => {
   const { exhibitionName } = useParams();
@@ -54,7 +53,6 @@ const ZeinaExheb = () => {
     exhibition_contact_phone: "(202) 555-7890",
     about_artist:
       "International award-winning artist Zeina Nader has always followed her passion for painting and writing, believing deeply that all forms of art communicate.Zeina exhibited her work, in solos, duos and collectives, all around the world in cities such as New York, Tokyo, Paris, London, Madrid, Milan, Monaco, Copenhagen and Bruges to name a few. She celebrated in 2022, her hundredth exhibition, which took place in Barcelona.",
-
     sui_generis: {
       title:
         "ARTOMATIC WASHINGTON DC 2024 Edition – Solo Show by Nevine Mattar",
@@ -63,7 +61,6 @@ const ZeinaExheb = () => {
       about_artist:
         "International award-winning artist Zeina Nader has always followed her passion for painting and writing, believing deeply that all forms of art communicate.Zeina exhibited her work, in solos, duos and collectives, all around the world in cities such as New York, Tokyo, Paris, London, Madrid, Milan, Monaco, Copenhagen and Bruges to name a few. She celebrated in 2022, her hundredth exhibition, which took place in Barcelona.",
     },
-
     artist_statement: `Inspired by the vibrant chromaticity of the capital city, Zeina Nader's abstract compositions aim to evoke the pulsating energy of urban life in Washington. 
     Growing up in Lebanon, her works reflect the interplay of light and color from the natural world, blending vivid abstraction with cultural resilience. 
     Zeina's works connect her Lebanese roots with the spirit of Washington D.C., offering a kaleidoscope of color that transcends geographical boundaries.`,
@@ -76,6 +73,7 @@ const ZeinaExheb = () => {
 
   return (
     <div className="single-exhibition-page1">
+      {/* Banner Section */}
       <div
         className="banner1"
         style={{
@@ -116,11 +114,11 @@ const ZeinaExheb = () => {
               <p>
                 <strong>Location:</strong> {exhibition.sui_generis.location}
               </p>
-              <h3>About the Artist</h3>
+              <h3>Artist Statement</h3>
               <p>{exhibition.sui_generis.about_artist}</p>
               <button
                 className="button-special"
-                onClick={() => navigate("/ZeinaNader")}
+                onClick={() => navigate("/MagaliKatra")}
               >
                 <p>Read More</p>
               </button>
@@ -129,6 +127,7 @@ const ZeinaExheb = () => {
         </div>
       </div>
 
+      {/* Content Section */}
       <div className="both">
         <div className="image-grid2">
           {imageGallery.map((image, index) => (
@@ -144,18 +143,12 @@ const ZeinaExheb = () => {
         <div className="button-container3">
           <div className="duo-both">
             <button className="artist-button4" onClick={openCatalogue}>
-              View Catalogue
+              View Catalog
             </button>
             <button className="artist-button4" onClick={openPitch}>
-              View Artist's Pitch
+              View Interview
             </button>
           </div>
-          <PdfViewer2
-            isOpen={isCatalogueOpen}
-            onRequestClose={closeCatalogue}
-            pdfUrl={ZeinaCatalogue}
-            title="Exhibition Catalogue"
-          />
         </div>
       </div>
 
